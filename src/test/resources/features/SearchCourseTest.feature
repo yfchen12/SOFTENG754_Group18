@@ -13,3 +13,8 @@ Feature: Search Course Test
       | criteria     | value           |
       | courseNumber | SOFTENG701      |
       | courseTitle  | OOP Development |
+
+  Scenario: Search course by multi-criteria
+    Given I search by course number and course title
+    When I click search button
+    Then the search result should be displayed on Search Result page
