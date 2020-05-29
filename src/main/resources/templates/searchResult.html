@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Search Result</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="jumbotron text-center">
+    <h1 class="display-5" id="page_title">Search Result</h1>
+</div>
+<div class="row justify-content-center align-items-center h-100">
+    <div class="col col-sm-6 col-md-6 col-lg-4">
+        <ul>
+            <li th:each="courses:${courses}">
+                <h3 th:text="${courses.courseNumber}"><a href="#">Course Number</a></h3>
+                <span th:text="${courses.courseTitle}">Course Title</span>
+                <p th:text="${courses.status}">Status</p>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

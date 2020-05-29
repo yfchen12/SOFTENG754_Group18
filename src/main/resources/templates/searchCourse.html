@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Search Course</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="jumbotron text-center">
+    <h1 class="display-5" id="page_title">Search Course</h1>
+    <h3 class="display-5" id="sub_title">Search by different criteria</h3>
+</div>
+<div class="row justify-content-center align-items-center h-100">
+    <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
+        <!--    Subject           -->
+        <div class="form-group" method="post">
+            <select class="form-control" id="subject" name="subject">
+                <option>Search by Subject</option>
+                <option>ACADENG</option>
+                <option>ACADINT</option>
+                <option>ACADPRAC</option>
+                <option>ACADPRAC</option>
+            </select>
+        </div>
+        <!--    Course number            -->
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" style="width:150px">Course Number</span>
+                <input type="text" class="form-control" placeholder="Search by Course Number" id="courseNbr"
+                       name="courseNbr">
+            </div>
+        </div>
+
+        <!--    Course Title            -->
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" style="width:150px">Course Title</span>
+                <input type="text" class="form-control" placeholder="Search by Course Title" id="courseTitle"
+                       name="courseTitle">
+            </div>
+        </div>
+
+        <!--    Status           -->
+        <div class="form-group">
+            <select class="form-control" id="status" name="status">
+                <option>Search by Course Status</option>
+                <option>AVAILABLE</option>
+                <option>SUSPEND</option>
+                <option>NOT_AVAILABLE</option>
+            </select>
+        </div>
+        <!--    Course Career           -->
+        <div class="form-group">
+            <select class="form-control" id="courseCareer" name="courseCareer">
+                <option>Search by Course Career</option>
+                <option>CONTINUING_EDUCATION</option>
+                <option>CONTRACT_PROGRAMMES</option>
+                <option>DOCTORAL</option>
+                <option>FORMAL_AWARD</option>
+                <option>FOUNDATION_STUDIES</option>
+                <option>NEW_START</option>
+            </select>
+        </div>
+
+        <!--    Class number            -->
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" style="width:150px">Class Number</span>
+                <input type="text" class="form-control" placeholder="Search by Class Number" id="classNbr"
+                       name="classNbr">
+            </div>
+        </div>
+
+        <!--    Point           -->
+        <div class="form-group">
+            <select class="form-control" id="point" name="point">
+                <option>Search by Point</option>
+                <option>15</option>
+                <option>30</option>
+                <option>60</option>
+                <option>120</option>
+            </select>
+        </div>
+        <!--    Course Component           -->
+        <div class="form-group">
+            <select class="form-control" id="courseComp" name="courseComp">
+                <option>Search by Course Component</option>
+                <option>CLINIC</option>
+                <option>FIELD_STUDIES</option>
+                <option>INDEPENDENT_STUDY</option>
+                <option>LABORATORY</option>
+                <option>LECTURE</option>
+                <option>ONLINE</option>
+                <option>PRACTICUM</option>
+                <option>PRIOR_STUDY</option>
+                <option>SEMINAR</option>
+                <option>STUDIO</option>
+                <option>SUPERVISION</option>
+                <option>TEAM_BASED_LEARNING</option>
+                <option>THESIS_RESEARCH</option>
+                <option>TUTORIAL</option>
+                <option>WORKSHOP</option>
+            </select>
+        </div>
+        <!--                AUCKLAND_ONLINE, CITY, EPSOM, EXTRAMURAL, GRAFTON, KAWAKAWA, LEIGH_MARINE, NEWMARKET, ONLINE, OVERSEAS, ROTORUA,-->
+        <!--                SOUTH_AUCKLAND, TAI_TOKERAU, TĀMAKI, UNSPECIFIED_WITHIN_NEW_ZEALAND, WAIHEKE_ISLAND, WAIKATO, WEST_AUCKLAND,-->
+        <!--                WHANGAREI;-->
+        <!--    Campus           -->
+        <div class="form-group">
+            <select class="form-control" id="campus" name="campus">
+                <option>Search by Campus</option>
+                <option>AUCKLAND_ONLINE</option>
+                <option>CITY</option>
+                <option>EPSOM</option>
+                <option>GRAFTON</option>
+            </select>
+        </div>
+        <div>
+            <button type="submit" role="button" class="btn btn-primary" id="search"
+                    onclick="location.href = 'searchResult';">Search
+            </button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
