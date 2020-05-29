@@ -46,5 +46,9 @@ public class SearchCourseStepDef implements En {
             Assert.assertTrue(state.driver.getPageSource().contains(searchValue));
         });
 
+        Given("^I search by course number and course title$", () -> {
+            
+        });
+
     }
 }
