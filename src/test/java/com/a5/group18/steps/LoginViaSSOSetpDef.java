@@ -43,5 +43,8 @@ public class LoginViaSSOSetpDef implements En {
         And("^I click login button$", () -> loginSSOPage.btnLogin.click());
 
         Then("^I should be login to dashboard page successful", () -> Assert.assertEquals("Admin Dashboard", driver.getTitle()));
+        
+        Then("^I should be login to student dashboard page successful$", () -> {
+        });
     }
 }
