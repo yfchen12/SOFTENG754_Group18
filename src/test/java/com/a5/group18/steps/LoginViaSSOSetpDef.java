@@ -44,6 +44,6 @@ public class LoginViaSSOSetpDef implements En {
 
         Then("^I should be login to dashboard page successful", () -> Assert.assertEquals("Admin Dashboard", driver.getTitle()));
 
-        Then("^I should be login to student dashboard page successful$", () -> Assert.assertEquals("Admin Dashboard", driver.getTitle()));
+        Then("^I should be login to student dashboard page successful$", () -> Assert.assertEquals("Student Dashboard", driver.getTitle()));
     }
 }

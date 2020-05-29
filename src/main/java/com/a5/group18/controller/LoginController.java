@@ -31,7 +31,7 @@ public class LoginController {
         String userName = user.getUserName();
         String password = user.getPassword();
 
-        if(!"tim.shi@uoa.com".equals(userName)){
+        if(!userName.contains("@uoa.com")){
             modelAndView.addObject("error","User Not Found!");
             modelAndView.setViewName("login");
             return modelAndView;
@@ -44,6 +44,8 @@ public class LoginController {
         modelAndView.addObject("userName",userName);
         if ("tim.shi@uoa.com".equals(userName)) {
             modelAndView.setViewName("adminDashboard");
+        } else if ("john.smith@uoa.com".equals(userName)) {
+            modelAndView.setViewName("studentDashboard");
         }
 
         return modelAndView;
