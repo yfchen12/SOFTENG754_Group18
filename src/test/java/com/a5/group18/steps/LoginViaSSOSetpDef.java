@@ -6,7 +6,6 @@ import com.a5.group18.pages.LoginSSOPage;
 import cucumber.api.java8.En;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
@@ -19,7 +18,8 @@ public class LoginViaSSOSetpDef implements En {
     private WebDriver driver;
     private IndexPage indexPage;
     private LoginSSOPage loginSSOPage;
-    @Autowired CukeHook cukeHook;
+    @Autowired
+    CukeHook cukeHook;
     @Value("${spring.app.url}")
     private String url;
 
@@ -43,5 +43,7 @@ public class LoginViaSSOSetpDef implements En {
         And("^I click login button$", () -> loginSSOPage.btnLogin.click());
 
         Then("^I should be login to dashboard page successful", () -> Assert.assertEquals("Admin Dashboard", driver.getTitle()));
+
+        Then("^I should be login to student dashboard page successful$", () -> Assert.assertEquals("Student Dashboard", driver.getTitle()));
     }
 }
