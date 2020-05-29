@@ -16,14 +16,14 @@ import java.util.Objects;
 @Controller
 public class LoginController {
     @GetMapping("/login")
-    public String login(ModelAndView modelAndView){
+    public String login(ModelAndView modelAndView) {
         modelAndView.setViewName("login");
         return "login";
     }
 
     @PostMapping("/login")
-    public ModelAndView login(ModelAndView modelAndView, User user, BindingResult bindingResult){
-        if(bindingResult.hasErrors()){
+    public ModelAndView login(ModelAndView modelAndView, User user, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
             modelAndView.addObject("error", Objects.requireNonNull(bindingResult.getFieldError()).getDefaultMessage());
             modelAndView.setViewName("login");
             return modelAndView;
@@ -31,17 +31,17 @@ public class LoginController {
         String userName = user.getUserName();
         String password = user.getPassword();
 
-        if(!userName.contains("@uoa.com")){
-            modelAndView.addObject("error","User Not Found!");
+        if (!userName.contains("@uoa.com")) {
+            modelAndView.addObject("error", "User Not Found!");
             modelAndView.setViewName("login");
             return modelAndView;
         }
-        if(!"123".equals(password)){
-            modelAndView.addObject("error","Password Incorrect!");
+        if (!"123".equals(password)) {
+            modelAndView.addObject("error", "Password Incorrect!");
             modelAndView.setViewName("login");
             return modelAndView;
         }
-        modelAndView.addObject("userName",userName);
+        modelAndView.addObject("userName", userName);
         if ("tim.shi@uoa.com".equals(userName)) {
             modelAndView.setViewName("adminDashboard");
         } else if ("john.smith@uoa.com".equals(userName)) {
