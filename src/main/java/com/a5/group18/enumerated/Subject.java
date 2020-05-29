@@ -1,0 +1,10 @@
+package com.a5.group18.enumerated;
+
+/**
+ * @author Tim Shi
+ * @version 1.0
+ */
+public enum Subject {
+    ACADENG, ACADINT, ACADPRAC, ACCTG, ACECRD, ACETE, ANAESTHE, ANATOMY, ANCHIST, ANCIENT, ANTHRO, APLINGST,
+    ARCHDES, ARCHDRC, ARCHGEN, ARCHHTC, ARCHPRM, ARCHTECH, ARTHIST, ARTSCHOL, ARTSGEN, ASIAN, AUDIOL
+}
