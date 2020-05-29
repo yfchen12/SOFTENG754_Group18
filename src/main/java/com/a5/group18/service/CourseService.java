@@ -19,7 +19,7 @@ public class CourseService {
     public List<Course> findAll() {
         Teacher teacher1 = new Teacher("ady.jane@uoa.com");
         Teacher teacher2 = new Teacher("john.walker@uoa.com");
-        List<Teacher> tels = Arrays.asList(teacher1, teacher1);
+        List<Teacher> tels = Arrays.asList(teacher1, teacher2);
         Course course = new Course("SOFTENG701", "Advanced Software Development",
                 "Course Outline", "Course Value", "Prerequisite", tels,
                 20, Subject.ACADENG, Status.AVAILABLE, CourseCareer.CONTINUING_EDUCATION, "Class1",

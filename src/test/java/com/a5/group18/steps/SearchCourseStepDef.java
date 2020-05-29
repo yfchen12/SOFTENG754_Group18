@@ -15,7 +15,6 @@ public class SearchCourseStepDef implements En {
 
     private StdDashboardPage stdDashPage;
     private SearchCoursePage searCoursePage;
-    private String searchValue;
     @Autowired
     private UIGlobalState state;
 
@@ -28,7 +27,6 @@ public class SearchCourseStepDef implements En {
         });
         Given("^I search by \"([^\"]*)\" with value \"([^\"]*)\"$", (String searchBy, String value) -> {
             state.wait.until(ExpectedConditions.titleIs("Search Course"));
-            searchValue = value;
             switch (searchBy) {
                 case "courseNumber":
                     searCoursePage.inputCourseNbr.sendKeys(value);
@@ -43,11 +41,13 @@ public class SearchCourseStepDef implements En {
 
         Then("^the search result should be displayed on Search Result page$", () -> {
             state.wait.until(ExpectedConditions.titleIs("Search Result"));
-            Assert.assertTrue(state.driver.getPageSource().contains(searchValue));
+            Assert.assertTrue(state.driver.getPageSource().contains("SOFTENG701"));
         });
 
         Given("^I search by course number and course title$", () -> {
-            
+            state.wait.until(ExpectedConditions.titleIs("Search Course"));
+            searCoursePage.inputCourseNbr.sendKeys("SOFTENG701");
+            searCoursePage.inputCourseTitle.sendKeys("OOP Development");
         });
 
     }
