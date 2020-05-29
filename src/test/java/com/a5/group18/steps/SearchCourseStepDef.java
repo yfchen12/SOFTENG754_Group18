@@ -49,6 +49,9 @@ public class SearchCourseStepDef implements En {
             searCoursePage.inputCourseNbr.sendKeys("SOFTENG701");
             searCoursePage.inputCourseTitle.sendKeys("OOP Development");
         });
+        
+        Given("^I search by course number with incomplete value SOFTENG$", () -> {
+        });
 
     }
 }
