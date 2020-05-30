@@ -4,12 +4,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.w3c.dom.html.HTMLInputElement;
 
 /**
  * @author Tim Shi
  * @version 1.0
  */
 public class StdDashboardPage {
+
 
     private WebDriver driver;
 
@@ -20,4 +22,7 @@ public class StdDashboardPage {
 
     @FindBy(id = "btnSearch")
     public WebElement btnSearch;
+
+    @FindBy(id = "btnMyEnroll")
+    public WebElement btnMyEnrollment;
 }
