@@ -59,7 +59,7 @@
         <div class="input-group-prepend">
             <label for="status" class="input-group-text">Status</label>
             <select class="form-control" id="status" name="status">
-                <option th:each="statusOpt : ${T(com.a5.group18.enumerated.Status).values()}"
+                <option th:each="statusOpt : ${T(com.a5.group18.enumerated.CStatus).values()}"
                         th:value="${statusOpt}" th:text="${statusOpt}"></option>
             </select>
         </div>
