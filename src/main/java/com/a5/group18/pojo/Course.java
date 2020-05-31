@@ -20,7 +20,7 @@ public class Course {
     private int capacity;
 
     private Subject subject;
-    private Status status;
+    private CStatus courseStatus;
     private CourseCareer courseCareer;
 
     private String classNbr;
@@ -29,4 +29,7 @@ public class Course {
     private Campus campus;
 
     private List<Student> waitingList;
+  
+    private String courseSchedule;
+
 }

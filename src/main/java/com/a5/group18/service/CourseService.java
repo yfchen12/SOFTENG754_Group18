@@ -24,16 +24,17 @@ public class CourseService {
         List<Teacher> tels = Arrays.asList(teacher1, teacher2);
         Course course = new Course("SOFTENG701", "Advanced Software Development",
                 "Course Outline", "Course Value", "Prerequisite", tels,
-                20, Subject.ACADENG, Status.AVAILABLE, CourseCareer.CONTINUING_EDUCATION, "Class1",
-                15, CourseComponent.CLINIC, Campus.EPSOM,null);
+
+                20, Subject.ACADENG, CStatus.AVAILABLE, CourseCareer.CONTINUING_EDUCATION, "Class1",
+                15, CourseComponent.CLINIC, Campus.EPSOM,null,"");
         Course course2 = new Course("SOFTENG702", "Computer Science",
                 "Course Outline", "Course Value", "Prerequisite", tels,
-                20, Subject.ACADENG, Status.AVAILABLE, CourseCareer.CONTINUING_EDUCATION, "Class2",
-                15, CourseComponent.CLINIC, Campus.CITY,new ArrayList<Student>());
+                20, Subject.ACADENG, CStatus.AVAILABLE, CourseCareer.CONTINUING_EDUCATION, "Class2",
+                15, CourseComponent.CLINIC, Campus.CITY,new ArrayList<Student>(),"");
         Course course3 = new Course("SOFTENG703", "OOP Development",
                 "Course Outline", "Course Value", "Prerequisite", tels,
-                20, Subject.ACADENG, Status.AVAILABLE, CourseCareer.CONTINUING_EDUCATION, "Class3",
-                15, CourseComponent.LABORATORY, Campus.GRAFTON,null);
+                20, Subject.ACADENG, CStatus.AVAILABLE, CourseCareer.CONTINUING_EDUCATION, "Class3",
+                15, CourseComponent.LABORATORY, Campus.GRAFTON,null,"");
 
         return Arrays.asList(course, course2, course3);
     }
