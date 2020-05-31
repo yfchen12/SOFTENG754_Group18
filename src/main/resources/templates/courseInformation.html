@@ -1,0 +1,69 @@
+
+
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#373a3c">
+    <title>Course Information</title>
+    <link href="https://cdn.foe.auckland.ac.nz/static/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://cdn.foe.auckland.ac.nz/static/foe/1.6.1/css/base-template.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://cdn.foe.auckland.ac.nz/static/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
+
+    <link href="/static/common/css/courses.1ced72daa28c.css" rel="stylesheet">
+</head>
+
+<body style="font-family:Verdana; font-size:150%; font-weight:bold;" >
+
+
+<nav class="navbar navbar-expand-sm navbar-light bg-light mb-3">
+
+    <a>Course Information</a>
+
+</nav>
+<div class="row justify-content-center align-items-center h-100">
+    <div th:object="${course}">
+        <!--/*@thymesVar id="course" type=""*/-->
+        <form>
+
+            <label for="coursenum">Course Number: </label><br>
+            <h3 class="display-5" th:text="${course.getCourseNumber()}"></h3><br>
+            <!--/*@thymesVar id="courseNum" type=""*/-->
+            <label for="coursetitle">Course Title: </label><br>
+            <h3 class="display-5" th:text="${course.getCourseTitle()}"></h3><br>
+
+            <label for="courseshedule">Course Shedule: </label><br>
+            <h3 class="display-5" th:text="${course.getCourseSchedule()}"></h3><br>
+
+            <label for="coutline">Course Outline: </label><br>
+            <h3 class="display-5" th:text="${course.getCourseOutline()}"></h3><br>
+
+            <label for="cvalue">Course Value: </label><br>
+            <h3 class="display-5" th:text="${course.getCourseValue()}"></h3><br>
+
+            <label for="cpre">Course Prerequisites:</label><br>
+            <h3 class="display-5" th:text="${course.getPrerequisites()}"></h3><br>
+            <label for="tteam">Course Teaching Team: </label><br>
+            <h3 class="display-5" th:text="${course.getTeachTeam()}"></h3><br>
+
+            <label for="cstatus">Course Status: </label><br>
+            <h3 class="display-5" th:text="${course.getCourseStatus()}"></h3><br>
+
+            <label for="ccapacity">Course Capacity: </label><br>
+            <h3 class="display-5" th:text="${course.getCapacity()}"></h3><br>
+
+            <label for="ccampus">Course Campus: </label><br>
+            <h3 class="display-5" th:text="${course.campus}"></h3><br>
+
+        </form>
+    </div>
+</div>
+
+
+</body>
+</html>
