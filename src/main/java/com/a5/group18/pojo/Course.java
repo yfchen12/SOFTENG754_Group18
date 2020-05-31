@@ -28,4 +28,5 @@ public class Course {
     private CourseComponent courseCop;
     private Campus campus;
 
+    private List<Student> waitingList;
 }
