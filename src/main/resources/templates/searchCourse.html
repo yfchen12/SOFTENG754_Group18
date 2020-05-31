@@ -10,12 +10,21 @@
     <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">UoA Course Enrollment System</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="location.href = 'cart';"
+                id="btnCart">Cart
+        </button>
+    </div>
+</nav>
 <div class="jumbotron text-center">
     <h1 class="display-5" id="page_title">Search Course</h1>
     <h3 class="display-5" id="sub_title">Search by different criteria</h3>
 </div>
-<div class="row justify-content-center align-items-center h-100">
-    <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
+<!--<div class="row justify-content-center align-items-center h-100">-->
+<!--    <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">-->
+<div class="container">
         <!--    Subject           -->
         <div class="form-group" method="post">
             <select class="form-control" id="subject" name="subject">
@@ -29,18 +38,18 @@
         <!--    Course number            -->
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <span class="input-group-text" style="width:150px">Course Number</span>
+                <span class="input-group-text" >Course Number</span>
                 <input type="text" class="form-control" placeholder="Search by Course Number" id="courseNbr"
-                       name="courseNbr">
+                       name="courseNbr" style="width:970px">
             </div>
         </div>
 
         <!--    Course Title            -->
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <span class="input-group-text" style="width:150px">Course Title</span>
+                <span class="input-group-text">Course Title</span>
                 <input type="text" class="form-control" placeholder="Search by Course Title" id="courseTitle"
-                       name="courseTitle">
+                       name="courseTitle" style="width:1000px">
             </div>
         </div>
 
@@ -69,9 +78,9 @@
         <!--    Class number            -->
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <span class="input-group-text" style="width:150px">Class Number</span>
+                <span class="input-group-text" >Class Number</span>
                 <input type="text" class="form-control" placeholder="Search by Class Number" id="classNbr"
-                       name="classNbr">
+                       name="classNbr" style="width:980px">
             </div>
         </div>
 
@@ -106,9 +115,6 @@
                 <option>WORKSHOP</option>
             </select>
         </div>
-        <!--                AUCKLAND_ONLINE, CITY, EPSOM, EXTRAMURAL, GRAFTON, KAWAKAWA, LEIGH_MARINE, NEWMARKET, ONLINE, OVERSEAS, ROTORUA,-->
-        <!--                SOUTH_AUCKLAND, TAI_TOKERAU, TĀMAKI, UNSPECIFIED_WITHIN_NEW_ZEALAND, WAIHEKE_ISLAND, WAIKATO, WEST_AUCKLAND,-->
-        <!--                WHANGAREI;-->
         <!--    Campus           -->
         <div class="form-group">
             <select class="form-control" id="campus" name="campus">
@@ -125,6 +131,6 @@
             </button>
         </div>
     </div>
-</div>
+<!--</div>-->
 </body>
 </html>
