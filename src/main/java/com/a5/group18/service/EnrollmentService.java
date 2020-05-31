@@ -10,19 +10,32 @@ import java.util.Arrays;
 import java.util.List;
 
 
-@Service
-public class EnrollmentService {
-    public List<Enrollment> findEnrollment() {
+    @Service
+    public class EnrollmentService {
         CourseService courseService = new CourseService();
-        List<Course> course = courseService.findAll();
-        Student John = new Student();
-        John.setUpi("jsm123");
-        Enrollment enrollment701 = new Enrollment(John, course.get(0), EnrollmentStatus.ENROLLED);
-        Enrollment enrollment702 = new Enrollment(John, course.get(1), EnrollmentStatus.WAITLISTED);
-        Enrollment enrollment703 = new Enrollment(John, course.get(2), EnrollmentStatus.CONCESSION_PENDING);
 
-        return Arrays.asList(enrollment701, enrollment702, enrollment703);
+        public List<Enrollment> findEnrollment(){
+
+            List<Course> course = courseService.findAll();
+            Student John = new Student();
+            Student allen = new Student();
+            Student miranda = new Student();
+            John.setUpi("jsm123");
+            Course se702 = course.get(1);
+            addStudentToWaitingList(se702, allen);
+            addStudentToWaitingList(se702, John);
+            addStudentToWaitingList(se702, miranda);
+            Enrollment enrollment701 = new Enrollment(John,course.get(0),EnrollmentStatus.ENROLLED);
+            Enrollment enrollment702 = new Enrollment(John,se702,EnrollmentStatus.WAITLISTED);
+            Enrollment enrollment703 = new Enrollment(John,course.get(2),EnrollmentStatus.CONCESSION_PENDING);
+
+            return Arrays.asList(enrollment701,enrollment702,enrollment703);
+        }
+        public void addStudentToWaitingList(Course course, Student student){
+
+            course.getWaitingList().add(student);
+        }
     }
-}
+
 
 

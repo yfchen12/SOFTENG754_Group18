@@ -27,5 +27,9 @@ public class Course {
     private int point;
     private CourseComponent courseCop;
     private Campus campus;
+
+    private List<Student> waitingList;
+  
     private String courseSchedule;
+
 }
