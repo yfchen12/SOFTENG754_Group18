@@ -1,0 +1,91 @@
+
+
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#373a3c">
+    <title>Add New Course</title>
+    <link href="https://cdn.foe.auckland.ac.nz/static/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://cdn.foe.auckland.ac.nz/static/foe/1.6.1/css/base-template.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://cdn.foe.auckland.ac.nz/static/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
+
+    <link href="/static/common/css/courses.1ced72daa28c.css" rel="stylesheet">
+</head>
+
+<body style="font-family:Verdana; font-size:150%; font-weight:bold;" >
+
+
+<nav class="navbar navbar-expand-sm navbar-light bg-light mb-3">
+
+    <a>Course Creating</a>
+
+</nav>
+<div class="row justify-content-center align-items-center h-100">
+    <div th:object="${course}">
+        <!--/*@thymesVar id="course" type=""*/-->
+        <form th:action="@{/addNewCourse}"  method="post">
+
+            <label for="coursenum">Course Number: <span class="required">*</span></label><br>
+            <input type="text" th:field="*{courseNumber}" id="coursenum" name="coursenum" ><br>
+            <label for="coursetitle">Course Titel: <span class="required">*</span></label><br>
+            <input type="text" id="coursetitle" name="coursetitle" th:field="*{courseTitle}"><br>
+            <label for="courseshedule">Course Shedule: <span class="required">*</span></label><br>
+            <input type="text" id="courseshedule" name="courseshedule" th:field="*{courseSchedule}"><br>
+            <label for="coutline">Course Outline: <span class="required">*</span></label><br>
+            <textarea id="coutline" name="coutline" rows="4" cols="50" th:field="*{courseOutline}">
+        </textarea><br>
+            <label for="cvalue">Course Value: <span class="required">*</span></label><br>
+            <textarea id="cvalue" name="cvalue" rows="4" cols="50" th:field="*{courseValue}">
+        </textarea>
+            <br>
+            <label for="cpre">Course Prerequisites: <span class="required">*</span></label><br>
+            <input type="text" id="cpre" name="cpre" th:field="*{prerequisites}"><br>
+            <label for="tteam">Course Teaching Team: <span class="required">*</span></label><br>
+            <input type="text" id="tteam" name="tteam" th:field="*{teachTeam}"><br>
+            <div class="form-group" >
+                <label for="cstatus">Course Status: </label><br>
+                <select th:field="*{courseStatus}" name="cstatus"  id = "cstatus">
+
+                    <option th:each="cstatus : ${T(com.a5.group18.enumerated.CStatus).values()}"
+                            th:value="${cstatus}" th:text="${cstatus.getDescription()}"
+                            >
+
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="ccampus">Course Campus: </label><br>
+            <select th:field="*{campus}" name="ccampus" id = "ccampus"  >
+
+                <option th:each="ccampusOpt : ${T(com.a5.group18.enumerated.Campus).values()}"
+                        th:value="${ccampusOpt}" th:text="${ccampusOpt}"
+                        >
+
+                </option>
+            </select>
+            </div>
+
+<br>
+            <label for="ccapacity">Course Capacity: <span class="required">*</span></label><br>
+            <input type="text" id="ccapacity" name="ccapacity" th:field="*{capacity}"><br>
+
+            <br><br>
+            <div class="row justify-content-center align-items-center h-100">
+
+                <button type="addnewcourse" role="button" class="btn btn-primary" style="width:350px"   id="btnAddNewCourse">Submit</button>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+
+</body>
+</html>

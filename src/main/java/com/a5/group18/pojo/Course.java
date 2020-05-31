@@ -20,12 +20,12 @@ public class Course {
     private int capacity;
 
     private Subject subject;
-    private Status status;
+    private CStatus courseStatus;
     private CourseCareer courseCareer;
 
     private String classNbr;
     private int point;
     private CourseComponent courseCop;
     private Campus campus;
-
+    private String courseSchedule;
 }

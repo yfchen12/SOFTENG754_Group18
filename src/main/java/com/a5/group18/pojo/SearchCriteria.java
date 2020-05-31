@@ -17,7 +17,7 @@ public class SearchCriteria {
     private Subject subject;
     private String courseNbr;
     private String courseTitle;
-    private Status status;
+    private CStatus status;
     private CourseCareer courseCareer;
 
     private String classNbr;
