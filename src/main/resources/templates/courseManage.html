@@ -29,7 +29,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr scope="row" th:class="${courses}" th:each="course : ${courses}">
+        <tr scope="row" id = "courseList" th:class="${courses}" th:each="course : ${courses}">
             <td id= "courseNum" th:text="${course.getCourseNumber()}"></td>
             <td id= "courseTitle" th:text="${course.getCourseTitle()}"></td>
             <td id= "enrollStatus" th:text="${course.getCourseStatus()}"></td>

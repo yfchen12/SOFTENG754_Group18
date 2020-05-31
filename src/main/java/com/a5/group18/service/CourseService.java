@@ -46,15 +46,15 @@ public class CourseService {
         Course course = new Course("SOFTENG701", "Advanced Software Development",
                 "Course Outline", "Course Value", "Prerequisite", tels,
                 20, Subject.ACADENG, CStatus.AVAILABLE, CourseCareer.CONTINUING_EDUCATION, "Class1",
-                15, CourseComponent.CLINIC, Campus.EPSOM,"");
+                15, CourseComponent.CLINIC, Campus.EPSOM,null,"");
         Course course2 = new Course("SOFTENG702", "Computer Science",
                 "Course Outline", "Course Value", "Prerequisite", tels,
                 20, Subject.ACADENG, CStatus.AVAILABLE, CourseCareer.CONTINUING_EDUCATION, "Class2",
-                15, CourseComponent.CLINIC, Campus.CITY,"");
+                15, CourseComponent.CLINIC, Campus.CITY,null,"");
         Course course3 = new Course("SOFTENG703", "OOP Development",
                 "Course Outline", "Course Value", "Prerequisite", tels,
                 20, Subject.ACADENG, CStatus.AVAILABLE, CourseCareer.CONTINUING_EDUCATION, "Class3",
-                15, CourseComponent.LABORATORY, Campus.GRAFTON,"");
+                15, CourseComponent.LABORATORY, Campus.GRAFTON,null,"");
         if (coursNum.contains("SOFTENG701"))
             return course;
         else if (coursNum.contains("SOFTENG702"))

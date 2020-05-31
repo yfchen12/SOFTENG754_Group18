@@ -15,8 +15,8 @@ public class UpdateCourseInformationStepdefs implements En {
     private CourseManagePage courseManagePage;
     @Autowired
     private UIGlobalState state;
-    public UpdateCourseInformationStepdefs() {
 
+    public UpdateCourseInformationStepdefs() {
         When("^I click edit course button from admin Dashboard page$", () -> {
             adminDashPage = new AdminDashboard(state.driver);
             courseUpdatePage = new CourseUpdatePage(state.driver);
@@ -27,12 +27,12 @@ public class UpdateCourseInformationStepdefs implements En {
             state.wait.until(ExpectedConditions.titleIs("Course Manage"));
         });
         When("^I press edit button in the list$", () -> {
-            courseManagePage.manageAction.click();
+            courseManagePage.manageAction.get(1).click();
         });
         Then("^I should be redirected to courses edit page$", () -> {
             state.wait.until(ExpectedConditions.titleIs("Edit Course"));
         });
-        When("^I finished all the mandatory information$", () -> {
+        When("^I finished all the updated information$", () -> {
             courseUpdatePage.coursenum.sendKeys("SOFTENG754");
             courseUpdatePage.coursetitle.sendKeys("Advanced requirement development");
             courseUpdatePage.courseshedule.sendKeys("Wednesday 3:00-4:00");
@@ -44,13 +44,13 @@ public class UpdateCourseInformationStepdefs implements En {
             courseUpdatePage.ccapacity.sendKeys("150");
             courseUpdatePage.ccampus.sendKeys("CityCampus");
         });
-        And("^I click submit button$", () -> {
+        And("^I click submit update button$", () -> {
             courseUpdatePage.btnUpdateCourse.click();
         });
-        Then("^I should be redirected to course information page successful$", () -> {
+        Then("^I should be redirected to course information page successfully", () -> {
             state.wait.until(ExpectedConditions.titleIs("Course Information"));
         });
-        And("^Course information is successfully updated$", (Course course) -> {
+        And("^Course information is successfully updated$", () -> {
 
         });
     }
