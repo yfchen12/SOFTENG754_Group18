@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Search Result</title>
+    <title>Enrollment Cart</title>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
@@ -19,8 +19,10 @@
     </div>
 </nav>
 <div class="jumbotron text-center">
-    <h1 class="display-5" id="page_title">Search Result</h1>
+    <h1 class="display-5" id="page_title">Enrollment Cart</h1>
 </div>
+
+
 <div class="container">
     <table class="table">
         <thead style="background-color: #00457d">
@@ -28,9 +30,7 @@
             <th scope="col">Course Number</th>
             <th scope="col">Course Title</th>
             <th scope="col">Status</th>
-            <th scope="col">Add to Cart</th>
-            <th scope="col">View Detail</th>
-            <th scope="col">Enrol</th>
+            <th scope="col">Action</th>
         </tr>
         </thead>
         <tbody>
@@ -39,34 +39,17 @@
             <td id="courseTitle" th:text="${courses.getCourseTitle()}"></td>
             <td id="enrollStatus" th:text="${courses.status}"></td>
             <td>
-                <button type="button" class="btn btn-primary" id="btnAddToCart" data-toggle="modal"
-                        data-target="#myModal">Add to cart
-                </button>
-
-            </td>
-            <td>
-                <button type="button" class="btn btn-primary" id="btnViewDetail">
-                    View Detail
-                </button>
-            </td>
-            <td>
                 <button type="button" class="btn btn-primary" id="btnEnrol">
                     Enrol
+                </button>
+                <button type="button" class="btn btn-danger" id="btnDrop">
+                    Drop
                 </button>
             </td>
         </tr>
         </tbody>
     </table>
 </div>
-<div class="container">
-    <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
-            <div class="alert alert-success alert-dismissible">
-                <a class="close" data-dismiss="modal" aria-label="close" id="btnCloseAlert">&times;</a>
-                <strong>Success!</strong> You have added a course to enrollment cart.
-            </div>
-        </div>
-    </div>
-</div>
+
 </body>
 </html>

@@ -1,3 +1,4 @@
+@STD_TEST
 Feature: Search Course Test
   Student and course admin should be able to search course by different criteria
 
