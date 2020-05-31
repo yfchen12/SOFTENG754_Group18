@@ -3,9 +3,11 @@ package com.a5.group18.service;
 
 import com.a5.group18.enumerated.*;
 import com.a5.group18.pojo.Course;
+import com.a5.group18.pojo.Student;
 import com.a5.group18.pojo.Teacher;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,16 +24,17 @@ public class CourseService {
         List<Teacher> tels = Arrays.asList(teacher1, teacher2);
         Course course = new Course("SOFTENG701", "Advanced Software Development",
                 "Course Outline", "Course Value", "Prerequisite", tels,
+
                 20, Subject.ACADENG, CStatus.AVAILABLE, CourseCareer.CONTINUING_EDUCATION, "Class1",
-                15, CourseComponent.CLINIC, Campus.EPSOM,"");
+                15, CourseComponent.CLINIC, Campus.EPSOM,null,"");
         Course course2 = new Course("SOFTENG702", "Computer Science",
                 "Course Outline", "Course Value", "Prerequisite", tels,
                 20, Subject.ACADENG, CStatus.AVAILABLE, CourseCareer.CONTINUING_EDUCATION, "Class2",
-                15, CourseComponent.CLINIC, Campus.CITY,"");
+                15, CourseComponent.CLINIC, Campus.CITY,new ArrayList<Student>(),"");
         Course course3 = new Course("SOFTENG703", "OOP Development",
                 "Course Outline", "Course Value", "Prerequisite", tels,
                 20, Subject.ACADENG, CStatus.AVAILABLE, CourseCareer.CONTINUING_EDUCATION, "Class3",
-                15, CourseComponent.LABORATORY, Campus.GRAFTON,"");
+                15, CourseComponent.LABORATORY, Campus.GRAFTON,null,"");
 
         return Arrays.asList(course, course2, course3);
     }

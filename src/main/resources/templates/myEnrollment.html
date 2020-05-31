@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
 <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.2.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
 <head>
     <meta charset="UTF-8">
     <title>My Enrollment</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">UoA Course Enrollment System</a>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="location.href = 'cart';"
-                id="btnCart">Cart
-        </button>
-    </div>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-end">
+    <a class="navbar-brand" href="studentDashboard">Dashboard</a>
+    <button class="btn btn-success ml-auto mr-1" type="submit" onclick="location.href = 'cart';"
+            id="btnCart">Enrolment Cart
+    </button>
+    <button class="btn btn-danger mr-1" type="submit" onclick="location.href = '/';"
+            id="btnLogout">Logout
+    </button>
 </nav>
+
 <div class="jumbotron text-center">
     <h1 class="display-3" id="landing_title">My Enrollment</h1>
 </div>
@@ -27,7 +33,7 @@
     </div>
 
     <table class="table">
-        <thead  style="background-color: #00457d">
+        <thead style="background-color: #00457d">
         <tr style="color:white">
             <th scope="col">Course Number</th>
             <th scope="col">Course Title</th>
@@ -38,15 +44,54 @@
         <tbody>
         <tr scope="row" th:class="${enrollment.course.getCourseNumber()}" th:each="enrollment : ${enrollments}">
             <td id= "courseNum" th:text="${enrollment.course.getCourseNumber()}"></td>
-            <td id= "courseTitle" th:text="${enrollment.course.getCourseTitle()}"></td>
-            <td id= "enrollStatus" th:text="${enrollment.status}"></td>
+            <td id= "courseTitle"  th:text="${enrollment.course.getCourseTitle()}"></td>
+            <td id= "enrollStatus"  ><a th:text="${enrollment.status}"></a></td>
             <td id = "enrollAction">Edit</td>
         </tr>
         </tbody>
     </table>
-
-
+</div>
 
 </div>
+<div class="modal fade" id="modalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id=modalTitle >course</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <p id="modal-waitlist">hello</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn" data-dismiss="modal" style="background-color: #00457d; color:white">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
+<script th:inline = "javascript">
+    const enrollment = [[${enrollments}]];
+    const waitlistPlace = [[${waitlistPlace}]];
+
+    $(document).ready(function(){
+        $("a").each(function()
+        {$(this).text() == "WAITLISTED" ? $ (this).attr({
+            "href":"#",
+            "data-toggle":"modal",
+            "data-target":"#modalCenter"
+        }):null;})
+        $("a").click(function () {
+            const s = $(this).parent("td").siblings("#courseNum");
+            let studentInfront = waitlistPlace[s.text()];
+            $("#modalTitle").text(s.text());
+            $("#modal-waitlist").html("There are <i class=\"fas fa-user-graduate\"></i> "+studentInfront+ " student(s) in front of you in the waiting list.");
+
+        })
+    });
+</script>
