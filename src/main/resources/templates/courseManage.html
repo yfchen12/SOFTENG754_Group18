@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Course Manage</title>
+</head>
+<body>
+
+<div class="jumbotron text-center">
+    <h1 class="display-3" id="landing_title">Course Manage</h1>
+</div>
+
+<div class="container">
+    <div class="mb-4">
+        <h4>Semester 1</h4>
+    </div>
+
+    <table class="table">
+        <thead  style="background-color: #00457d">
+        <tr style="color:white">
+            <th scope="col">Course Number</th>
+            <th scope="col">Course Title</th>
+            <th scope="col">Course Status</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr scope="row" th:class="${courses}" th:each="course : ${courses}">
+            <td id= "courseNum" th:text="${course.getCourseNumber()}"></td>
+            <td id= "courseTitle" th:text="${course.getCourseTitle()}"></td>
+            <td id= "enrollStatus" th:text="${course.getCourseStatus()}"></td>
+            <td id = "manageAction">
+                <form th:object="${course}" th:action="@{'/courseEdit/'+ ${course.getCourseNumber()}}" method="get">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="location.href = 'cart';"
+                            id="btnEdit">Edit
+                    </button>
+                </form>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+
+</div>
+</body>
+</html>

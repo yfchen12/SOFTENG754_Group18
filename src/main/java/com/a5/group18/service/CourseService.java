@@ -36,4 +36,31 @@ public class CourseService {
         return Arrays.asList(course, course2, course3);
     }
 
+    public Course findByCourseNum(final String coursNum){
+        Teacher teacher1 = new Teacher("ady.jane@uoa.com");
+        Teacher teacher2 = new Teacher("john.walker@uoa.com");
+        List<Teacher> tels = Arrays.asList(teacher1, teacher2);
+        Course course = new Course("SOFTENG701", "Advanced Software Development",
+                "Course Outline", "Course Value", "Prerequisite", tels,
+                20, Subject.ACADENG, CStatus.AVAILABLE, CourseCareer.CONTINUING_EDUCATION, "Class1",
+                15, CourseComponent.CLINIC, Campus.EPSOM,"");
+        Course course2 = new Course("SOFTENG702", "Computer Science",
+                "Course Outline", "Course Value", "Prerequisite", tels,
+                20, Subject.ACADENG, CStatus.AVAILABLE, CourseCareer.CONTINUING_EDUCATION, "Class2",
+                15, CourseComponent.CLINIC, Campus.CITY,"");
+        Course course3 = new Course("SOFTENG703", "OOP Development",
+                "Course Outline", "Course Value", "Prerequisite", tels,
+                20, Subject.ACADENG, CStatus.AVAILABLE, CourseCareer.CONTINUING_EDUCATION, "Class3",
+                15, CourseComponent.LABORATORY, Campus.GRAFTON,"");
+        if (coursNum.contains("SOFTENG701"))
+            return course;
+        else if (coursNum.contains("SOFTENG702"))
+            return course2;
+        else if (coursNum.contains("SOFTENG703"))
+            return course3;
+        else
+            return new Course();
+
+    }
+
 }
