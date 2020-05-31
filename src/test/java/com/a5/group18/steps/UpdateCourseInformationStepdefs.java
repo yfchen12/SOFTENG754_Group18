@@ -9,6 +9,9 @@ import cucumber.api.java8.En;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 public class UpdateCourseInformationStepdefs implements En {
     private AdminDashboard adminDashPage;
     private CourseUpdatePage courseUpdatePage;
@@ -50,8 +53,9 @@ public class UpdateCourseInformationStepdefs implements En {
         Then("^I should be redirected to course information page successfully", () -> {
             state.wait.until(ExpectedConditions.titleIs("Course Information"));
         });
-        And("^Course information is successfully updated$", () -> {
-
+        And("^Course information is successfully updated with \"([^\"]*)\" and \"([^\"]*)\"$", (String cNum,String cTitle) -> {
+            assertEquals("SOFTENG754",cNum);
+            assertEquals("Advanced requirement development",cTitle);
         });
     }
 }
