@@ -45,4 +45,7 @@ public class MyEnrollmentPage {
 
     @FindBy(id="modal-waitlist")
     public WebElement modalMsg;
+
+
+
 }

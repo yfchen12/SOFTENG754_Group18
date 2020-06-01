@@ -45,8 +45,10 @@
         <tr scope="row" th:class="${enrollment.course.getCourseNumber()}" th:each="enrollment : ${enrollments}">
             <td id= "courseNum" th:text="${enrollment.course.getCourseNumber()}"></td>
             <td id= "courseTitle"  th:text="${enrollment.course.getCourseTitle()}"></td>
-            <td id= "enrollStatus"  ><a th:text="${enrollment.status}"></a></td>
-            <td id = "enrollAction">Edit</td>
+            <td id= "enrollStatus"  ><a id="waitStatus" th:text="${enrollment.status}"></a></td>
+            <td id = "enrollAction" >
+                <button type="button" href="#"  data-toggle="modal" data-target="#modalCenter" class="btn btnDrop" style="background-color: #009AC7; color:white">Drop</button>
+            </td>
         </tr>
         </tbody>
     </table>
@@ -67,31 +69,62 @@
                 <p id="modal-waitlist">hello</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn" data-dismiss="modal" style="background-color: #00457d; color:white">OK</button>
+                <button type="button" class="btn btnOk" data-dismiss="modal" style="background-color: #00457d; color:white">OK</button>
+
+                <form  id = "dropCourseNum" th:action="@{/myEnrollment}" th:object="${course}" th:method="post">
+                    <input id="cn" th:field ="*{courseNumber}" class="d-none">
+                    <button id="confirmDrop" type="submit" class="btn btnConfirm d-none"  style='background-color: #00457d; color:white'>Confirm</button>
+                </form>
+
             </div>
         </div>
     </div>
 </div>
 
+<
+
 </body>
 </html>
 <script th:inline = "javascript">
-    const enrollment = [[${enrollments}]];
-    const waitlistPlace = [[${waitlistPlace}]];
-
+    let enrollment = [[${enrollments}]];
+    let waitlistPlace = [[${waitlistPlace}]];
+    let courseNumber
+    let result =  [[${result}]];
+    let reason = [[${reason}]];
     $(document).ready(function(){
         $("a").each(function()
         {$(this).text() == "WAITLISTED" ? $ (this).attr({
             "href":"#",
             "data-toggle":"modal",
             "data-target":"#modalCenter"
-        }):null;})
-        $("a").click(function () {
-            const s = $(this).parent("td").siblings("#courseNum");
-            let studentInfront = waitlistPlace[s.text()];
-            $("#modalTitle").text(s.text());
-            $("#modal-waitlist").html("There are <i class=\"fas fa-user-graduate\"></i> "+studentInfront+ " student(s) in front of you in the waiting list.");
+        }):($(this).text() == "CONCESSION_PENDING"?($(this).parent("td").siblings("#enrollAction").children(".btnDrop")).hide():null);
 
         })
+        $("a").click(function() {
+            $(".btnConfirm").attr("class", "btn btnConfirm d-none");
+            $(".btnOk").text("OK");
+            const courseNum = $(this).parent("td").siblings("#courseNum").text();
+            const studentInfront = waitlistPlace[courseNum];
+            $("#modalTitle").text(courseNum);
+            $("#modal-waitlist").html("There are <i class=\"fas fa-user-graduate\"></i> "+studentInfront+ " student(s) in front of you in the waiting list.");
+        })
+        $(".btnDrop").click(function() {
+            $(".btnConfirm").attr("class", "btn btnConfirm visible");
+            let s = $(this).parent("td").siblings("#courseNum");
+            courseNumber = s.text();
+            $("#modalTitle").text("Drop "+courseNumber);
+            $("#modal-waitlist").html("<i class=\"fas fa-exclamation-triangle text-warning\"></i> Are you sure to drop "+ s.text() + "?")
+            $(".btnOk").text("Cancel");
+
+        })
+        $(".btnConfirm").click(function() {
+            $("#cn").attr("value", courseNumber);
+        })
+        $.when( { reason,result } ).done(function( x ) {
+            if(result==true) {
+                alert("Succeed.");
+            }
+        });
     });
+
 </script>
