@@ -16,3 +16,11 @@ Feature: Students manage their enrollments
     And I click the confirm button in the modal window
     Then I should be able to notify the course is dropped successfully
 
+  @RMCOURSE_TEST
+  Scenario: Students can see updated enrollment list when successfully dropping a course
+    Given I login as a Student
+    And I am on My Enrollment Page
+    When I click the drop button of course SOFTENG702
+    And I click the confirm button in the modal window
+    And I click the ok button on the alert window
+    Then I should see the dropped course is removed from the enrollment list
