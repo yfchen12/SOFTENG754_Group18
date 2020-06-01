@@ -8,6 +8,5 @@ Feature:
     Examples:
       | courseNumber     | status              |
       | "SOFTENG701"     | "ENROLLED"          |
-      | "SOFTENG702"     | "WAITLISTED"        |
       | "SOFTENG703"     | "CONCESSION_PENDING"|
 
