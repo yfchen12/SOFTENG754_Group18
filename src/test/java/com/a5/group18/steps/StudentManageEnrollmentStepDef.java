@@ -30,5 +30,12 @@ public class StudentManageEnrollmentStepDef implements En {
         But("^I can not see the name of the student in front of me$", () -> {
             Assertions.assertFalse(myEnrollmentPage.modalMsg.getText().contains("allen"));
         });
+
+        When("^I click the drop button of course SOFTENG702$", () -> {
+        });
+        And("^I click the confirm button in the modal window$", () -> {
+        });
+        Then("^I should be able to notify the course is dropped successfully$", () -> {
+        });
     }
 }
