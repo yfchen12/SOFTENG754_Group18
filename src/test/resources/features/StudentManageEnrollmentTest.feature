@@ -24,3 +24,11 @@ Feature: Students manage their enrollments
     And I click the confirm button in the modal window
     And I click the ok button on the alert window
     Then I should see the dropped course is removed from the enrollment list
+
+  @RS_TEST
+  Scenario: Students are notified reason when failing to drop a course
+    Given I login as a Student
+    And I am on My Enrollment Page
+    When I click the drop button of course SOFTENG701
+    And I click the confirm button in the modal window
+    Then I should see on the alert box that the course can not be drop because it is a compulsory course
