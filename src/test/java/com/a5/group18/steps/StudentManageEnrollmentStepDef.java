@@ -36,7 +36,7 @@ public class StudentManageEnrollmentStepDef implements En {
         });
 
 
-        When("^I click the drop button of course SOFTENG702$", () -> {
+        When("^I click the drop button of course (.*)$", (String courseNum) -> {
             WebElement dropbtn702 = state.driver.findElement(By.xpath("/html/body/div[2]/table/tbody/tr[2]/td[4]/button"));
             state.wait.until(ExpectedConditions.elementToBeClickable(dropbtn702));
             dropbtn702.click();
@@ -61,5 +61,10 @@ public class StudentManageEnrollmentStepDef implements En {
             state.wait.until(ExpectedConditions.visibilityOfAllElements(updatedCourse));
             Assertions.assertFalse(updatedCourse.toString().contains("SOFTENG702"));
         });
+
+        Then("^I should see on the alert box that the course can not be drop because it is a compulsory course$", () -> {
+        });
+
+
     }
 }
