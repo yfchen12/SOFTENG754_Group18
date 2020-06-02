@@ -3,7 +3,6 @@ package com.a5.group18.steps;
 import com.a5.group18.pages.*;
 import cucumber.api.java8.En;
 import org.junit.Assert;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -44,7 +43,7 @@ public class CartManagementStepDef implements En {
             Assert.assertTrue(state.driver.getPageSource().contains(desiredCourse));
         });
         And("^I click View Detail button to check course detail information$", () -> {
-                searchResultPage.btnViewDetail.click();
+            searchResultPage.btnViewDetail.click();
         });
         When("^I click Add to Enrollment Cart button$", () -> {
             detailInformationPage.btnAddToCart.click();
@@ -53,14 +52,23 @@ public class CartManagementStepDef implements En {
             detailInformationPage.btnCart.click();
         });
         Given("^I navigate to cart page$", () -> {
+            stdDashPage = new StdDashboardPage(state.driver);
+            cartPage = new CartPage(state.driver);
+            stdDashPage.btnCart.click();
         });
         When("^I click Delete button$", () -> {
+            cartPage.btnDelete.click();
         });
         And("^the Confirmation alert should popup$", () -> {
+            state.wait.until(ExpectedConditions.visibilityOf(cartPage.confirmModal));
         });
         And("^I click Confirm button$", () -> {
+            cartPage.btnConfirm.click();
         });
         Then("^the course should be deleted from cart$", () -> {
+            state.wait.until(ExpectedConditions.visibilityOf(cartPage.alert));
+            cartPage.alert.click();
+            Assert.assertFalse(state.driver.getPageSource().contains("CKSFDS909"));
         });
     }
 }
