@@ -51,5 +51,15 @@ public class StudentManageEnrollmentStepDef implements En {
             String msg =  state.driver.switchTo().alert().getText();
             Assertions.assertTrue(msg.contains("Succeed"));
         });
+
+
+        And("^I click the ok button on the alert window$", () -> {
+            state.driver.switchTo().alert().accept();
+        });
+        Then("^I should see the dropped course is removed from the enrollment list$", () -> {
+            List<WebElement> updatedCourse = state.driver.findElements(By.id("courseNum"));
+            state.wait.until(ExpectedConditions.visibilityOfAllElements(updatedCourse));
+            Assertions.assertFalse(updatedCourse.toString().contains("SOFTENG702"));
+        });
     }
 }
