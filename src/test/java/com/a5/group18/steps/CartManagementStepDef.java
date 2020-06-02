@@ -43,5 +43,9 @@ public class CartManagementStepDef implements En {
             Assert.assertEquals("Enrollment Cart", cartPage.strTitle.getText());
             Assert.assertTrue(state.driver.getPageSource().contains(desiredCourse));
         });
+        And("^I click View Detail button to check course detail information$", () -> {
+        });
+        When("^I click Add to Enrollment Cart button$", () -> {
+        });
     }
 }
