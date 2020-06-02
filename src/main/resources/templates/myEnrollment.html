@@ -47,7 +47,7 @@
             <td id= "courseTitle"  th:text="${enrollment.course.getCourseTitle()}"></td>
             <td id= "enrollStatus"  ><a id="waitStatus" th:text="${enrollment.status}"></a></td>
             <td id = "enrollAction" >
-                <button type="button" href="#"  data-toggle="modal" data-target="#modalCenter" class="btn btnDrop" style="background-color: #009AC7; color:white">Drop</button>
+                <button th:id="${enrollment.course.getCourseNumber()} + 'dropBtn'"type="button" href="#"  data-toggle="modal" data-target="#modalCenter" class="btn btnDrop" style="background-color: #009AC7; color:white">Drop</button>
             </td>
         </tr>
         </tbody>
@@ -81,7 +81,7 @@
     </div>
 </div>
 
-<
+
 
 </body>
 </html>
@@ -122,7 +122,9 @@
         })
         $.when( { reason,result } ).done(function( x ) {
             if(result==true) {
-                alert("Succeed.");
+                alert("Succeed: Successfully dropped.");
+            }else if(result==false&&reason!=null){
+                alert("Failed: "+ reason)
             }
         });
     });

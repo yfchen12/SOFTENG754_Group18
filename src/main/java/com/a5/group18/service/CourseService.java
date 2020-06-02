@@ -35,8 +35,12 @@ public class CourseService {
                 "Course Outline", "Course Value", "Prerequisite", tels,
                 20, Subject.ACADENG, CStatus.AVAILABLE, CourseCareer.CONTINUING_EDUCATION, "Class3",
                 15, CourseComponent.LABORATORY, Campus.GRAFTON,null,"");
+        Course course4 = new Course("SOFTENG704", "Software Engineering Method",
+                "Course Outline", "Course Value", "Prerequisite", tels,
+                20, Subject.ACADENG, CStatus.AVAILABLE, CourseCareer.CONTINUING_EDUCATION, "Class3",
+                15, CourseComponent.LABORATORY, Campus.CITY, null, "");
 
-        return Arrays.asList(course, course2, course3);
+        return Arrays.asList(course, course2, course3, course4);
     }
 
     public Course findByCourseNum(final String coursNum){
