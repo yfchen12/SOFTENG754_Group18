@@ -33,5 +33,7 @@ public class StudentCheckCourseInformationStepdefs implements En {
             courseInformationPage = new CourseInformationPage(state.driver);
             Assert.assertEquals(courseNum, courseInformationPage.coursenum.getText());
         });
+        When("^I click <CourseNumber> in my enrollment list$", () -> {
+        });
     }
 }
