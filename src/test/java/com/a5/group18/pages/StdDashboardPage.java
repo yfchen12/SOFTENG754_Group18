@@ -27,4 +27,7 @@ public class StdDashboardPage {
 
     @FindBy(id = "btnLogout")
     public WebElement btnLogout;
+
+    @FindBy(id = "btnCart")
+    public WebElement btnCart;
 }
