@@ -45,7 +45,9 @@ public class StudentManageEnrollmentStepDef implements En {
             } else if (courseNum.equals("SOFTENG702")) {
                 state.wait.until(ExpectedConditions.elementToBeClickable(myEnrollmentPage.dropbtn702));
                 myEnrollmentPage.dropbtn702.click();
-            }
+            }else {
+                state.wait.until(ExpectedConditions.elementToBeClickable(myEnrollmentPage.dropbtn704));
+                myEnrollmentPage.dropbtn704.click();}
         });
         And("^I click the confirm button in the modal window$", () -> {
             WebElement confirmBtn = state.driver.findElement(By.id("confirmDrop"));

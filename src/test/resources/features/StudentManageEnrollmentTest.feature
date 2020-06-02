@@ -1,4 +1,4 @@
-@STUD_TEST
+@STUD_TEST @MANAGE_EN_TEST
 Feature: Students manage their enrollments
 
   Scenario: Students track their places in waiting list of an enrollment with WAITLISTED status
@@ -20,7 +20,7 @@ Feature: Students manage their enrollments
   Scenario: Students can see updated enrollment list when successfully dropping a course
     Given I login as a Student
     And I am on My Enrollment Page
-    When I click the drop button of course SOFTENG702
+    When I click the drop button of course SOFTENG704
     And I click the confirm button in the modal window
     And I click the ok button on the alert window
     Then I should see the dropped course is removed from the enrollment list
