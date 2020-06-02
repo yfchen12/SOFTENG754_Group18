@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Search Result</title>
+    <title>Course Detail Information</title>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
@@ -20,44 +20,42 @@
     </button>
 </nav>
 <div class="jumbotron text-center">
-    <h1 class="display-5" id="page_title">Search Result</h1>
+    <h1 class="display-5" id="page_title">Course Detail Information</h1>
 </div>
-<div class="container">
-    <table class="table">
-        <thead style="background-color: #00457d">
-        <tr style="color:white">
-            <th scope="col">Course Number</th>
-            <th scope="col">Course Title</th>
-            <th scope="col">Status</th>
-            <th scope="col">Add to Cart</th>
-            <th scope="col">View Detail</th>
-            <th scope="col">Enrol</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:class="${courses.getCourseNumber()}" th:each="courses : ${courses}">
-            <td id="courseNum" th:text="${courses.getCourseNumber()}"></td>
-            <td id="courseTitle" th:text="${courses.getCourseTitle()}"></td>
-            <td id="enrollStatus" th:text="${courses.getCourseStatus()}"></td>
-            <td>
-                <button type="button" class="btn btn-primary" id="btnAddToCart" data-toggle="modal"
-                        data-target="#myModal">Add to cart
-                </button>
 
-            </td>
-            <td>
-                <button type="button" class="btn btn-primary" onclick="location.href = 'detailInformation';" id="btnViewDetail">
-                    View Detail
-                </button>
-            </td>
-            <td>
-                <button type="button" class="btn btn-primary" id="btnEnrol">
-                    Enrol
-                </button>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+<div class="container">
+    <!--/*@thymesVar id="course" type="com.a5.group18.pojo.Course"*/-->
+    <div class="row" th:object="${course}">
+        <div class="row">
+            <div class="col-md">
+                <h5>Course Number</h5>
+                <p th:text="${course.getCourseNumber()}"></p>
+            </div>
+            <div class="col-md">
+                <h5>Course Title</h5>
+                <p th:text="${course.getCourseTitle()}"></p>
+            </div>
+            <div class="col-md">
+                <h5>Class Number</h5>
+                <p th:text="${course.getClassNbr()}"></p>
+            </div>
+            <div class="col-md">
+                <h5>Subject</h5>
+                <p th:text="${course.getSubject()}"></p>
+            </div>
+            <div class="col-md">
+                <h5>Point</h5>
+                <p th:text="${course.getPoint()}"></p>
+            </div>
+            <div class="col-md">
+                <h5>Status</h5>
+                <p th:text="${course.getCourseStatus()}"></p>
+            </div>
+        </div>
+    </div>
+    <button type="button" class="btn btn-primary" id="btnAddToCart" data-toggle="modal"
+            data-target="#myModal">Add to cart
+    </button>
 </div>
 <div class="container">
     <div class="modal fade" id="myModal" role="dialog">

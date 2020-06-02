@@ -1,11 +1,9 @@
 package com.a5.group18.steps;
 
-import com.a5.group18.pages.CartPage;
-import com.a5.group18.pages.SearchCoursePage;
-import com.a5.group18.pages.SearchResultPage;
-import com.a5.group18.pages.StdDashboardPage;
+import com.a5.group18.pages.*;
 import cucumber.api.java8.En;
 import org.junit.Assert;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -18,6 +16,7 @@ public class CartManagementStepDef implements En {
     private StdDashboardPage stdDashPage;
     private SearchCoursePage searCoursePage;
     private SearchResultPage searchResultPage;
+    private DetailInformationPage detailInformationPage;
     private CartPage cartPage;
     private String desiredCourse;
     @Autowired
@@ -29,6 +28,7 @@ public class CartManagementStepDef implements En {
             searCoursePage = new SearchCoursePage(state.driver);
             searchResultPage = new SearchResultPage(state.driver);
             cartPage = new CartPage(state.driver);
+            detailInformationPage = new DetailInformationPage(state.driver);
             stdDashPage.btnSearch.click();
             searCoursePage.btnSearch.click();
             desiredCourse = course;
@@ -44,8 +44,13 @@ public class CartManagementStepDef implements En {
             Assert.assertTrue(state.driver.getPageSource().contains(desiredCourse));
         });
         And("^I click View Detail button to check course detail information$", () -> {
+                searchResultPage.btnViewDetail.click();
         });
         When("^I click Add to Enrollment Cart button$", () -> {
+            detailInformationPage.btnAddToCart.click();
+            state.wait.until(ExpectedConditions.visibilityOf(detailInformationPage.alert));
+            detailInformationPage.alert.click();
+            detailInformationPage.btnCart.click();
         });
     }
 }
