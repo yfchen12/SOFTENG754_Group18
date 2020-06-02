@@ -46,6 +46,9 @@ public class MyEnrollmentPage {
     @FindBy(id="modal-waitlist")
     public WebElement modalMsg;
 
+    @FindBy(id="SOFTENG701dropBtn")
+    public WebElement dropbtn701;
 
-
+    @FindBy(id="SOFTENG702dropBtn")
+    public WebElement dropbtn702;
 }

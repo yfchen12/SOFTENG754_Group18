@@ -16,15 +16,16 @@ public class StudentManageEnrollmentStepDef implements En {
 
     @Autowired
     private UIGlobalState state;
+
     public StudentManageEnrollmentStepDef() {
 
-
         And("^I am on My Enrollment Page$", () -> {
-            state.driver.get(state.url+"/myEnrollment");
+            myEnrollmentPage = new MyEnrollmentPage(state.driver);
+            state.driver.get(state.url + "/myEnrollment");
+
         });
         When("^I click the text WAITLISTED$", () -> {
             state.wait.until(ExpectedConditions.titleIs("My Enrollment"));
-            myEnrollmentPage = new MyEnrollmentPage(state.driver);
             myEnrollmentPage.waitlistLink.click();
         });
         Then("^I should be able to see there is (\\d+) student in front of me in the waiting list$", (Integer studentNum) -> {
@@ -37,9 +38,14 @@ public class StudentManageEnrollmentStepDef implements En {
 
 
         When("^I click the drop button of course (.*)$", (String courseNum) -> {
-            WebElement dropbtn702 = state.driver.findElement(By.xpath("/html/body/div[2]/table/tbody/tr[2]/td[4]/button"));
-            state.wait.until(ExpectedConditions.elementToBeClickable(dropbtn702));
-            dropbtn702.click();
+
+            if (courseNum.equals("SOFTENG701")) {
+                state.wait.until(ExpectedConditions.elementToBeClickable(myEnrollmentPage.dropbtn701));
+                myEnrollmentPage.dropbtn701.click();
+            } else if (courseNum.equals("SOFTENG702")) {
+                state.wait.until(ExpectedConditions.elementToBeClickable(myEnrollmentPage.dropbtn702));
+                myEnrollmentPage.dropbtn702.click();
+            }
         });
         And("^I click the confirm button in the modal window$", () -> {
             WebElement confirmBtn = state.driver.findElement(By.id("confirmDrop"));
@@ -48,7 +54,7 @@ public class StudentManageEnrollmentStepDef implements En {
         });
         Then("^I should be able to notify the course is dropped successfully$", () -> {
             state.wait.until(ExpectedConditions.alertIsPresent());
-            String msg =  state.driver.switchTo().alert().getText();
+            String msg = state.driver.switchTo().alert().getText();
             Assertions.assertTrue(msg.contains("Succeed"));
         });
 
@@ -63,8 +69,9 @@ public class StudentManageEnrollmentStepDef implements En {
         });
 
         Then("^I should see on the alert box that the course can not be drop because it is a compulsory course$", () -> {
+            state.wait.until(ExpectedConditions.alertIsPresent());
+            String msg = state.driver.switchTo().alert().getText();
+            Assertions.assertTrue(msg.contains("a compulsory course"));
         });
-
-
     }
 }
