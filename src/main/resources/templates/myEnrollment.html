@@ -122,9 +122,9 @@
         })
         $.when( { reason,result } ).done(function( x ) {
             if(result==true) {
-                alert("Succeed.");
+                alert("Succeed: Successfully dropped.");
             }else if(result==false&&reason!=null){
-                alert(reason)
+                alert("Failed: "+ reason)
             }
         });
     });
