@@ -14,3 +14,10 @@ Feature: Cart management test
     And I click View Detail button to check course detail information
     When I click Add to Enrollment Cart button
     Then the course should be added to cart successfully
+
+  Scenario: Delete course from cart
+    Given I navigate to cart page
+    When I click Delete button
+    And the Confirmation alert should popup
+    And I click Confirm button
+    Then the course should be deleted from cart
