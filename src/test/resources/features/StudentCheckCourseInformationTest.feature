@@ -1,3 +1,4 @@
+
 Feature: Student check course outline
   Background:
     Given I login as a student
