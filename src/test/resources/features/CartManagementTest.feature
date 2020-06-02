@@ -8,3 +8,9 @@ Feature: Cart management test
     Given I found my desired course SOFTENG701 from search result
     When I click Add To Cart button
     Then the course should be added to cart successfully
+
+  Scenario: Add a new course to the cart from course detail information page
+    Given I found my desired course SOFTENG701 from search result
+    And I click View Detail button to check course detail information
+    When I click Add to Enrollment Cart button
+    Then the course should be added to cart successfully
