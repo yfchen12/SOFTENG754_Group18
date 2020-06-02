@@ -52,5 +52,15 @@ public class CartManagementStepDef implements En {
             detailInformationPage.alert.click();
             detailInformationPage.btnCart.click();
         });
+        Given("^I navigate to cart page$", () -> {
+        });
+        When("^I click Delete button$", () -> {
+        });
+        And("^the Confirmation alert should popup$", () -> {
+        });
+        And("^I click Confirm button$", () -> {
+        });
+        Then("^the course should be deleted from cart$", () -> {
+        });
     }
 }
