@@ -38,7 +38,6 @@ public class StudentManageEnrollmentStepDef implements En {
 
 
         When("^I click the drop button of course (.*)$", (String courseNum) -> {
-
             if (courseNum.equals("SOFTENG701")) {
                 state.wait.until(ExpectedConditions.elementToBeClickable(myEnrollmentPage.dropbtn701));
                 myEnrollmentPage.dropbtn701.click();
@@ -50,9 +49,8 @@ public class StudentManageEnrollmentStepDef implements En {
                 myEnrollmentPage.dropbtn704.click();}
         });
         And("^I click the confirm button in the modal window$", () -> {
-            WebElement confirmBtn = state.driver.findElement(By.id("confirmDrop"));
-            state.wait.until(ExpectedConditions.visibilityOf(confirmBtn));
-            confirmBtn.click();
+            state.wait.until(ExpectedConditions.visibilityOf(myEnrollmentPage.confirmBtn));
+            myEnrollmentPage.confirmBtn.click();
         });
         Then("^I should be able to notify the course is dropped successfully$", () -> {
             state.wait.until(ExpectedConditions.alertIsPresent());
@@ -65,9 +63,8 @@ public class StudentManageEnrollmentStepDef implements En {
             state.driver.switchTo().alert().accept();
         });
         Then("^I should see the dropped course is removed from the enrollment list$", () -> {
-            List<WebElement> updatedCourse = state.driver.findElements(By.id("courseNum"));
-            state.wait.until(ExpectedConditions.visibilityOfAllElements(updatedCourse));
-            Assertions.assertFalse(updatedCourse.toString().contains("SOFTENG702"));
+            state.wait.until(ExpectedConditions.visibilityOfAllElements(myEnrollmentPage.updatedCourse));
+            Assertions.assertFalse(myEnrollmentPage.updatedCourse.toString().contains("SOFTENG702"));
         });
 
         Then("^I should see on the alert box that the course can not be drop because it is a compulsory course$", () -> {

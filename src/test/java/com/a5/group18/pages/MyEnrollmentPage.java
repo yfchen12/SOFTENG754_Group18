@@ -54,4 +54,10 @@ public class MyEnrollmentPage {
 
     @FindBy(id="SOFTENG704dropBtn")
     public WebElement dropbtn704;
+
+    @FindBy(id="courseNum")
+    public WebElement updatedCourse;
+
+    @FindBy(id="confirmDrop")
+    public WebElement confirmBtn;
 }
