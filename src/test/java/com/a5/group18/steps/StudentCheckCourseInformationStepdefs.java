@@ -104,6 +104,5 @@ public class StudentCheckCourseInformationStepdefs implements En {
                 }
             }
         });
-
     }
 }
