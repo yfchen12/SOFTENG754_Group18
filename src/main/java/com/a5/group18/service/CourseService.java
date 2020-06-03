@@ -21,23 +21,23 @@ public class CourseService {
     public List<Course> findAll() {
         Teacher teacher1 = new Teacher("Andy Jane","ady.jane@uoa.com","Come from England");
         Teacher teacher2 = new Teacher("John Walker","john.walker@uoa.com","Come from American");
-
+        List<String> prerequisite = Arrays.asList("SOFTENG101");
         List<Teacher> tels = Arrays.asList(teacher1, teacher2);
         Course course = new Course("SOFTENG701", "Advanced Software Development",
-                "Course Outline", "Course Value", "Prerequisite", tels,
+                "Course Outline", "Course Value", prerequisite, tels,
 
                 20, Subject.ACADENG, CStatus.AVAILABLE, CourseCareer.CONTINUING_EDUCATION, "Class1",
                 15, CourseComponent.CLINIC, Campus.EPSOM,null,"");
         Course course2 = new Course("SOFTENG702", "Computer Science",
-                "Course Outline", "Course Value", "Prerequisite", tels,
+                "Course Outline", "Course Value", prerequisite, tels,
                 20, Subject.ACADENG, CStatus.AVAILABLE, CourseCareer.CONTINUING_EDUCATION, "Class2",
                 15, CourseComponent.CLINIC, Campus.CITY,new ArrayList<Student>(),"");
         Course course3 = new Course("SOFTENG703", "OOP Development",
-                "Course Outline", "Course Value", "Prerequisite", tels,
+                "Course Outline", "Course Value", prerequisite, tels,
                 20, Subject.ACADENG, CStatus.AVAILABLE, CourseCareer.CONTINUING_EDUCATION, "Class3",
                 15, CourseComponent.LABORATORY, Campus.GRAFTON,null,"");
         Course course4 = new Course("SOFTENG704", "Software Engineering Method",
-                "Course Outline", "Course Value", "Prerequisite", tels,
+                "Course Outline", "Course Value", prerequisite, tels,
                 20, Subject.ACADENG, CStatus.AVAILABLE, CourseCareer.CONTINUING_EDUCATION, "Class3",
                 15, CourseComponent.LABORATORY, Campus.CITY, null, "");
 
@@ -45,19 +45,20 @@ public class CourseService {
     }
 
     public Course findByCourseNum(final String coursNum){
+        List<String> prerequisite = Arrays.asList("SOFTENG101");
         Teacher teacher1 = new Teacher("Andy Jane","ady.jane@uoa.com","Come from England");
         Teacher teacher2 = new Teacher("John Walker","john.walker@uoa.com","Come from American");
         List<Teacher> tels = Arrays.asList(teacher1, teacher2);
         Course course = new Course("SOFTENG701", "Advanced Software Development",
-                "Course Outline", "Course Value", "Prerequisite", tels,
+                "Course Outline", "Course Value", prerequisite, tels,
                 20, Subject.ACADENG, CStatus.AVAILABLE, CourseCareer.CONTINUING_EDUCATION, "Class1",
                 15, CourseComponent.CLINIC, Campus.EPSOM,null,"");
         Course course2 = new Course("SOFTENG702", "Computer Science",
-                "Course Outline", "Course Value", "Prerequisite", tels,
+                "Course Outline", "Course Value", prerequisite, tels,
                 20, Subject.ACADENG, CStatus.AVAILABLE, CourseCareer.CONTINUING_EDUCATION, "Class2",
                 15, CourseComponent.CLINIC, Campus.CITY,null,"");
         Course course3 = new Course("SOFTENG703", "OOP Development",
-                "Course Outline", "Course Value", "Prerequisite", tels,
+                "Course Outline", "Course Value", prerequisite, tels,
                 20, Subject.ACADENG, CStatus.AVAILABLE, CourseCareer.CONTINUING_EDUCATION, "Class3",
                 15, CourseComponent.LABORATORY, Campus.GRAFTON,null,"");
         if (coursNum.contains("SOFTENG701"))
@@ -66,6 +67,11 @@ public class CourseService {
             return course2;
         else if (coursNum.contains("SOFTENG703"))
             return course3;
+        else if (coursNum.contains("SOFTENG101"))
+            return new Course("SOFTENG101", "Software Development",
+                    "Course Outline", "Course Value", null, tels,
+                    20, Subject.ACADENG, CStatus.AVAILABLE, CourseCareer.CONTINUING_EDUCATION, "Class1",
+                    15, CourseComponent.LABORATORY, Campus.GRAFTON,null,"");
         else
             return new Course();
 
