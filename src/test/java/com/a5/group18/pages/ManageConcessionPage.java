@@ -22,4 +22,6 @@ public class ManageConcessionPage {
     @FindBy(id = "btnSaveChanges")
     public WebElement btnSaveChanges;
 
+    @FindBy(id = "btnProcessConcession")
+    public WebElement btnProcessConcession;
 }
