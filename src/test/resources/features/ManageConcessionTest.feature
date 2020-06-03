@@ -17,6 +17,7 @@ Feature: Manage Concession Test
     And I click save changes button
     Then I should see 2 years Java experience as the concession criteria
 
+  @debug
   Scenario: Reject course concession and cancelled
     When I click process button for student John Smith
     And I click reject button

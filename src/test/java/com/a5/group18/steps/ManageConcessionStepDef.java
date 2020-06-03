@@ -25,6 +25,7 @@ public class ManageConcessionStepDef implements En {
             state.wait.until(ExpectedConditions.titleIs(pageTitle));
             adminDashPage = new AdminDashboard(state.driver);
             manageConcessionPage = new ManageConcessionPage(state.driver);
+            processConcessionPage = new ProcessConcessionPage(state.driver);
             adminDashPage.btnManageConcession.click();
         });
 
