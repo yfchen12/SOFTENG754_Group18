@@ -12,6 +12,7 @@ Feature: Manage Concession Test
     And I click confirm date change button
     Then the most recent concession open date should be tomorrow
 
+  @debug
   Scenario: Set concession criteria
     When I set concession criteria to have 2 years Java experience
     And I click save changes button
