@@ -74,12 +74,19 @@ public class StudentCheckCourseInformationStepdefs implements En {
             state.wait.until(ExpectedConditions.titleIs("Teacher Information"));
         });
         And("^I am in \"([^\"]*)\" course information page$", (String coursenum) -> {
-
+            stdDashboardPage = new StdDashboardPage(state.driver);
+            stdDashboardPage.btnCart.click();
+            cartPage = new CartPage(state.driver);
+            state.wait.until(ExpectedConditions.titleIs("Enrollment Cart"));
+            state.driver.findElement(By.linkText(coursenum)).click();
+            state.wait.until(ExpectedConditions.titleIs("Course Information"));
         });
         When("^I click download in the bottom of the page$", () -> {
-
+            Thread.sleep(1000);
+            courseInformationPage= new CourseInformationPage(state.driver);
+            courseInformationPage.btnDownloadCourse.click();
         });
-        Then("^I should be able to download <CourseNumber>\\.pdf$", () -> {
+        Then("^I should be able to download \"([^\"]*)\"\\.pdf$", (String course) -> {
             //right now do not have one good idea for different platform
         });
     }

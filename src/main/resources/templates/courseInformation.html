@@ -29,7 +29,7 @@
 <div class="row justify-content-center align-items-center h-100">
     <div th:object="${course}">
         <!--/*@thymesVar id="course" type=""*/-->
-        <form>
+        <form  th:object="${course}" th:action="@{'/download/'+${course.getCourseNumber()}}"  method="post">
 
             <label for="coursenum">Course Number: </label><br>
             <h3 class="display-5" id ="coursenum" th:text="${course.getCourseNumber()}"></h3><br>
@@ -64,6 +64,12 @@
 
             <label for="ccampus">Course Campus: </label><br>
             <h3 class="display-5" th:text="${course.campus}"></h3><br>
+
+            <div class="row justify-content-center align-items-center h-100">
+
+                <button type="submit"  role="button" class="btn btn-primary" style="width:350px"   id="btnDownloadCourse">Download</button>
+
+            </div>
 
         </form>
     </div>

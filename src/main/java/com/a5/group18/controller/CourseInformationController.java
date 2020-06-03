@@ -7,11 +7,16 @@ import com.a5.group18.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @Controller
 public class CourseInformationController {
@@ -36,6 +41,37 @@ public class CourseInformationController {
         modelAndView.addAttribute("course", courseService.findByCourseNum(courseid));
         return "courseinformation";
     }
+
+   //@RequestMapping(value="/download/{courseid}", method= RequestMethod.POST)
+   //@ResponseBody
+   //public FileSystemResource download(@PathVariable(value="courseid") String id) {
+   //    Course course = courseService.findByCourseNum(id);
+   //    return new FileSystemResource(new File(course.getFileUrl()));
+   //}
+    @RequestMapping(value="/download/{courseid}", method= RequestMethod.POST)
+    @ResponseBody
+    public void downloadPDFResource( HttpServletRequest request,
+                                     HttpServletResponse response,
+                                     @PathVariable("courseid") String fileName)
+    {
+        Course course = courseService.findByCourseNum(fileName);
+        String dataDirectory = course.getFileUrl();
+        Path file = Paths.get(dataDirectory);
+        if (Files.exists(file))
+        {
+            response.setContentType("application/pdf");
+            response.addHeader("Content-Disposition", "attachment; filename="+fileName+".pdf");
+            try
+            {
+                Files.copy(file, response.getOutputStream());
+                response.getOutputStream().flush();
+            }
+            catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
     @GetMapping("/teacher/{name}")
     public String teacher(@PathVariable("name") String name, Model model, RedirectAttributes ra) {
         Teacher teacher = teacherService.findByName(name);
