@@ -22,3 +22,13 @@ Feature: Student check course outline
       | "SOFTENG701"   |
       | "SOFTENG702"   |
       | "SOFTENG703"   |
+
+  Scenario Outline: Search result redirect
+    And  I am in search result page
+    When I click <CourseNumber> in the result list
+    Then I should be redirected to <CourseNumber> information page
+    Examples:
+      | CourseNumber |
+      | "SOFTENG701"   |
+      | "SOFTENG702"   |
+      | "SOFTENG703"   |
