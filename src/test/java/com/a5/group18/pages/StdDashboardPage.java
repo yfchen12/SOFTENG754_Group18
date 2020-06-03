@@ -30,4 +30,12 @@ public class StdDashboardPage {
 
     @FindBy(id = "btnCart")
     public WebElement btnCart;
+
+    @FindBy(id = "btnUpdateNotification")
+    public WebElement btnUpdateNotification;
+
+    @FindBy(id = "btnSaveNotificationChanges")
+    public WebElement btnSaveNotificationChanges;
+
+
 }
