@@ -9,5 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Teacher {
+    private String name;
     private String email;
+    private String Instructions;
+
+
 }

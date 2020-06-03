@@ -58,10 +58,20 @@ public class StudentCheckCourseInformationStepdefs implements En {
             state.driver.findElement(By.linkText(courseNum)).click();
         });
         And("^I am in course information page$", () -> {
+            stdDashboardPage = new StdDashboardPage(state.driver);
+            stdDashboardPage.btnCart.click();
+            cartPage = new CartPage(state.driver);
+            state.wait.until(ExpectedConditions.titleIs("Enrollment Cart"));
+            state.driver.findElement(By.linkText("SOFTENG701")).click();
+            state.wait.until(ExpectedConditions.titleIs("Course Information"));
         });
-        When("^I click <teacher> list in the page$", () -> {
+        When("^I click \"([^\"]*)\" list in the page$", (String teacher) -> {
+            Thread.sleep(1000);
+
+            state.driver.findElement(By.linkText(teacher)).click();
         });
         Then("^I should be redirected to teacher profile page$", () -> {
+            state.wait.until(ExpectedConditions.titleIs("Teacher Information"));
         });
     }
 }
