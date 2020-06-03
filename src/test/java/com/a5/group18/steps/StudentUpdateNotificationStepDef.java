@@ -8,6 +8,7 @@ import cucumber.api.java8.En;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class StudentUpdateNotificationStepDef implements En {
@@ -24,9 +25,9 @@ public class StudentUpdateNotificationStepDef implements En {
         });
 
         And("^I select email as the preferred notification method$", () -> {
-            state.wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("preferredMethods")));
-            
-
+            state.wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("notificationModal")));
+            Select drpMethods = new Select(state.driver.findElement(By.id("notificationMethods")));
+            drpMethods.selectByVisibleText("Email");
         });
 
         And("^I click save button$", () -> {
@@ -35,7 +36,7 @@ public class StudentUpdateNotificationStepDef implements En {
         });
 
         Then("^I should see a green banner saying preference saved$", () -> {
-            Assert.assertTrue(state.driver.getPageSource().contains(notificationChangeSuccess));
+            Assert.assertTrue(state.driver.getPageSource().contains("Notification preferences has been updated."));
         });
     }
 }
