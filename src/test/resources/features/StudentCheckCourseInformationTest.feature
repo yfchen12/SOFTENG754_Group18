@@ -32,3 +32,12 @@ Feature: Student check course outline
       | "SOFTENG701"   |
       | "SOFTENG702"   |
       | "SOFTENG703"   |
+
+  Scenario Outline: teacher profile redirect
+    And  I am in course information page
+    When I click <teacher> list in the page
+    Then I should be redirected to teacher profile page
+    Examples:
+      | teacher       |
+      | "John Walker" |
+      | "Andy Jane"   |
