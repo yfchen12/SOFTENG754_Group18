@@ -80,4 +80,12 @@ public class CourseInformationController {
         model.addAttribute("Instructions",teacher.getInstructions());
         return "teacherProfile";
     }
+
+    @GetMapping("/pre/{name}")
+    public String pre(@PathVariable("name") String name,Model modelAndView,RedirectAttributes ra) {
+        Course prec = courseService.findByCourseNum(name);
+        ra.addFlashAttribute("course",prec);
+        modelAndView.addAttribute("course",prec);
+        return "courseinformation";
+    }
 }

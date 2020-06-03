@@ -47,7 +47,13 @@
             <h3 class="display-5" th:text="${course.getCourseValue()}"></h3><br>
 
             <label for="cpre">Course Prerequisites:</label><br>
-            <h3 class="display-5" th:text="${course.getPrerequisites()}"></h3><br>
+            <tr scope="row" id = "preList" th:class="${course.getPrerequisites()}" th:each="pre : ${course.getPrerequisites()}">
+                <td id= "courseTeacher">
+                    <a th:href="@{'/pre/'+${pre}}" th:text="${pre}"></a><br>
+                </td>
+            </tr>
+            <br>
+
             <label for="teacherList">Course Teaching Team: </label><br>
             <tr scope="row" id = "teacherList" th:class="${course.getTeachTeam()}" th:each="teacher : ${course.getTeachTeam()}">
                 <td id= "courseTeacher">
