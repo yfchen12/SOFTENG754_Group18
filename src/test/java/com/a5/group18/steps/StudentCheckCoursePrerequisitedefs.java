@@ -1,6 +1,8 @@
 package com.a5.group18.steps;
 
+import com.a5.group18.pages.CartPage;
 import com.a5.group18.pages.CourseInformationPage;
+import com.a5.group18.pages.StdDashboardPage;
 import cucumber.api.java8.En;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -13,7 +15,24 @@ public class StudentCheckCoursePrerequisitedefs implements En {
     private UIGlobalState state;
 
     private CourseInformationPage courseInformationPage;
+    private StdDashboardPage stdDashboardPage;
+    private CartPage cartPage;
     public StudentCheckCoursePrerequisitedefs() {
+        And("^I am in (.*) course information page$", (String coursenum) -> {
+            stdDashboardPage = new StdDashboardPage(state.driver);
+            cartPage = new CartPage(state.driver);
+            stdDashboardPage.btnCart.click();
+
+            state.wait.until(ExpectedConditions.titleIs("Enrollment Cart"));
+
+            for (int i=0; i<cartPage.courseNum.size(); i++) {
+                if (coursenum.contains(cartPage.courseNum.get(i).getText())) {
+                    cartPage.courseNum.get(i).click();
+                }
+            }
+            state.wait.until(ExpectedConditions.titleIs("Course Information"));
+        });
+
         Then("^I should be able to see the course prerequisite$", () -> {
             courseInformationPage = new CourseInformationPage(state.driver);
             WebElement pre = null;

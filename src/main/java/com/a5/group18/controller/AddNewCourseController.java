@@ -1,7 +1,6 @@
 package com.a5.group18.controller;
 
 import com.a5.group18.pojo.Course;
-import com.a5.group18.pojo.Teacher;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,19 +10,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-
 @Controller
 
 
 public class AddNewCourseController {
     @ModelAttribute("course")
     public Course defaultInstance() {
-        Course c = new Course();
 
-        return c;
+        return new Course();
     }
 
     @GetMapping("/addNewCourse")
@@ -33,7 +27,7 @@ public class AddNewCourseController {
     }
 
     @PostMapping("/addNewCourse")
-    public String addNewCourse(ModelAndView modelAndView, Course course, RedirectAttributes ra,BindingResult bindingResult) {
+    public String addNewCourse(ModelAndView modelAndView, Course course, RedirectAttributes ra) {
 
 
         modelAndView.addObject("course",course);
@@ -42,11 +36,4 @@ public class AddNewCourseController {
         return "redirect:courseinformations";
     }
 
-    @PostMapping("/addteacher")
-    public void addTeacher(ModelAndView modelAndView, @ModelAttribute List<Teacher> teachers) {
-        List<String> sss = new ArrayList<>();
-         modelAndView.getModel();
-return;
-
-    }
 }

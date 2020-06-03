@@ -40,8 +40,8 @@
             <label for="coutline">Course Outline: <span class="required">*</span></label><br>
             <textarea id="coutline" name="coutline" rows="4" cols="50" th:field="*{courseOutline}">
         </textarea><br>
-            <label for="cvalue">Course Value: <span class="required">*</span></label><br>
-            <label for="tteam">Course Teaching Team: <span class="required">*</span></label><br>
+            <label>Course Value: <span class="required">*</span></label><br>
+            <label>Course Teaching Team: <span class="required">*</span></label><br>
 
             <script>
                 function addToValueList() {
@@ -102,7 +102,7 @@
 
                 }
                 </script>
-            <label for="tteam">Course Teaching Team: <span class="required">*</span></label><br>
+            <label>Course Teaching Team: <span class="required">*</span></label><br>
 
                 <tr scope="row" th:field = "*{teachTeam}"   id = "teacherList"  >
                     <td id= "tdname">
@@ -157,7 +157,7 @@
             <br><br>
             <div class="row justify-content-center align-items-center h-100">
 
-                <button type="addnewcourse" role="button" class="btn btn-primary" style="width:350px"   id="btnAddNewCourse">Submit</button>
+                <button type="button" role="button" class="btn btn-primary" style="width:350px"   id="btnAddNewCourse">Submit</button>
 
             </div>
         </form>

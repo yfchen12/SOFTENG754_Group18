@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class AdminDashboardController {
 
     @GetMapping("/adminDashboard")
-    public String index(ModelAndView modelAndView) {
+    public String index() {
         return "adminDashboard";
     }
 }
