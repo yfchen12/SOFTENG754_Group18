@@ -13,6 +13,7 @@ import org.junit.runner.RunWith;
                 "html:target/cucumber-html-report",
                 "json:target/cucumber/cucumber.json",
                 "junit:target/cucumber/cucumber.xml",
+                "io.qameta.allure.cucumber4jvm.AllureCucumber4Jvm",
                 "rerun:target/rerun.txt"
         },
         glue = {"com.a5.group18.steps", "com.a5.group18.hook"},
