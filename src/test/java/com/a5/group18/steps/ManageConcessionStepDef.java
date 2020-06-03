@@ -110,7 +110,7 @@ public class ManageConcessionStepDef implements En {
             state.wait.until(ExpectedConditions.titleIs("Manage Concession"));
             Assert.assertTrue(state.driver.getPageSource().contains(studentName));
         });
-        
+
         And("^I click approve concession button$", () -> {
             state.wait.until(ExpectedConditions.titleIs("Process Concession"));
             processConcessionPage.btnApprove.click();
