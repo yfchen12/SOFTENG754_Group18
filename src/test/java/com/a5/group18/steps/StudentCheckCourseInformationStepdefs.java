@@ -27,9 +27,7 @@ public class StudentCheckCourseInformationStepdefs implements En {
             state.wait.until(ExpectedConditions.titleIs("Enrollment Cart"));
 
         });
-
         When("^I click \"([^\"]*)\" in enroll cart list$", (String courseNum) -> {
-
             for (int i=0; i<cartPage.courseNum.size(); i++)
             {
                 if (courseNum.contains(cartPage.courseNum.get(i).getText())){
@@ -118,6 +116,10 @@ public class StudentCheckCourseInformationStepdefs implements En {
         });
         Then("^I should be able to download \"([^\"]*)\"\\.pdf$", (String course) -> {
             //right now do not have one good idea for different platform
+        });
+
+        When("^I click \"([^\"]*)\" list in the page$", (String teacher) -> {
+
         });
     }
 }
