@@ -41,3 +41,13 @@ Feature: Student check course outline
       | teacher       |
       | "John Walker" |
       | "Andy Jane"   |
+
+  Scenario Outline: download redirect
+    And  I am in <CourseNumber> course information page
+    When I click download in the bottom of the page
+    Then I should be able to download <CourseNumber>.pdf
+    Examples:
+      | CourseNumber |
+      | "SOFTENG701" |
+      | "SOFTENG702" |
+      | "SOFTENG703" |
