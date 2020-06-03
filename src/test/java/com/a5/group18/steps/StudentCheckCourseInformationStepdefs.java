@@ -73,5 +73,14 @@ public class StudentCheckCourseInformationStepdefs implements En {
         Then("^I should be redirected to teacher profile page$", () -> {
             state.wait.until(ExpectedConditions.titleIs("Teacher Information"));
         });
+        And("^I am in \"([^\"]*)\" course information page$", (String coursenum) -> {
+
+        });
+        When("^I click download in the bottom of the page$", () -> {
+
+        });
+        Then("^I should be able to download <CourseNumber>\\.pdf$", () -> {
+            //right now do not have one good idea for different platform
+        });
     }
 }
