@@ -2,6 +2,7 @@
 Feature: Manage Concession Test
   Course admin should be able to approve, reject and set conessions for courses. Also be able set the concession open date
 
+  @debug
   Scenario: Set concession date for a course
     Given I login as a admin
     And I click manage concession from Admin Dashboard page

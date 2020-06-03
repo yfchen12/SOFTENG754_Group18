@@ -5,20 +5,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class AdminDashboard {
+public class ManageConcessionPage {
     private WebDriver driver;
 
-    public AdminDashboard(WebDriver driver) {
+    public ManageConcessionPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(id = "btnAddNewCourse")
-    public WebElement btnAddNewCourse;
-
-    @FindBy(id = "btnUpdateCourse")
-    public WebElement btnUpdateCourse;
-
-    @FindBy(id = "btnManageConcession")
-    public WebElement btnManageConcession;
+    @FindBy(id = "dateChange")
+    public WebElement dateChange;
 }

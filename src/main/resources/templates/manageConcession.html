@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.2.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Concession</title>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-end">
+    <a class="navbar-brand" href="adminDashboard">Dashboard</a>
+    <button class="btn btn-danger ml-auto mr-1" type="submit" onclick="location.href = '/';"
+            id="btnLogout">Logout
+    </button>
+</nav>
+
+<div class="jumbotron text-center">
+    <h1 class="display-3" id="landing_title">Manage Concession</h1>
+</div>
+
+<div class="container text-center">
+    <div class="card bg-secondary text-white">
+        <div class="card-body">
+            <h4 class="card-title">Concession Open Dates</h4>
+            <table class="table table-dark">
+                <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Update</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:class="${concessionOpenDate.getOpenDate()}" th:each="concessionOpenDate : ${concessionOpenDates}">
+                    <td id="openDate" th:text="${concessionOpenDate.getOpenDate()}"></td>
+                    <td><button type="button" class="btn btn-primary btnEditDate" id="editOpenDate" data-toggle="modal", data-target="#dateChangeModal">
+                        Edit
+                    </button></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="dateChangeModal" tabindex="-1" role="dialog" aria-labelledby="dialog_confirm_mapLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p>Update Open Date</p>
+            </div>
+            <form id = "changeOpenDate" th:action="@{/manageConcession}" th:object="${concessionOpenDate}" th:method="post">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Concession Open Date:</span>
+                        <input type="text" th:field ="*{openDate}" class="form-control" placeholder="YYYY-MM-DD" id="dateChange"
+                               name="dateChange"  style="width:180px">
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <span style="float:left"><button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button></span>
+                    <span style="float:right"><button type="submit" class="btn btnConfirm" id="confirmDateChange" data-dismiss="modal">Confirm</button></span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+<script th:inline = "javascript">
+
+</script>
