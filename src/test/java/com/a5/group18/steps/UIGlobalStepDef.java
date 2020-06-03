@@ -1,8 +1,7 @@
 package com.a5.group18.steps;
 
 import com.a5.group18.hook.CukeHook;
-import com.a5.group18.pages.IndexPage;
-import com.a5.group18.pages.LoginSSOPage;
+import com.a5.group18.pages.*;
 import cucumber.api.java8.En;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;

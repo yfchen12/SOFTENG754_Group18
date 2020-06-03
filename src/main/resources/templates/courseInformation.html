@@ -34,10 +34,10 @@
             <label for="coursenum">Course Number: </label><br>
             <h3 class="display-5" id ="coursenum" th:text="${course.getCourseNumber()}"></h3><br>
             <!--/*@thymesVar id="courseNum" type=""*/-->
-            <label for="coursetitle">Course Title: </label><br>
+            <label>Course Title: </label><br>
             <h3 class="display-5" th:text="${course.getCourseTitle()}"></h3><br>
 
-            <label for="courseshedule">Course Shedule: </label><br>
+            <label>Course Shedule: </label><br>
             <h3 class="display-5" th:text="${course.getCourseSchedule()}"></h3><br>
 
             <label for="coutline">Course Outline: </label><br>
@@ -64,7 +64,7 @@
 
             </tr>
 
-            <label for="cpre">Course Prerequisites:</label><br>
+            <label>Course Prerequisites:</label><br>
             <tr scope="row" id = "preList" th:class="${course.getPrerequisites()}" th:each="pre : ${course.getPrerequisites()}">
                 <td id= "coursePre">
                     <a id="prereList" th:href="@{'/pre/'+${pre}}" th:text="${pre}"></a><br>
@@ -80,13 +80,13 @@
             </tr>
             <br>
 
-            <label for="cstatus">Course Status: </label><br>
+            <label>Course Status: </label><br>
             <h3 class="display-5" th:text="${course.getCourseStatus()}"></h3><br>
 
-            <label for="ccapacity">Course Capacity: </label><br>
+            <label>Course Capacity: </label><br>
             <h3 class="display-5" th:text="${course.getCapacity()}"></h3><br>
 
-            <label for="ccampus">Course Campus: </label><br>
+            <label>Course Campus: </label><br>
             <h3 class="display-5" th:text="${course.campus}"></h3><br>
 
             <div class="row justify-content-center align-items-center h-100">
