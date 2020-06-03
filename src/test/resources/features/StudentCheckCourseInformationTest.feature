@@ -12,3 +12,13 @@ Feature: Student check course outline
       | "SOFTENG701"   |
       | "SOFTENG702"   |
       | "SOFTENG703"   |
+
+  Scenario Outline: Enrollment redirect
+    And  I am in my enrollment page
+    When I click <CourseNumber> in my enrollment list
+    Then I should be redirected to <CourseNumber> information page
+    Examples:
+      | CourseNumber |
+      | "SOFTENG701"   |
+      | "SOFTENG702"   |
+      | "SOFTENG703"   |
