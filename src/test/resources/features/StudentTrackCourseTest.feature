@@ -1,5 +1,4 @@
-Feature:
-  Student tracks selected course status
+Feature: Student tracks selected course status
 
   @STD_TEST
   Scenario Outline: Student track selected course status
