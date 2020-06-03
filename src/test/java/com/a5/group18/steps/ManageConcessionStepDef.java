@@ -67,5 +67,17 @@ public class ManageConcessionStepDef implements En {
 
             Assert.assertEquals(recentDate, sdf.format(tomorrow));
         });
+
+        When("^I set concession criteria to have (.*)$", (String criteria) -> {
+            manageConcessionPage.concessionCriteria.sendKeys(criteria);
+        });
+
+        And("^I click save changes button$", () -> {
+            manageConcessionPage.btnSaveChanges.click();
+        });
+
+        Then("^I should see (.*) as the concession criteria$", (String criteria) -> {
+            Assert.assertTrue(state.driver.getPageSource().contains(criteria));
+        });
     }
 }
