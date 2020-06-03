@@ -15,6 +15,8 @@ public class StudentCheckCourseInformationStepdefs implements En {
     private StdDashboardPage stdDashboardPage;
     private CourseInformationPage courseInformationPage;
     private MyEnrollmentPage myEnrollmentPage;
+    private SearchResultPage searchResultPage;
+    private SearchCoursePage searchCoursePage;
     @Autowired
     private UIGlobalState state;
     public StudentCheckCourseInformationStepdefs() {
@@ -44,8 +46,16 @@ public class StudentCheckCourseInformationStepdefs implements En {
             state.wait.until(ExpectedConditions.titleIs("My Enrollment"));
         });
         And("^I am in search result page$", () -> {
+            stdDashboardPage = new StdDashboardPage(state.driver);
+            stdDashboardPage.btnSearch.click();
+            state.wait.until(ExpectedConditions.titleIs("Search Course"));
+            searchCoursePage = new SearchCoursePage(state.driver);
+            searchCoursePage.btnSearch.click();
+            searchResultPage = new SearchResultPage(state.driver);
+            state.wait.until(ExpectedConditions.titleIs("Search Result"));
         });
-        When("^I click <CourseNumber> in the result list$", () -> {
+        When("^I click \"([^\"]*)\" in the result list$", (String courseNum) -> {
+            state.driver.findElement(By.linkText(courseNum)).click();
         });
     }
 }
