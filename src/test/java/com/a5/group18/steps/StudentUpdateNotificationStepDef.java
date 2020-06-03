@@ -31,7 +31,7 @@ public class StudentUpdateNotificationStepDef implements En {
         });
 
         And("^I click save button$", () -> {
-            state.wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("saveNotificationChanges")));
+            state.wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("btnSaveNotificationChanges")));
             studentDashPage.btnSaveNotificationChanges.click();
         });
 
