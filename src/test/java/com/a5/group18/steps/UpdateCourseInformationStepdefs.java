@@ -54,7 +54,7 @@ public class UpdateCourseInformationStepdefs implements En {
         Then("^I should be redirected to course information page successfully", () -> {
             state.wait.until(ExpectedConditions.titleIs("Course Information"));
         });
-        And("^Course information is successfully updated with \"([^\"]*)\" and \"([^\"]*)\"$", (String cNum,String cTitle) -> {
+        And("^Course information is successfully updated with (.*) and (.*)$", (String cNum,String cTitle) -> {
             assertEquals("SOFTENG754",cNum);
             assertEquals("Advanced requirement development",cTitle);
         });
