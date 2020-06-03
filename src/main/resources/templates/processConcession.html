@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.2.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Process Concession</title>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-end">
+    <a class="navbar-brand" href="adminDashboard">Dashboard</a>
+    <button class="btn btn-danger ml-auto mr-1" type="submit" onclick="location.href = '/';"
+            id="btnLogout">Logout
+    </button>
+</nav>
+
+<div class="jumbotron text-center">
+    <h1 class="display-3" id="landing_title">Process Concession</h1>
+</div>
+
+<div class="container text-center">
+    <div class="card bg-secondary text-white">
+        <div class="card-body">
+            <h4 class="card-title">Concession Application</h4>
+            <table class="table table-dark">
+                <tbody>
+                <tr th:class="${concessionApplication}">
+                    <td>Course Name:</td>
+                    <td th:text="${concessionApplication.getCourseName()}"></td>
+                </tr>
+                <tr>
+                    <td>Student Name:</td>
+                    <td th:text="${concessionApplication.getStudent().getUserName()}"></td>
+                </tr>
+                <tr>
+                    <td>Reason:</td>
+                    <td th:text="${concessionApplication.getJustification()}"></td>
+                </tr>
+                <tr>
+                    <td><button type="button" class="btn btn-danger" id="btnReject" data-toggle="modal", data-target="#concessionRejectModal">
+                        Reject
+                    </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" role="button" id="btnApprove" onclick="location.href = 'manageConcession';">
+                            Approve
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="concessionRejectModal" tabindex="-1" role="dialog" aria-labelledby="dialog_confirm_mapLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p>Are you sure to decline this application?</p>
+            </div>
+            <div class="modal-footer">
+                <span style="float:left"><button type="button" id="cancelRejectConcession" class="btn btn-default" data-dismiss="modal" onclick="location.href = 'manageConcession';">Cancel </button></span>
+                <form  id = "removeConcession" th:action="@{/processConcession}" th:object="${concession}" th:method="post">
+                    <span style="float:right">
+                        <button type="submit" class="btn btn-primary" id="confirmRejectConcession" data-dismiss="modal" onclick="location.href = 'manageConcession';">Confirm</button>
+                    </span>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+<script th:inline = "javascript">
+
+</script>

@@ -12,8 +12,24 @@ Feature: Manage Concession Test
     And I click confirm date change button
     Then the most recent concession open date should be tomorrow
 
-  @debug
   Scenario: Set concession criteria
     When I set concession criteria to have 2 years Java experience
     And I click save changes button
     Then I should see 2 years Java experience as the concession criteria
+
+  Scenario: Reject course concession and cancelled
+    When I click process button for student John Smith
+    And I click reject button
+    And I click cancel reject button
+    Then John Smith should be in the list of new concessions
+
+  Scenario: Reject course concession and confirmed
+    When I click process button for student John Smith
+    And I click reject button
+    And I click confirm reject button
+    Then John Smith should not be in the list of new concessions
+
+  Scenario: Approve course concession
+    When I click process button for student John Smith
+    And I click approve concession button
+    Then John Smith should not be in the list of new concessions

@@ -28,6 +28,7 @@ public class ManageConcessionController {
 
         model.addAttribute("concessionOpenDates", openDates);
         model.addAttribute("courseConcessions", courseConcessions);
+        model.addAttribute("concessionApplications", concessionService.findAll());
 
         model.addAttribute("concessionOpenDate", new ConcessionOpenDate());
         return "manageConcession";
@@ -42,6 +43,7 @@ public class ManageConcessionController {
         openDates = dateService.findConcessionOpenDates();
 
         model.addAttribute("concessionOpenDates", openDates);
+        model.addAttribute("concessionApplications", concessionService.findAll());
 
         return "manageConcession";
     }

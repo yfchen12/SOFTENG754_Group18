@@ -25,6 +25,7 @@ public class ManageConcessionStepDef implements En {
             state.wait.until(ExpectedConditions.titleIs(pageTitle));
             adminDashPage = new AdminDashboard(state.driver);
             manageConcessionPage = new ManageConcessionPage(state.driver);
+            processConcessionPage = new ProcessConcessionPage(state.driver);
             adminDashPage.btnManageConcession.click();
         });
 
@@ -78,6 +79,41 @@ public class ManageConcessionStepDef implements En {
 
         Then("^I should see (.*) as the concession criteria$", (String criteria) -> {
             Assert.assertTrue(state.driver.getPageSource().contains(criteria));
+        });
+
+        And("^I click reject button$", () -> {
+            state.wait.until(ExpectedConditions.titleIs("Process Concession"));
+            processConcessionPage.btnReject.click();
+        });
+
+        And("^I click cancel reject button$", () -> {
+            WebElement btnCancel = state.wait.until(ExpectedConditions.elementToBeClickable(By.id("cancelRejectConcession")));
+            btnCancel.click();
+        });
+
+        When("^I click process button for student (.*)$", (String studentName) -> {
+            state.wait.until(ExpectedConditions.titleIs("Manage Concession"));
+            manageConcessionPage.btnProcessConcession.click();
+        });
+
+        Then("^(.*) should be in the list of new concessions$", (String studentName) -> {
+            state.wait.until(ExpectedConditions.titleIs("Manage Concession"));
+            Assert.assertTrue(state.driver.getPageSource().contains(studentName));
+        });
+
+        And("^I click confirm reject button$", () -> {
+            WebElement btnConfirm = state.wait.until(ExpectedConditions.elementToBeClickable(By.id("confirmRejectConcession")));
+            btnConfirm.click();
+        });
+
+        Then("^(.*) should not be in the list of new concessions$", (String studentName) -> {
+            state.wait.until(ExpectedConditions.titleIs("Manage Concession"));
+            Assert.assertTrue(state.driver.getPageSource().contains(studentName));
+        });
+
+        And("^I click approve concession button$", () -> {
+            state.wait.until(ExpectedConditions.titleIs("Process Concession"));
+            processConcessionPage.btnApprove.click();
         });
     }
 }

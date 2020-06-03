@@ -78,6 +78,21 @@
     </div>
 </div>
 
+<div class="container text-center mt-5">
+    <h4 class="card-title">New Concession</h4>
+    <div class="row justify-content-md-center">
+        <div th:class="${concessionApplication.getCourseName()}" th:each="concessionApplication : ${concessionApplications}">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${concessionApplication.getCourseName()}"></h5>
+                    <p class="card-text" th:text="${concessionApplication.getStudent().getUserName()}"></p>
+                    <button class="btn btn-primary" style="width:150px" role="button" onclick="location.href = 'processConcession';" id="btnProcessConcession">Process</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="dateChangeModal" tabindex="-1" role="dialog" aria-labelledby="dialog_confirm_mapLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
