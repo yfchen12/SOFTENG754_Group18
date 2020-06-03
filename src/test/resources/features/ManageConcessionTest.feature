@@ -28,3 +28,8 @@ Feature: Manage Concession Test
     And I click reject button
     And I click confirm reject button
     Then John Smith should not be in the list of new concessions
+
+  Scenario: Approve course concession
+    When I click process button for student John Smith
+    And I click approve concession button
+    Then John Smith should not be in the list of new concessions

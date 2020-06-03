@@ -15,4 +15,7 @@ public class ProcessConcessionPage {
 
     @FindBy(id = "btnReject")
     public WebElement btnReject;
+
+    @FindBy(id = "btnApprove")
+    public WebElement btnApprove;
 }
