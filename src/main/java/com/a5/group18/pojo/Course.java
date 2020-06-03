@@ -14,7 +14,7 @@ public class Course {
     private String courseNumber;
     private String courseTitle;
     private String courseOutline;
-    private String courseValue;
+    private List<CourseValue> courseValue;
     private List<String> prerequisites;
     private List<Teacher> teachTeam;
     private int capacity;

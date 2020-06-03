@@ -19,4 +19,28 @@ public class CourseInformationPage {
     @FindBy(id = "btnDownloadCourse")
     public WebElement btnDownloadCourse;
 
+    @FindBy(id = "ttype")
+    public WebElement ttype;
+
+    @FindBy(id = "ttime")
+    public WebElement ttime;
+
+    @FindBy(id = "comp1")
+    public WebElement comp1;
+
+    @FindBy(id = "comp2")
+    public WebElement comp2;
+
+    @FindBy(id = "comp3")
+    public WebElement comp3;
+
+    @FindBy(id = "valueList")
+    public WebElement valueList;
+
+    @FindBy(id = "coursePre")
+    public WebElement coursePre;
+
+    @FindBy(id = "teacherList")
+    public WebElement teacherList;
+
 }

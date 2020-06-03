@@ -25,11 +25,23 @@ public class AddNewCoursePage {
     @FindBy(id = "coutline")
     public WebElement coutline;
 
-    @FindBy(id = "cvalue")
-    public WebElement cvalue;
-
     @FindBy(id = "cpre")
     public WebElement cpre;
+
+    @FindBy(id = "ttime")
+    public WebElement ttime;
+
+    @FindBy(id = "ttype")
+    public WebElement tdtype;
+
+    @FindBy(id = "company1")
+    public WebElement company1;
+
+    @FindBy(id = "company2")
+    public WebElement company2;
+
+    @FindBy(id = "company3")
+    public WebElement company3;
 
     @FindBy(id = "tname")
     public WebElement tname;

@@ -41,14 +41,32 @@
             <h3 class="display-5" th:text="${course.getCourseSchedule()}"></h3><br>
 
             <label for="coutline">Course Outline: </label><br>
-            <h3 class="display-5" th:text="${course.getCourseOutline()}"></h3><br>
+            <h3 class="display-5" id="coutline" th:text="${course.getCourseOutline()}"></h3><br>
 
-            <label for="cvalue">Course Value: </label><br>
-            <h3 class="display-5" th:text="${course.getCourseValue()}"></h3><br>
+            <label for="valueList">Course Value: </label><br>
+            <tr id="valueList" scope="row" th:field = "*{courseValue}">
+                <td id= "tdtype">
+                    <label for="ttype"  style="font-family:Verdana; font-size:80%; ">Course value type: </label>
+                    <h3 class="display-5" id="ttype" th:text="${course.getCourseValue()[0].courseValueType}"></h3>
+                </td>
+                <td id= "tdtime">
+                    <label for="ttime" style="font-family:Verdana; font-size:80%; ">Course value last check time: </label>
+                    <h3 class="display-5" id="ttime" th:text="${course.getCourseValue()[0].lastCheckTime}"></h3>
+                </td>
+                <td id= "tdcompany">
+
+                    <label for="comp1" style="font-family:Verdana; font-size:80%; ">Course value accept companies: </label>
+                    <h3 class="display-5" id="comp1" th:text="${course.getCourseValue()[0].companies[0]}"></h3>
+                    <h3 class="display-5" id="comp2" th:text="${course.getCourseValue()[0].companies[1]}"></h3>
+                    <h3 class="display-5" id="comp3" th:text="${course.getCourseValue()[0].companies[2]}"></h3><br>
+                </td>
+
+
+            </tr>
 
             <label for="cpre">Course Prerequisites:</label><br>
             <tr scope="row" id = "preList" th:class="${course.getPrerequisites()}" th:each="pre : ${course.getPrerequisites()}">
-                <td id= "courseTeacher">
+                <td id= "coursePre">
                     <a th:href="@{'/pre/'+${pre}}" th:text="${pre}"></a><br>
                 </td>
             </tr>
