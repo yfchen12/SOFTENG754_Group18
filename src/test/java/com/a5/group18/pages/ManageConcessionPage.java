@@ -15,4 +15,11 @@ public class ManageConcessionPage {
 
     @FindBy(id = "dateChange")
     public WebElement dateChange;
+
+    @FindBy(id = "concessionCriteria")
+    public WebElement concessionCriteria;
+
+    @FindBy(id = "btnSaveChanges")
+    public WebElement btnSaveChanges;
+
 }
