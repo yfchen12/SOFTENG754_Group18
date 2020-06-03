@@ -43,5 +43,9 @@ public class StudentCheckCourseInformationStepdefs implements En {
             myEnrollmentPage = new MyEnrollmentPage(state.driver);
             state.wait.until(ExpectedConditions.titleIs("My Enrollment"));
         });
+        And("^I am in search result page$", () -> {
+        });
+        When("^I click <CourseNumber> in the result list$", () -> {
+        });
     }
 }
