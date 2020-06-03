@@ -27,9 +27,7 @@ public class AddNewCourseController {
     }
 
     @PostMapping("/addNewCourse")
-    public String addNewCourse(ModelAndView modelAndView, Course course, RedirectAttributes ra) {
-
-
+    public String addNewCourse(ModelAndView modelAndView, Course course, RedirectAttributes ra,BindingResult bindingResult) {
         modelAndView.addObject("course",course);
         modelAndView.setViewName("redirect:courseinformations");
         ra.addFlashAttribute("course",course);

@@ -18,7 +18,7 @@ public class StudentCheckCoursePrerequisitedefs implements En {
     private StdDashboardPage stdDashboardPage;
     private CartPage cartPage;
     public StudentCheckCoursePrerequisitedefs() {
-        And("^I am in (.*) course information page$", (String coursenum) -> {
+        And("^I am in (.*) course information pages$", (String coursenum) -> {
             stdDashboardPage = new StdDashboardPage(state.driver);
             cartPage = new CartPage(state.driver);
             stdDashboardPage.btnCart.click();

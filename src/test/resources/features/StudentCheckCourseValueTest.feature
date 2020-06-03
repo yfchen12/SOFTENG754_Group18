@@ -1,4 +1,4 @@
-@FCK
+
 Feature: Student check course value
 
   Background:
