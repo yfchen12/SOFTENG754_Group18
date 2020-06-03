@@ -1,4 +1,4 @@
-@Admin
+
 Feature: Course administrator update course information
 
   Scenario Outline: Course admin edit one course

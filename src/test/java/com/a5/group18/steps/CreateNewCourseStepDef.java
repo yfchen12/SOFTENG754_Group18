@@ -30,7 +30,9 @@ public class CreateNewCourseStepDef implements En {
             addNewCoursePage.coutline.sendKeys("Learn how to elicit requirements from customers/users, write requirement specification and perform requirements analysis. Focus on the problem, not the solution.");
             addNewCoursePage.cvalue.sendKeys("Vocational skills by Xero 2020 March 3rd");
             addNewCoursePage.cpre.sendKeys("SOFTENG201");
-            addNewCoursePage.tteam.sendKeys("Kelly Blincoe");
+            addNewCoursePage.tname.sendKeys("Kelly Blincoe");
+            addNewCoursePage.temail.sendKeys("Kelly.B@auckland.ac.nz");
+            addNewCoursePage.tinstruction.sendKeys("Lady from American");
             addNewCoursePage.cstatus.sendKeys("NotAvailable");
             addNewCoursePage.ccapacity.sendKeys("150");
             addNewCoursePage.ccampus.sendKeys("CityCampus");

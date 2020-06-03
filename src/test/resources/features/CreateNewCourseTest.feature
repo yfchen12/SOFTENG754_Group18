@@ -1,3 +1,4 @@
+
 Feature: Course administrator creates new courses
   Scenario: Course admin create new course
     Given I login as a Course Administrator

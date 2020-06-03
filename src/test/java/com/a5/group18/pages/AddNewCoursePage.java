@@ -31,8 +31,14 @@ public class AddNewCoursePage {
     @FindBy(id = "cpre")
     public WebElement cpre;
 
-    @FindBy(id = "tteam")
-    public WebElement tteam;
+    @FindBy(id = "tname")
+    public WebElement tname;
+
+    @FindBy(id = "temail")
+    public WebElement temail;
+
+    @FindBy(id = "tinstruction")
+    public WebElement tinstruction;
 
     @FindBy(id = "cstatus")
     public WebElement cstatus;

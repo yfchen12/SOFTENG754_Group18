@@ -19,12 +19,12 @@
 </head>
 
 <body style="font-family:Verdana; font-size:150%; font-weight:bold;" >
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-end">
+    <a class="navbar-brand" href="/adminDashboard">Dashboard</a>
 
-
-<nav class="navbar navbar-expand-sm navbar-light bg-light mb-3">
-
-    <a>Course Creating</a>
-
+    <button class="btn btn-success ml-auto mr-1" type="submit" onclick="location.href = '/';"
+            id="btnLogout">Logout
+    </button>
 </nav>
 <div class="row justify-content-center align-items-center h-100">
     <div th:object="${course}">
@@ -46,8 +46,44 @@
             <br>
             <label for="cpre">Course Prerequisites: <span class="required">*</span></label><br>
             <input type="text" id="cpre" name="cpre" th:field="*{prerequisites}"><br>
+            <br>
+            <div >
+                <script>
+                function addToList() {
+                let name = document.getElementById("tname").value;
+                let emal = document.getElementById("temail").value;
+                let instruction = document.getElementById("tinstruction").value;
+
+                let li = document.createElement("li");
+                li.textContent = name + ' ' + emal + ' ' + instruction ;
+                document.getElementById("telist").appendChild(li);
+
+                }
+                </script>
             <label for="tteam">Course Teaching Team: <span class="required">*</span></label><br>
-            <input type="text" id="tteam" name="tteam" th:field="*{teachTeam}"><br>
+
+                <tr scope="row" th:field = "*{teachTeam}"   id = "teacherList"  >
+                    <td id= "tdname">
+                        <label for="tname"  style="font-family:Verdana; font-size:80%; ">Teacher name: </label>
+                                <input type="text" id="tname" th:field="*{teachTeam[0].name}" name="tname"><br>
+                    </td>
+                    <td id= "tdemail">
+                        <label for="temail" style="font-family:Verdana; font-size:80%; ">Teacher email: </label>
+                        <input type="text" id="temail" th:field="*{teachTeam[0].email}" name="temail" ><br>
+                    </td>
+                    <td id= "tdinstruction">
+
+                        <label for="tinstruction" style="font-family:Verdana; font-size:80%; ">Teacher instructions: </label>
+                        <input type="text" id="tinstruction" th:field="*{teachTeam[0].Instructions}" name="tinstruction" ><br>
+                    </td>
+
+                    <button type="button" onclick="addToList()"   class="btn btn-primary" style="width:250px"   id="btnAddTeacher">+</button><br>
+                </tr>
+
+                <ul id="telist" ></ul>
+            </div>
+            <br><br>
+
             <div class="form-group" >
                 <label for="cstatus">Course Status: </label><br>
                 <select th:field="*{courseStatus}" name="cstatus"  id = "cstatus">

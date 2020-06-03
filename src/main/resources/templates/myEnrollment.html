@@ -43,11 +43,13 @@
         </thead>
         <tbody>
         <tr scope="row" th:class="${enrollment.course.getCourseNumber()}" th:each="enrollment : ${enrollments}">
-            <td id= "courseNum" th:text="${enrollment.course.getCourseNumber()}"></td>
+            <td id= "courseNum" >
+                <a th:href="@{'/courseinformation/'+${enrollment.course.getCourseNumber()}}" th:text="${enrollment.course.getCourseNumber()}" ></a>
+            </td>
             <td id= "courseTitle"  th:text="${enrollment.course.getCourseTitle()}"></td>
             <td id= "enrollStatus"  ><a id="waitStatus" th:text="${enrollment.status}"></a></td>
             <td id = "enrollAction" >
-                <button type="button" href="#"  data-toggle="modal" data-target="#modalCenter" class="btn btnDrop" style="background-color: #009AC7; color:white">Drop</button>
+                <button th:id="${enrollment.course.getCourseNumber()} + 'dropBtn'"type="button" href="#"  data-toggle="modal" data-target="#modalCenter" class="btn btnDrop" style="background-color: #009AC7; color:white">Drop</button>
             </td>
         </tr>
         </tbody>
@@ -81,7 +83,7 @@
     </div>
 </div>
 
-<
+
 
 </body>
 </html>
@@ -103,14 +105,14 @@
         $("a").click(function() {
             $(".btnConfirm").attr("class", "btn btnConfirm d-none");
             $(".btnOk").text("OK");
-            const courseNum = $(this).parent("td").siblings("#courseNum").text();
+            const courseNum = $(this).parent("td").siblings("#courseNum").children("a").text();
             const studentInfront = waitlistPlace[courseNum];
             $("#modalTitle").text(courseNum);
             $("#modal-waitlist").html("There are <i class=\"fas fa-user-graduate\"></i> "+studentInfront+ " student(s) in front of you in the waiting list.");
         })
         $(".btnDrop").click(function() {
             $(".btnConfirm").attr("class", "btn btnConfirm visible");
-            let s = $(this).parent("td").siblings("#courseNum");
+            let s = $(this).parent("td").siblings("#courseNum").children("a");
             courseNumber = s.text();
             $("#modalTitle").text("Drop "+courseNumber);
             $("#modal-waitlist").html("<i class=\"fas fa-exclamation-triangle text-warning\"></i> Are you sure to drop "+ s.text() + "?")
@@ -122,7 +124,9 @@
         })
         $.when( { reason,result } ).done(function( x ) {
             if(result==true) {
-                alert("Succeed.");
+                alert("Succeed: Successfully dropped.");
+            }else if(result==false&&reason!=null){
+                alert("Failed: "+ reason)
             }
         });
     });

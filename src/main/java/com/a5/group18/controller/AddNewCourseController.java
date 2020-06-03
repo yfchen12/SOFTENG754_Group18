@@ -1,6 +1,7 @@
 package com.a5.group18.controller;
 
 import com.a5.group18.pojo.Course;
+import com.a5.group18.pojo.Teacher;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Controller
@@ -34,8 +37,16 @@ public class AddNewCourseController {
 
 
         modelAndView.addObject("course",course);
-        modelAndView.setViewName("redirect:courseinformation");
+        modelAndView.setViewName("redirect:courseinformations");
         ra.addFlashAttribute("course",course);
-        return "redirect:courseinformation";
+        return "redirect:courseinformations";
+    }
+
+    @PostMapping("/addteacher")
+    public void addTeacher(ModelAndView modelAndView, @ModelAttribute List<Teacher> teachers) {
+        List<String> sss = new ArrayList<>();
+         modelAndView.getModel();
+return;
+
     }
 }

@@ -3,12 +3,8 @@ package com.a5.group18.steps;
 import com.a5.group18.pages.MyEnrollmentPage;
 import cucumber.api.java8.En;
 import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.List;
 
 public class StudentManageEnrollmentStepDef implements En {
 
@@ -16,15 +12,15 @@ public class StudentManageEnrollmentStepDef implements En {
 
     @Autowired
     private UIGlobalState state;
+
     public StudentManageEnrollmentStepDef() {
 
-
         And("^I am on My Enrollment Page$", () -> {
-            state.driver.get(state.url+"/myEnrollment");
+            myEnrollmentPage = new MyEnrollmentPage(state.driver);
+            state.driver.get(state.url + "/myEnrollment");
         });
         When("^I click the text WAITLISTED$", () -> {
             state.wait.until(ExpectedConditions.titleIs("My Enrollment"));
-            myEnrollmentPage = new MyEnrollmentPage(state.driver);
             myEnrollmentPage.waitlistLink.click();
         });
         Then("^I should be able to see there is (\\d+) student in front of me in the waiting list$", (Integer studentNum) -> {
@@ -34,32 +30,33 @@ public class StudentManageEnrollmentStepDef implements En {
         But("^I can not see the name of the student in front of me$", () -> {
             Assertions.assertFalse(myEnrollmentPage.modalMsg.getText().contains("allen"));
         });
-
-
-        When("^I click the drop button of course SOFTENG702$", () -> {
-            WebElement dropbtn702 = state.driver.findElement(By.xpath("/html/body/div[2]/table/tbody/tr[2]/td[4]/button"));
-            state.wait.until(ExpectedConditions.elementToBeClickable(dropbtn702));
-            dropbtn702.click();
+        When("^I click the drop button of course \"([^\"]*)\"$", (String courseNumber) -> {
+            if (courseNumber.equals("SOFTENG701")) {
+                state.wait.until(ExpectedConditions.elementToBeClickable(myEnrollmentPage.dropbtn701));
+                myEnrollmentPage.dropbtn701.click();
+            } else if (courseNumber.equals("SOFTENG702")) {
+                state.wait.until(ExpectedConditions.elementToBeClickable(myEnrollmentPage.dropbtn702));
+                myEnrollmentPage.dropbtn702.click();
+            }else{
+                state.wait.until(ExpectedConditions.elementToBeClickable(myEnrollmentPage.dropbtn704));
+                myEnrollmentPage.dropbtn704.click();}
         });
         And("^I click the confirm button in the modal window$", () -> {
-            WebElement confirmBtn = state.driver.findElement(By.id("confirmDrop"));
-            state.wait.until(ExpectedConditions.visibilityOf(confirmBtn));
-            confirmBtn.click();
+            state.wait.until(ExpectedConditions.visibilityOf(myEnrollmentPage.confirmBtn));
+            myEnrollmentPage.confirmBtn.click();
         });
-        Then("^I should be able to notify the course is dropped successfully$", () -> {
+        Then("^I should see on the alert box that the course is \"([^\"]*)\" to drop because \"([^\"]*)\"$", (String result, String reason) -> {
             state.wait.until(ExpectedConditions.alertIsPresent());
-            String msg =  state.driver.switchTo().alert().getText();
-            Assertions.assertTrue(msg.contains("Succeed"));
+            String msg = state.driver.switchTo().alert().getText();
+            Assertions.assertTrue(msg.contains(result)&&msg.contains(reason));
         });
-
 
         And("^I click the ok button on the alert window$", () -> {
             state.driver.switchTo().alert().accept();
         });
         Then("^I should see the dropped course is removed from the enrollment list$", () -> {
-            List<WebElement> updatedCourse = state.driver.findElements(By.id("courseNum"));
-            state.wait.until(ExpectedConditions.visibilityOfAllElements(updatedCourse));
-            Assertions.assertFalse(updatedCourse.toString().contains("SOFTENG702"));
+            state.wait.until(ExpectedConditions.visibilityOfAllElements(myEnrollmentPage.updatedCourse));
+            Assertions.assertFalse(myEnrollmentPage.updatedCourse.toString().contains("SOFTENG704"));
         });
     }
 }

@@ -15,7 +15,7 @@ public class Course {
     private String courseTitle;
     private String courseOutline;
     private String courseValue;
-    private String prerequisites;
+    private List<String> prerequisites;
     private List<Teacher> teachTeam;
     private int capacity;
 
@@ -32,4 +32,7 @@ public class Course {
   
     private String courseSchedule;
 
+    public String getFileUrl() {
+        return "files/"+courseNumber+".pdf";
+    }
 }
