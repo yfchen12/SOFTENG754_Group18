@@ -11,6 +11,7 @@ Feature: Student Update Notification Test
     And I click save button
     Then I should see a green banner saying preference saved
 
+  @debug
   Scenario: Set items to be notified with
     And I select concession open date
     And I select course information

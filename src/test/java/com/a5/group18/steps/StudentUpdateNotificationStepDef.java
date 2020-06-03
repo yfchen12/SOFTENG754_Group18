@@ -50,13 +50,13 @@ public class StudentUpdateNotificationStepDef implements En {
         });
         And("^I select enrollment deadline$", () -> {
             state.wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("notificationModal")));
-            WebElement enrollmentDeadline = state.driver.findElement(By.id("chkenrollmentDeadline"));
+            WebElement enrollmentDeadline = state.driver.findElement(By.id("chkEnrollmentDeadline"));
             enrollmentDeadline.click();
         });
 
         And("^I select enrollment status change$", () -> {
             state.wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("notificationModal")));
-            WebElement enrollmentStatus = state.driver.findElement(By.id("enrollmentStatus"));
+            WebElement enrollmentStatus = state.driver.findElement(By.id("chkEnrollmentStatus"));
             enrollmentStatus.click();
         });
     }
