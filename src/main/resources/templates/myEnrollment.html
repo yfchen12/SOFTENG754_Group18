@@ -43,7 +43,9 @@
         </thead>
         <tbody>
         <tr scope="row" th:class="${enrollment.course.getCourseNumber()}" th:each="enrollment : ${enrollments}">
-            <td id= "courseNum" th:text="${enrollment.course.getCourseNumber()}"></td>
+            <td id= "courseNum" >
+                <a th:href="@{'/courseinformation/'+${enrollment.course.getCourseNumber()}}" th:text="${enrollment.course.getCourseNumber()}" ></a>
+            </td>
             <td id= "courseTitle"  th:text="${enrollment.course.getCourseTitle()}"></td>
             <td id= "enrollStatus"  ><a id="waitStatus" th:text="${enrollment.status}"></a></td>
             <td id = "enrollAction" >
@@ -103,14 +105,14 @@
         $("a").click(function() {
             $(".btnConfirm").attr("class", "btn btnConfirm d-none");
             $(".btnOk").text("OK");
-            const courseNum = $(this).parent("td").siblings("#courseNum").text();
+            const courseNum = $(this).parent("td").siblings("#courseNum").children("a").text();
             const studentInfront = waitlistPlace[courseNum];
             $("#modalTitle").text(courseNum);
             $("#modal-waitlist").html("There are <i class=\"fas fa-user-graduate\"></i> "+studentInfront+ " student(s) in front of you in the waiting list.");
         })
         $(".btnDrop").click(function() {
             $(".btnConfirm").attr("class", "btn btnConfirm visible");
-            let s = $(this).parent("td").siblings("#courseNum");
+            let s = $(this).parent("td").siblings("#courseNum").children("a");
             courseNumber = s.text();
             $("#modalTitle").text("Drop "+courseNumber);
             $("#modal-waitlist").html("<i class=\"fas fa-exclamation-triangle text-warning\"></i> Are you sure to drop "+ s.text() + "?")

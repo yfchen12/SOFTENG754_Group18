@@ -14,6 +14,7 @@ public class StudentCheckCourseInformationStepdefs implements En {
     private CartPage cartPage;
     private StdDashboardPage stdDashboardPage;
     private CourseInformationPage courseInformationPage;
+    private MyEnrollmentPage myEnrollmentPage;
     @Autowired
     private UIGlobalState state;
     public StudentCheckCourseInformationStepdefs() {
@@ -33,7 +34,14 @@ public class StudentCheckCourseInformationStepdefs implements En {
             courseInformationPage = new CourseInformationPage(state.driver);
             Assert.assertEquals(courseNum, courseInformationPage.coursenum.getText());
         });
-        When("^I click <CourseNumber> in my enrollment list$", () -> {
+        When("^I click \"([^\"]*)\" in my enrollment list$", (String courseNum) -> {
+            state.driver.findElement(By.linkText(courseNum)).click();
+        });
+        And("^I am in my enrollment page$", () -> {
+            stdDashboardPage = new StdDashboardPage(state.driver);
+            stdDashboardPage.btnMyEnrollment.click();
+            myEnrollmentPage = new MyEnrollmentPage(state.driver);
+            state.wait.until(ExpectedConditions.titleIs("My Enrollment"));
         });
     }
 }
