@@ -100,5 +100,15 @@ public class ManageConcessionStepDef implements En {
             state.wait.until(ExpectedConditions.titleIs("Manage Concession"));
             Assert.assertTrue(state.driver.getPageSource().contains(studentName));
         });
+
+        And("^I click confirm reject button$", () -> {
+            WebElement btnConfirm = state.wait.until(ExpectedConditions.elementToBeClickable(By.id("confirmRejectConcession")));
+            btnConfirm.click();
+        });
+
+        Then("^(.*) should not be in the list of new concessions$", (String studentName) -> {
+            state.wait.until(ExpectedConditions.titleIs("Manage Concession"));
+            Assert.assertTrue(state.driver.getPageSource().contains(studentName));
+        });
     }
 }
