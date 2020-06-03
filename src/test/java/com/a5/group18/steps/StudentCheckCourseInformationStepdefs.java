@@ -15,6 +15,8 @@ public class StudentCheckCourseInformationStepdefs implements En {
     private StdDashboardPage stdDashboardPage;
     private CourseInformationPage courseInformationPage;
     private MyEnrollmentPage myEnrollmentPage;
+    private SearchResultPage searchResultPage;
+    private SearchCoursePage searchCoursePage;
     @Autowired
     private UIGlobalState state;
     public StudentCheckCourseInformationStepdefs() {
@@ -42,6 +44,50 @@ public class StudentCheckCourseInformationStepdefs implements En {
             stdDashboardPage.btnMyEnrollment.click();
             myEnrollmentPage = new MyEnrollmentPage(state.driver);
             state.wait.until(ExpectedConditions.titleIs("My Enrollment"));
+        });
+        And("^I am in search result page$", () -> {
+            stdDashboardPage = new StdDashboardPage(state.driver);
+            stdDashboardPage.btnSearch.click();
+            state.wait.until(ExpectedConditions.titleIs("Search Course"));
+            searchCoursePage = new SearchCoursePage(state.driver);
+            searchCoursePage.btnSearch.click();
+            searchResultPage = new SearchResultPage(state.driver);
+            state.wait.until(ExpectedConditions.titleIs("Search Result"));
+        });
+        When("^I click \"([^\"]*)\" in the result list$", (String courseNum) -> {
+            state.driver.findElement(By.linkText(courseNum)).click();
+        });
+        And("^I am in course information page$", () -> {
+            stdDashboardPage = new StdDashboardPage(state.driver);
+            stdDashboardPage.btnCart.click();
+            cartPage = new CartPage(state.driver);
+            state.wait.until(ExpectedConditions.titleIs("Enrollment Cart"));
+            state.driver.findElement(By.linkText("SOFTENG701")).click();
+            state.wait.until(ExpectedConditions.titleIs("Course Information"));
+        });
+        When("^I click \"([^\"]*)\" list in the page$", (String teacher) -> {
+            Thread.sleep(1000);
+
+            state.driver.findElement(By.linkText(teacher)).click();
+        });
+        Then("^I should be redirected to teacher profile page$", () -> {
+            state.wait.until(ExpectedConditions.titleIs("Teacher Information"));
+        });
+        And("^I am in \"([^\"]*)\" course information page$", (String coursenum) -> {
+            stdDashboardPage = new StdDashboardPage(state.driver);
+            stdDashboardPage.btnCart.click();
+            cartPage = new CartPage(state.driver);
+            state.wait.until(ExpectedConditions.titleIs("Enrollment Cart"));
+            state.driver.findElement(By.linkText(coursenum)).click();
+            state.wait.until(ExpectedConditions.titleIs("Course Information"));
+        });
+        When("^I click download in the bottom of the page$", () -> {
+            Thread.sleep(1000);
+            courseInformationPage= new CourseInformationPage(state.driver);
+            courseInformationPage.btnDownloadCourse.click();
+        });
+        Then("^I should be able to download \"([^\"]*)\"\\.pdf$", (String course) -> {
+            //right now do not have one good idea for different platform
         });
     }
 }

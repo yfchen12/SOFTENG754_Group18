@@ -1,0 +1,47 @@
+
+
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#373a3c">
+    <title>Teacher Information</title>
+    <link href="https://cdn.foe.auckland.ac.nz/static/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://cdn.foe.auckland.ac.nz/static/foe/1.6.1/css/base-template.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://cdn.foe.auckland.ac.nz/static/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
+
+    <link href="/static/common/css/courses.1ced72daa28c.css" rel="stylesheet">
+</head>
+<nav class="navbar navbar-expand-sm navbar-light bg-light mb-3">
+
+    <a>Teacher Profile</a>
+
+</nav>
+<body style="font-family:Verdana; font-size:150%; font-weight:bold;" >
+
+
+<div class="row justify-content-center align-items-center h-100">
+
+        <!--/*@thymesVar id="course" type=""*/-->
+        <form  th:object="${teacher}"  >
+
+            <label for="teachername">Teacher Name: </label><br>
+            <h3 class="display-5" th:text="${name}"></h3><br>
+
+            <label for="teacheremail">Teacher Email: </label><br>
+            <h3 class="display-5" th:text="${email}"></h3><br>
+
+            <label for="teacherInstantiations">Teacher Instructions: </label><br>
+            <h3 class="display-5" th:text="${Instructions}"></h3><br>
+        </form>
+    </div>
+
+
+
+</body>
+</html>

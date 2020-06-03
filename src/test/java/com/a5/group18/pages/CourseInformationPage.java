@@ -15,4 +15,8 @@ public class CourseInformationPage {
 
     @FindBy(id = "coursenum")
     public WebElement coursenum;
+
+    @FindBy(id = "btnDownloadCourse")
+    public WebElement btnDownloadCourse;
+
 }

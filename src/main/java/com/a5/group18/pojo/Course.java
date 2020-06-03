@@ -32,4 +32,7 @@ public class Course {
   
     private String courseSchedule;
 
+    public String getFileUrl() {
+        return "files/"+courseNumber+".pdf";
+    }
 }

@@ -19,8 +19,9 @@ import java.util.List;
 public class CourseService {
 
     public List<Course> findAll() {
-        Teacher teacher1 = new Teacher("ady.jane@uoa.com");
-        Teacher teacher2 = new Teacher("john.walker@uoa.com");
+        Teacher teacher1 = new Teacher("Andy Jane","ady.jane@uoa.com","Come from England");
+        Teacher teacher2 = new Teacher("John Walker","john.walker@uoa.com","Come from American");
+
         List<Teacher> tels = Arrays.asList(teacher1, teacher2);
         Course course = new Course("SOFTENG701", "Advanced Software Development",
                 "Course Outline", "Course Value", "Prerequisite", tels,
@@ -44,8 +45,8 @@ public class CourseService {
     }
 
     public Course findByCourseNum(final String coursNum){
-        Teacher teacher1 = new Teacher("ady.jane@uoa.com");
-        Teacher teacher2 = new Teacher("john.walker@uoa.com");
+        Teacher teacher1 = new Teacher("Andy Jane","ady.jane@uoa.com","Come from England");
+        Teacher teacher2 = new Teacher("John Walker","john.walker@uoa.com","Come from American");
         List<Teacher> tels = Arrays.asList(teacher1, teacher2);
         Course course = new Course("SOFTENG701", "Advanced Software Development",
                 "Course Outline", "Course Value", "Prerequisite", tels,

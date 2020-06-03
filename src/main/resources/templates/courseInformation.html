@@ -29,7 +29,7 @@
 <div class="row justify-content-center align-items-center h-100">
     <div th:object="${course}">
         <!--/*@thymesVar id="course" type=""*/-->
-        <form>
+        <form  th:object="${course}" th:action="@{'/download/'+${course.getCourseNumber()}}"  method="post">
 
             <label for="coursenum">Course Number: </label><br>
             <h3 class="display-5" id ="coursenum" th:text="${course.getCourseNumber()}"></h3><br>
@@ -48,8 +48,13 @@
 
             <label for="cpre">Course Prerequisites:</label><br>
             <h3 class="display-5" th:text="${course.getPrerequisites()}"></h3><br>
-            <label for="tteam">Course Teaching Team: </label><br>
-            <h3 class="display-5" th:text="${course.getTeachTeam()}"></h3><br>
+            <label for="teacherList">Course Teaching Team: </label><br>
+            <tr scope="row" id = "teacherList" th:class="${course.getTeachTeam()}" th:each="teacher : ${course.getTeachTeam()}">
+                <td id= "courseTeacher">
+                    <a th:href="@{'/teacher/'+${teacher.getName()}}" th:text="${teacher.getName()}"></a><br>
+                </td>
+            </tr>
+            <br>
 
             <label for="cstatus">Course Status: </label><br>
             <h3 class="display-5" th:text="${course.getCourseStatus()}"></h3><br>
@@ -59,6 +64,12 @@
 
             <label for="ccampus">Course Campus: </label><br>
             <h3 class="display-5" th:text="${course.campus}"></h3><br>
+
+            <div class="row justify-content-center align-items-center h-100">
+
+                <button type="submit"  role="button" class="btn btn-primary" style="width:350px"   id="btnDownloadCourse">Download</button>
+
+            </div>
 
         </form>
     </div>

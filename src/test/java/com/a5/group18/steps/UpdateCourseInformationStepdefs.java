@@ -43,6 +43,7 @@ public class UpdateCourseInformationStepdefs implements En {
             courseUpdatePage.cvalue.sendKeys("Vocational skills by Xero 2020 March 3rd");
             courseUpdatePage.cpre.sendKeys("SOFTENG201");
             courseUpdatePage.tteam.sendKeys("Kelly Blincoe");
+
             courseUpdatePage.cstatus.sendKeys("NotAvailable");
             courseUpdatePage.ccapacity.sendKeys("150");
             courseUpdatePage.ccampus.sendKeys("CityCampus");

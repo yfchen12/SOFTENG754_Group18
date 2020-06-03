@@ -7,6 +7,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 
 public class MyEnrollmentPage {
     private WebDriver driver;
@@ -60,4 +62,7 @@ public class MyEnrollmentPage {
 
     @FindBy(id="confirmDrop")
     public WebElement confirmBtn;
+	
+	@FindBy(id="courseNum")
+    public List<WebElement> courseNum;
 }
