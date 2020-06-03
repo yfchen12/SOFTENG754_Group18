@@ -68,7 +68,7 @@
                 <span style="float:left"><button type="button" id="cancelRejectConcession" class="btn btn-default" data-dismiss="modal" onclick="location.href = 'manageConcession';">Cancel </button></span>
                 <form  id = "removeConcession" th:action="@{/processConcession}" th:object="${concession}" th:method="post">
                     <span style="float:right">
-                        <button type="submit" class="btn btn-primary" id="confirmRejectConcession" data-dismiss="modal">Confirm</button>
+                        <button type="submit" class="btn btn-primary" id="confirmRejectConcession" data-dismiss="modal" onclick="location.href = 'manageConcession';">Confirm</button>
                     </span>
                 </form>
             </div>
