@@ -117,9 +117,5 @@ public class StudentCheckCourseInformationStepdefs implements En {
         Then("^I should be able to download \"([^\"]*)\"\\.pdf$", (String course) -> {
             //right now do not have one good idea for different platform
         });
-
-        When("^I click \"([^\"]*)\" list in the page$", (String teacher) -> {
-
-        });
     }
 }
