@@ -44,7 +44,7 @@
         <tbody>
         <tr scope="row" th:class="${enrollment.course.getCourseNumber()}" th:each="enrollment : ${enrollments}">
             <td id= "courseNum" >
-                <a th:href="@{'/courseinformation/'+${enrollment.course.getCourseNumber()}}" th:text="${enrollment.course.getCourseNumber()}" ></a>
+                <a id="courseLink" th:href="@{'/courseinformation/'+${enrollment.course.getCourseNumber()}}" th:text="${enrollment.course.getCourseNumber()}" ></a>
             </td>
             <td id= "courseTitle"  th:text="${enrollment.course.getCourseTitle()}"></td>
             <td id= "enrollStatus"  ><a id="waitStatus" th:text="${enrollment.status}"></a></td>

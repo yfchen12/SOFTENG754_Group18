@@ -41,8 +41,50 @@
             <textarea id="coutline" name="coutline" rows="4" cols="50" th:field="*{courseOutline}">
         </textarea><br>
             <label for="cvalue">Course Value: <span class="required">*</span></label><br>
-            <textarea id="cvalue" name="cvalue" rows="4" cols="50" th:field="*{courseValue}">
-        </textarea>
+            <label for="tteam">Course Teaching Team: <span class="required">*</span></label><br>
+
+            <script>
+                function addToValueList() {
+                    let type = document.getElementById("tname").value;
+                    let time = document.getElementById("temail").value;
+                    let comp1 = document.getElementById("company1").value;
+                    let comp2 = document.getElementById("company1").value;
+                    let comp3 = document.getElementById("company1").value;
+                    let li = document.createElement("li");
+                    li.textContent = type + ' ' + time + ' ' + comp1+','+comp2+','+comp3 ;
+                    document.getElementById("valuelist").appendChild(li);
+
+                }
+            </script>
+
+            <tr scope="row" th:field = "*{courseValue}"   id = "teacherList"  >
+                <td id= "tdtype">
+                    <label for="ttype"  style="font-family:Verdana; font-size:80%; ">Course value type: </label>
+                    <select th:field="*{courseValue[0].courseValueType}" name="cvalues"  id = "ttype">
+
+                        <option th:each="cvs : ${T(com.a5.group18.enumerated.CourseValueType).values()}"
+                                th:value="${cvs}" th:text="${cvs}"
+                        >
+
+                        </option>
+                    </select>
+                </td><br>
+                <td id= "tdtime">
+                    <label for="ttime" style="font-family:Verdana; font-size:80%; ">Course value last check time: </label>
+                    <input type="text" id="ttime" th:field="*{courseValue[0].lastCheckTime}" name="temail" ><br>
+                </td>
+                <td id= "tdcompany">
+
+                    <label for="company1" style="font-family:Verdana; font-size:80%; ">Course value accept companies: </label>
+                    <input type="text" id="company1" th:field="*{courseValue[0].companies[0]}" name="tinstruction" >
+                    <input type="text" id="company2" th:field="*{courseValue[0].companies[1]}" name="tinstruction" >
+                    <input type="text" id="company3" th:field="*{courseValue[0].companies[2]}" name="tinstruction" ><br>
+                </td>
+
+                <button type="button" onclick="addToValueList()"   class="btn btn-primary" style="width:250px"   id="btnAddTeacher">+</button><br>
+            </tr>
+
+            <ul id="valuelist" ></ul>
             <br>
             <label for="cpre">Course Prerequisites: <span class="required">*</span></label><br>
             <input type="text" id="cpre" name="cpre" th:field="*{prerequisites}"><br>
