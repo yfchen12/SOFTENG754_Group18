@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class CourseInformationPage {
     private WebDriver driver;
 
@@ -42,5 +44,11 @@ public class CourseInformationPage {
 
     @FindBy(id = "teacherList")
     public WebElement teacherList;
+
+    @FindBy(id = "ttList")
+    public List<WebElement> ttList;
+
+    @FindBy(id = "prereList")
+    public List<WebElement> prereList;
 
 }

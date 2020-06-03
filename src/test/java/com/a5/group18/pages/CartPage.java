@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 /**
  * @author Tim Shi
  * @version 1.0
@@ -31,5 +33,8 @@ public class CartPage {
 
     @FindBy(id = "btnDelete")
     public WebElement btnDelete;
+
+    @FindBy(id="courseLink")
+    public List<WebElement> courseNum;
 
 }

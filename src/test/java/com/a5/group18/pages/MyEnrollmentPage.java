@@ -63,6 +63,6 @@ public class MyEnrollmentPage {
     @FindBy(id="confirmDrop")
     public WebElement confirmBtn;
 	
-	@FindBy(id="courseNum")
+	@FindBy(id="courseLink")
     public List<WebElement> courseNum;
 }

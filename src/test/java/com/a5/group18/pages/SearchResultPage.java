@@ -6,6 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 /**
  * @author Tim Shi
  * @version 1.0
@@ -33,5 +35,8 @@ public class SearchResultPage {
 
     @FindBy(id = "btnViewDetail")
     public WebElement btnViewDetail;
+
+    @FindBy(id="courseLink")
+    public List<WebElement> courseNum;
 
 }

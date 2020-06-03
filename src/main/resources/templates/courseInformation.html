@@ -67,7 +67,7 @@
             <label for="cpre">Course Prerequisites:</label><br>
             <tr scope="row" id = "preList" th:class="${course.getPrerequisites()}" th:each="pre : ${course.getPrerequisites()}">
                 <td id= "coursePre">
-                    <a th:href="@{'/pre/'+${pre}}" th:text="${pre}"></a><br>
+                    <a id="prereList" th:href="@{'/pre/'+${pre}}" th:text="${pre}"></a><br>
                 </td>
             </tr>
             <br>
@@ -75,7 +75,7 @@
             <label for="teacherList">Course Teaching Team: </label><br>
             <tr scope="row" id = "teacherList" th:class="${course.getTeachTeam()}" th:each="teacher : ${course.getTeachTeam()}">
                 <td id= "courseTeacher">
-                    <a th:href="@{'/teacher/'+${teacher.getName()}}" th:text="${teacher.getName()}"></a><br>
+                    <a id="ttList" th:href="@{'/teacher/'+${teacher.getName()}}" th:text="${teacher.getName()}"></a><br>
                 </td>
             </tr>
             <br>

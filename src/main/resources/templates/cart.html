@@ -38,7 +38,7 @@
         <tr th:class="${courses.getCourseNumber()}" th:each="courses : ${courses}">
 
             <td id="courseNum"   >
-                <a th:href="@{'/courseinformation/'+${courses.getCourseNumber()}}"  th:text="${courses.getCourseNumber()}"></a>
+                <a id="courseLink" th:href="@{'/courseinformation/'+${courses.getCourseNumber()}}"  th:text="${courses.getCourseNumber()}"></a>
             </td>
             <td id="courseTitle" th:text="${courses.getCourseTitle()}"></td>
             <td id="enrollStatus" th:text="${courses.getCourseStatus()}"></td>
