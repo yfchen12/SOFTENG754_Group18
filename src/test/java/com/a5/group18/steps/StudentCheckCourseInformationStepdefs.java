@@ -57,5 +57,11 @@ public class StudentCheckCourseInformationStepdefs implements En {
         When("^I click \"([^\"]*)\" in the result list$", (String courseNum) -> {
             state.driver.findElement(By.linkText(courseNum)).click();
         });
+        And("^I am in course information page$", () -> {
+        });
+        When("^I click <teacher> list in the page$", () -> {
+        });
+        Then("^I should be redirected to teacher profile page$", () -> {
+        });
     }
 }
