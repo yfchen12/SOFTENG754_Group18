@@ -9,7 +9,13 @@
     <title>Course Manage</title>
 </head>
 <body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-end">
+    <a class="navbar-brand" href="/adminDashboard">Dashboard</a>
 
+    <button class="btn btn-success ml-auto mr-1" type="submit" onclick="location.href = '/';"
+            id="btnLogout">Logout
+    </button>
+</nav>
 <div class="jumbotron text-center">
     <h1 class="display-3" id="landing_title">Course Manage</h1>
 </div>
@@ -30,7 +36,9 @@
         </thead>
         <tbody>
         <tr scope="row" id = "courseList" th:class="${courses}" th:each="course : ${courses}">
-            <td id= "courseNum" th:text="${course.getCourseNumber()}"></td>
+            <td id= "courseNum">
+                <a th:href="@{'/courseinformation/'+${course.getCourseNumber()}}"  th:text="${course.getCourseNumber()}"></a>
+            </td>
             <td id= "courseTitle" th:text="${course.getCourseTitle()}"></td>
             <td id= "enrollStatus" th:text="${course.getCourseStatus()}"></td>
             <td id = "manageAction">

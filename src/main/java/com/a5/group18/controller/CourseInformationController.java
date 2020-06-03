@@ -26,8 +26,9 @@ public class CourseInformationController {
         return c;
     }
 
-    @GetMapping("/courseinformation")
-    public String courseinformation(ModelAndView modelAndView, @ModelAttribute Course course) {
+    @GetMapping("/courseinformations")
+    public String courseinformations(Model modelAndView, @ModelAttribute Course course) {
+        modelAndView.addAttribute("course", course);
         return "courseinformation";
     }
     @GetMapping("/courseinformation/{courseid}")
