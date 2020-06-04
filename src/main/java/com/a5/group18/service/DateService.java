@@ -1,5 +1,6 @@
 package com.a5.group18.service;
 
+import com.a5.group18.pojo.Concession;
 import com.a5.group18.pojo.ConcessionOpenDate;
 import org.springframework.stereotype.Service;
 
@@ -10,9 +11,11 @@ import java.util.*;
 public class DateService {
 
     ArrayList<ConcessionOpenDate> concessionOpenDates;
+    ArrayList<ConcessionOpenDate> enrollmentOpenDates;
 
     public DateService() {
         concessionOpenDates = addConcessionOpenDates();
+        enrollmentOpenDates = addConcessionOpenDates();
     }
 
     public ArrayList<ConcessionOpenDate> updateConcessionOpenDate(String targetDate){
@@ -21,9 +24,37 @@ public class DateService {
         return concessionOpenDates;
     }
 
+    private void updateEnrollmentSemester(){
+        int semCount = 1;
+        int dateCount = 0;
+        for (ConcessionOpenDate dateToChange : enrollmentOpenDates){
+            if (semCount == 3){
+                dateToChange.setSemester("Summer School");
+                dateToChange.setOpenDate("2020-12-25");
+                semCount = 1;
+            }
+            else{
+                dateToChange.setSemester("Semester " + semCount);
+                if (semCount == 1){
+                    dateToChange.setOpenDate("2020-6-22");
+                }
+                else{
+                    dateToChange.setOpenDate("2020-9-17");
+                }
+                semCount++;
+            }
+            enrollmentOpenDates.set(dateCount, dateToChange);
+            dateCount++;
+        }
+    }
 
     public ArrayList<ConcessionOpenDate> findConcessionOpenDates(){
         return concessionOpenDates;
+    }
+
+    public ArrayList<ConcessionOpenDate> findEnrollmentOpenDates(){
+        updateEnrollmentSemester();
+        return enrollmentOpenDates;
     }
 
     private ArrayList<ConcessionOpenDate> addConcessionOpenDates(){
@@ -44,6 +75,7 @@ public class DateService {
         ConcessionOpenDate sixMonth = new ConcessionOpenDate(sdf.format(inSixMonth));
         ConcessionOpenDate oneYear = new ConcessionOpenDate(sdf.format(inOneYear));
 
-        return concessionOpenDates = new ArrayList<ConcessionOpenDate>(Arrays.asList(tomorrow, sixMonth, oneYear));
+        return new ArrayList<ConcessionOpenDate>(Arrays.asList(tomorrow, sixMonth, oneYear));
     }
 }
+
