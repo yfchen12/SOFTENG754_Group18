@@ -1,5 +1,6 @@
 package com.a5.group18.service;
 
+import com.a5.group18.enumerated.ConcessionReason;
 import com.a5.group18.pojo.Concession;
 import com.a5.group18.pojo.CourseConcession;
 import com.a5.group18.pojo.Student;
@@ -12,9 +13,11 @@ import java.util.List;
 @Service
 public class ConcessionService {
     private ArrayList<CourseConcession> courseConcessionList;
+    private ArrayList<Concession> johnConcession;
 
     public ConcessionService(){
         courseConcessionList = addCourseConcessions();
+        johnConcession = findConcession();
     }
 
     private ArrayList<CourseConcession> addCourseConcessions(){
@@ -42,8 +45,8 @@ public class ConcessionService {
 
         String concessionJustification = "Insert justification.";
 
-        Concession concessionOne = new Concession(studentOne, "SOFTENG701", concessionJustification);
-        Concession concessionTwo = new Concession(studentTwo, "SOFTENG702", concessionJustification);
+        Concession concessionOne = new Concession(studentOne, "SOFTENG701", concessionJustification,null,null);
+        Concession concessionTwo = new Concession(studentTwo, "SOFTENG702", concessionJustification,null,null);
 
         return Arrays.asList(concessionOne, concessionTwo);
     }
@@ -52,8 +55,24 @@ public class ConcessionService {
         Student student = new Student();
         student.setUserName("John Smith");
         String concessionJustification = "Insert justification.";
-        Concession concession = new Concession(student, "SOFTENG701", concessionJustification);
+        Concession concession = new Concession(student, "SOFTENG701", concessionJustification,null,null);
 
         return concession;
+    }
+
+    public void submitConcession(Concession newConcession){
+
+            johnConcession.add(newConcession);
+    }
+    public List<Concession> listConcession(){
+        return johnConcession;
+    }
+
+    public ArrayList<Concession> findConcession(){
+        johnConcession = new ArrayList<>();
+        Student john = new Student();
+        john.setUpi("sjohn799");
+        Concession concession = new Concession(john, "SOFTENG702",null, ConcessionReason.ENROLLED_IN_EQUIVALENT_COURSE,null);
+        return new ArrayList(Arrays.asList(concession));
     }
 }
