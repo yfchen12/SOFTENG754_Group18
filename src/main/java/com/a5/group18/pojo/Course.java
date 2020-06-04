@@ -35,4 +35,6 @@ public class Course {
     public String getFileUrl() {
         return "files/"+courseNumber+".pdf";
     }
+
+    public String concessionCriteria;
 }

@@ -48,12 +48,12 @@ public class CartController {
         List<Course> courseList = courseService.findAll();
         String courseNumber = course.getCourseNumber().trim();
         Course targetCourse = courseList.stream().filter(c->c.getCourseNumber().equals(courseNumber)).findFirst().orElse(null);
-        List prereq = targetCourse.getPrerequisites();
+        List<String> prereq = targetCourse.getPrerequisites();
         CStatus courseStatus = targetCourse.getCourseStatus();
         Boolean allPrereqSatisfy=false;
         if(prereq!=null){
-            ArrayList<String> prerequisite =new ArrayList(Arrays.asList(prereq));
-            for(String p : prerequisite){
+//            ArrayList<String> prerequisite =new ArrayList(Arrays.asList(prereq));
+            for(String p : prereq){
                 Grade grade = enrollmentService.findGrade().stream().filter(g->g.getCourseNum().equals(p)).findFirst().orElse(null);
                 if(grade!=null&&grade.getGrade().compareGrade()==1){
                     allPrereqSatisfy=true;
@@ -86,7 +86,9 @@ public class CartController {
             } }else{
             enrolResult="CONCESSION_REQUIRED";
             model.addAttribute("enrolResult", enrolResult);
-            return "redirect:concession";
+            redirectAttributes.addFlashAttribute("criteria",targetCourse.getConcessionCriteria());
+            redirectAttributes.addFlashAttribute("courseNumber",courseNumber);
+            return "redirect:concessioninfo";
         }
 
     }
