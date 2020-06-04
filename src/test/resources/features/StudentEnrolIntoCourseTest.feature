@@ -3,6 +3,7 @@ Feature: Student enrol into a course
   Must Have User Stories:
   58 - Enroll into course: As a student, I want to be able to enroll into courses, so that I can reserve a spot in the selected course.
   5 - Waiting list transparency: As a student, I want to be able to see how many students are in front of me in the concession waiting list, so that I know how likely it is for me to get accepted.
+  55 - Concession Info: As a student, I want to be informed about the criteria to get concession approval, so that I can prepare and submit the materials if applicable.
 
   Background:
     Given I login as a Student
@@ -20,7 +21,7 @@ Feature: Student enrol into a course
     And I click the confirm button in the modal
     Then I should be informed that I the people in the waiting list is 4;
 
-  @S26
+  @US_55 @S26
   Scenario: Student enrol into a course that requires concession
     When I click the Enrol button of course "SOFTENG752"
     And I click the confirm button in the modal
