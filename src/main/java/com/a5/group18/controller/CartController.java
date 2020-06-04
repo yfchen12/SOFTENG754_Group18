@@ -60,7 +60,6 @@ public class CartController {
                 }
         }
         }
-        //List<> studentGradeForPrereq = enrollmentService.findGrade().stream().map(g->g.getCourseNum()). collect(Collectors.toList());
         Enrollment enrollment;
         String enrolResult;
         if(prereq==null||allPrereqSatisfy){
@@ -71,10 +70,14 @@ public class CartController {
                 model.addAttribute("enrolResult", enrolResult);
                 return "cart";
             } else if(courseStatus.equals(CStatus.NOT_AVAILABLE)){
-                enrollment =new Enrollment(new Student(),targetCourse,EnrollmentStatus.WAITLISTED);
-                enrollmentService.addEnrollment(enrollment);
+                Student john =new Student();
+                john.setUpi("sjohn799");
+                enrollment =new Enrollment(john,targetCourse,EnrollmentStatus.WAITLISTED);
                 enrolResult = "WAITLISTED";
+                model.addAttribute("waitsize", targetCourse.getWaitingList().size());
                 model.addAttribute("enrolResult", enrolResult);
+                enrollmentService.addStudentToWaitingList(targetCourse,john);
+                enrollmentService.addEnrollment(enrollment);
                 return "cart";
             }else{
                 enrolResult = "NOT_AVAILABLE";
