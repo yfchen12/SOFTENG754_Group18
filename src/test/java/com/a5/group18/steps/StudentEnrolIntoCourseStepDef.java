@@ -32,6 +32,8 @@ public class StudentEnrolIntoCourseStepDef implements En {
             String message = state.driver.switchTo().alert().getText();
             Assertions.assertTrue(message.contains("SUCCESS"));
         });
+        Then("^I should be informed that I the people in the waiting list is (\\d+);$", (Integer size) -> {
+        });
 
     }
 }
