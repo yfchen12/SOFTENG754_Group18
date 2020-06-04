@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Enrollment Cart</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.2.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-end">
+    <a class="navbar-brand" href="studentDashboard">Dashboard</a>
+    <button class="btn btn-success ml-auto mr-1" type="submit" onclick="location.href = '/cart';"
+            id="btnCart">Enrolment Cart
+    </button>
+    <button class="btn btn-danger mr-1" type="submit" onclick="location.href = '/';"
+            id="btnLogout">Logout
+    </button>
+</nav>
+<div class="jumbotron text-center">
+    <h1 class="display-5" id="page_title">Submit a concession</h1>
+</div>
+<div class="container">
+    <h4 class="mb-4">Concession Form</h4>
+    <form th:action="@{/concessionSubmit}" th:object="${concession}" th:method="post">
+        <div class="form-group">
+            <label for="courseNum">Course Number</label>
+            <p th:text="${courseName}"   class="form-control" id="courseNum"> </p>
+        </div>
+        <div class="form-group">
+            <label for="reason">Select your concession reason</label>
+            <select class="form-control" id="reason" >
+                <option th:field ="*{reason}" th:each="reason:${reasons}"  th:value="${reason}" th:text="${reason}">1</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="justification">Please provide your justification</label>
+            <textarea th:field ="*{justification}" class="form-control" id="justification" rows="7" ></textarea>
+        </div>
+            <div class="form-group">
+                <label for="attachment">Upload an attachment(if any)</label>r
+                <input th:field ="*{attachmentPath}" type="file" class="form-control-file" id="attachment">
+            </div>
+        <button id="submitBtn" style="background-color: #00457d" type="submit" class="btn btn-primary mb-2 mt-4 .text-center">Submit Concession</button>
+    </form>
+</div>
+</body>
+<script th:inline = "javascript">
+    $(document).ready(function () {
+        let courseName = [[${courseName}]];
+        $("#submitBtn").click(function () {
+            alert("Success: Concession submitted for "+courseName);
+        })
+    });
+</script>
