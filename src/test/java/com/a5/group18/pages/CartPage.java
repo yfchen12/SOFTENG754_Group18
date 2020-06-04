@@ -20,6 +20,7 @@ public class CartPage {
         PageFactory.initElements(driver, this);
     }
 
+
     @FindBy(id = "page_title")
     public WebElement strTitle;
 
@@ -46,4 +47,6 @@ public class CartPage {
 
     @FindBy(id = "SOFTENG753btnEnrol")
     public WebElement se753DropBtn;
+    @FindBy(id = "SOFTENG752btnEnrol")
+    public WebElement se752DropBtn;
 }

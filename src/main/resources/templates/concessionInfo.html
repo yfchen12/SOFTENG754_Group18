@@ -22,5 +22,13 @@
     </button>
 </nav>
 <div class="jumbotron text-center">
-    <h1 class="display-5" id="page_title">Enrollment Cart</h1>
+    <h1 class="display-5" id="page_title">Concession criteria information</h1>
 </div>
+<div class="container">
+    <h4 th:text="'To enroll into '+${courseNumber} + ' : '"></h4>
+    <ur  >
+      <li th:text="${criteria}"></li>
+    </ur>
+    <a style="background-color: #00457d" class="btn btn-success btn-lg mt-5 .text-center" href="#" role="button">Start a concession submission</a>
+</div>
+</body>
