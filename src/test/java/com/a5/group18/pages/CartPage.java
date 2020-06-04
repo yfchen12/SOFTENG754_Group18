@@ -47,6 +47,10 @@ public class CartPage {
 
     @FindBy(id = "SOFTENG753btnEnrol")
     public WebElement se753DropBtn;
+
     @FindBy(id = "SOFTENG752btnEnrol")
     public WebElement se752DropBtn;
+
+    @FindBy(id ="btnCart")
+    public WebElement btnCart;
 }

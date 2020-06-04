@@ -29,6 +29,6 @@
     <ur  >
       <li th:text="${criteria}"></li>
     </ur>
-    <a style="background-color: #00457d" class="btn btn-success btn-lg mt-5 .text-center" href="#" role="button">Start a concession submission</a>
+    <a id = "startBtn" style="background-color: #00457d" class="btn btn-success btn-lg mt-5 .text-center" th:action="@{'/concessionSubmit/'+ ${courseNumber}}" method="get" th:href="@{'/concessionSubmit/'+ ${courseNumber}}" role="button">Start a concession submission</a>
 </div>
 </body>
