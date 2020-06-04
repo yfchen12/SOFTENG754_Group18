@@ -1,6 +1,8 @@
+@STD_TEST @US_60
 Feature: Student tracks selected course status
+  Must Have User Stories:
+  60 - Track Selected Course: As a student, I want to be able see what courses I have reserved a spot to, so that I can keep track of what has been selected.
 
-  @STD_TEST
   Scenario Outline: Student track selected course status
     Given I login as a student
     When I click My Enrollment button from student dashboard page

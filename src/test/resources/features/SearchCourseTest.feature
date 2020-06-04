@@ -1,5 +1,8 @@
-@STD_TEST
+@STD_TEST @US_36
 Feature: Search Course Test
+  Must Have User Stories:
+  36 - Search course: As a student, I want to be able to search for a course, so that I can filter out unwanted courses.
+
   Student and course admin should be able to search course by different criteria
 
   Background:

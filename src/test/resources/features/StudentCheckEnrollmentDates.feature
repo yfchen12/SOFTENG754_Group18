@@ -1,5 +1,8 @@
-@STD_TEST
+@STD_TEST @US_17
 Feature: Student Check Enrollment Dates
+  Must Have User Stories:
+  17 - Enrollment open date: As a student, I would like to see the enrollment open date in the system, so that I will not miss the enrollment date.
+
   Student should be able see future enrollment dates
 
   Scenario: Check future enrollment dates
