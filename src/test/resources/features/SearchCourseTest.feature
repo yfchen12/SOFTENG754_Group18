@@ -1,4 +1,4 @@
-@STD_TEST @US_36
+@STD_TEST @US_36 @F6
 Feature: Search Course Test
   Must Have User Stories:
   36 - Search course: As a student, I want to be able to search for a course, so that I can filter out unwanted courses.
@@ -9,6 +9,7 @@ Feature: Search Course Test
     Given I login as a student
     And I click search course button from Student Dashboard page
 
+  @S13
   Scenario Outline: Search course by single criteria
     Given I search by "<criteria>" with value "<value>"
     When I click search button
@@ -18,11 +19,13 @@ Feature: Search Course Test
       | courseNumber | SOFTENG701      |
       | courseTitle  | OOP Development |
 
+  @S14
   Scenario: Search course by multi-criteria
     Given I search by course number and course title
     When I click search button
     Then the search result should be displayed on Search Result page
 
+  @S15
   Scenario: Search course by wildcard match
     Given I search by course number with incomplete value SOFTENG
     When I click search button

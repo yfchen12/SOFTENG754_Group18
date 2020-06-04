@@ -1,4 +1,4 @@
-@STD_TEST
+@STD_TEST @F1
 Feature: Cart management test
   Must Have User Stories:
   69 - Add course to cart: As a student, I want to be able to add selected courses to the enrollment cart, so that I can save my preferences.
@@ -8,20 +8,20 @@ Feature: Cart management test
   Background: Student login
     Given I login as a student
 
-  @US_36 @US_69
+  @US_36 @US_69 @S1
   Scenario: Add a new course to the cart from course search result
     Given I found my desired course SOFTENG701 from search result
     When I click Add To Cart button
     Then the course should be added to cart successfully
 
-  @US_36 @US_69
+  @US_36 @US_69 @S2
   Scenario: Add a new course to the cart from course detail information page
     Given I found my desired course SOFTENG701 from search result
     And I click View Detail button to check course detail information
     When I click Add to Enrollment Cart button
     Then the course should be added to cart successfully
 
-  @US_51
+  @US_51 @S3
   Scenario: Delete course from cart
     Given I navigate to cart page
     When I click Delete button

@@ -1,4 +1,4 @@
-@ADM_TEST
+@ADM_TEST @F5
 Feature: Manage Concession Test
   Must Have User Stories:
   19 - Approve course concession: As a course admin, I want to be able to approve the course concession, so that students can be enrolled in the course if they have a justification.
@@ -11,34 +11,34 @@ Feature: Manage Concession Test
     Given I login as a admin
     And I click manage concession from Admin Dashboard page
 
-  @US_26
+  @US_26 @S8
   Scenario: Set concession date for a course
     When I click edit button for the most recent concession open date
     And I change the date to tomorrow
     And I click confirm date change button
     Then the most recent concession open date should be tomorrow
 
-  @US_12
+  @US_12 @S9
   Scenario: Set concession criteria
     When I set concession criteria to have 2 years Java experience
     And I click save changes button
     Then I should see 2 years Java experience as the concession criteria
 
-  @US_19
+  @US_19 @S10
   Scenario: Reject course concession and cancelled
     When I click process button for student John Smith
     And I click reject button
     And I click cancel reject button
     Then John Smith should be in the list of new concessions
 
-  @US_19
+  @US_19 @S11
   Scenario: Reject course concession and confirmed
     When I click process button for student John Smith
     And I click reject button
     And I click confirm reject button
     Then John Smith should not be in the list of new concessions
 
-  @US_19
+  @US_19 @S12
   Scenario: Approve course concession
     When I click process button for student John Smith
     And I click approve concession button
