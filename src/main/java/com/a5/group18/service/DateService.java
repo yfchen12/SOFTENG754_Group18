@@ -71,9 +71,13 @@ public class DateService {
         // This is to convert Date to String
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
-        ConcessionOpenDate tomorrow = new ConcessionOpenDate(sdf.format(tomorrowDate));
-        ConcessionOpenDate sixMonth = new ConcessionOpenDate(sdf.format(inSixMonth));
-        ConcessionOpenDate oneYear = new ConcessionOpenDate(sdf.format(inOneYear));
+        ConcessionOpenDate tomorrow = new ConcessionOpenDate();
+        ConcessionOpenDate sixMonth = new ConcessionOpenDate();
+        ConcessionOpenDate oneYear = new ConcessionOpenDate();
+
+        tomorrow.setOpenDate(sdf.format(tomorrowDate));
+        sixMonth.setOpenDate(sdf.format(inSixMonth));
+        oneYear.setOpenDate(sdf.format(inOneYear));
 
         return new ArrayList<ConcessionOpenDate>(Arrays.asList(tomorrow, sixMonth, oneYear));
     }

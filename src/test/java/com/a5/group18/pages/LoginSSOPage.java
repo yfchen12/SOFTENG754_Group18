@@ -13,7 +13,7 @@ public class LoginSSOPage {
 
     public WebDriver driver;
 
-    @FindBy(id = "btnLoginSSO")
+    @FindBy(id = "btnLogin")
     public WebElement btnLogin;
 
     @FindBy(id = "user_name")
