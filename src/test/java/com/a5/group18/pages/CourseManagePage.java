@@ -19,4 +19,8 @@ public class CourseManagePage {
 
     @FindBy(id="btnEdit")
     public List<WebElement> manageAction;
+
+
+    @FindBy(id = "btnAddNewCourse")
+    public WebElement btnAddNewCourse;
 }

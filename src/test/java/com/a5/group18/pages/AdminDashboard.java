@@ -13,8 +13,6 @@ public class AdminDashboard {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(id = "btnAddNewCourse")
-    public WebElement btnAddNewCourse;
 
     @FindBy(id = "btnUpdateCourse")
     public WebElement btnUpdateCourse;
