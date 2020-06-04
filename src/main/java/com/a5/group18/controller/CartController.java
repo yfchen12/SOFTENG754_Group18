@@ -17,7 +17,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 /**
  * @author Tim Shi
@@ -43,14 +46,24 @@ public class CartController {
     public String enrolInCourse(Model model, Course course, RedirectAttributes redirectAttributes) {
        // ArrayList<Enrollment> enrollments = enrollmentService.findEnrollment();
         List<Course> courseList = courseService.findAll();
-        String courseNumber = course.getCourseNumber();
+        String courseNumber = course.getCourseNumber().trim();
         Course targetCourse = courseList.stream().filter(c->c.getCourseNumber().equals(courseNumber)).findFirst().orElse(null);
-        String prereq = targetCourse.getPrerequisites();
+        List prereq = targetCourse.getPrerequisites();
         CStatus courseStatus = targetCourse.getCourseStatus();
-        Grade studentGradeForPrereq = enrollmentService.findGrade().stream().filter(g->g.getCourseNum().equals(prereq)).findFirst().orElse(null);
+        Boolean allPrereqSatisfy=false;
+        if(prereq!=null){
+            ArrayList<String> prerequisite =new ArrayList(Arrays.asList(prereq));
+            for(String p : prerequisite){
+                Grade grade = enrollmentService.findGrade().stream().filter(g->g.getCourseNum().equals(p)).findFirst().orElse(null);
+                if(grade!=null&&grade.getGrade().compareGrade()==1){
+                    allPrereqSatisfy=true;
+                }
+        }
+        }
+        //List<> studentGradeForPrereq = enrollmentService.findGrade().stream().map(g->g.getCourseNum()). collect(Collectors.toList());
         Enrollment enrollment;
         String enrolResult;
-        if((prereq==""||(studentGradeForPrereq!=null&& studentGradeForPrereq.getGrade().compareGrade()==1))){
+        if(prereq==null||allPrereqSatisfy){
             if(courseStatus.equals(CStatus.AVAILABLE)){
                 enrollment =new Enrollment(new Student(),targetCourse,EnrollmentStatus.ENROLLED);
                 enrollmentService.addEnrollment(enrollment);
@@ -62,7 +75,7 @@ public class CartController {
                 enrollmentService.addEnrollment(enrollment);
                 enrolResult = "WAITLISTED";
                 model.addAttribute("enrolResult", enrolResult);
-                return "redirect:myEnrollment";
+                return "cart";
             }else{
                 enrolResult = "NOT_AVAILABLE";
                 model.addAttribute("enrolResult", enrolResult);
@@ -70,7 +83,7 @@ public class CartController {
             } }else{
             enrolResult="CONCESSION_REQUIRED";
             model.addAttribute("enrolResult", enrolResult);
-            return "redirect:myEnrollment";
+            return "redirect:concession";
         }
 
     }

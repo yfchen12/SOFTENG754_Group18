@@ -47,15 +47,15 @@ public class CourseService {
                 20, Subject.ACADENG, CStatus.AVAILABLE, CourseCareer.CONTINUING_EDUCATION, "Class3",
                 15, CourseComponent.LABORATORY, Campus.CITY, null, "");
         Course course5 = new Course("SOFTENG705", "Studies in Software Engineering",
-                "Course Outline", "Course Value", "", tels,
+                "Course Outline",  courseValues , null, tels,
                 20, Subject.ACADENG, CStatus.AVAILABLE, CourseCareer.CONTINUING_EDUCATION, "Class3",
                 15, CourseComponent.LABORATORY, Campus.CITY, null, "");
         Course course6 = new Course("SOFTENG752", "Formal Specification and Design",
-                "Course Outline", "Course Value", "SOTENG306", tels,
+                "Course Outline",  courseValues , prerequisite, tels,
                 20, Subject.ACADENG, CStatus.AVAILABLE, CourseCareer.CONTINUING_EDUCATION, "Class3",
                 15, CourseComponent.LABORATORY, Campus.CITY, null, "");
         Course course7 = new Course("SOFTENG753", "Special Topic",
-                "Course Outline", "Course Value", "SOTEENG351", tels,
+                "Course Outline",  courseValues , prerequisite, tels,
                 20, Subject.ACADENG, CStatus.NOT_AVAILABLE, CourseCareer.CONTINUING_EDUCATION, "Class3",
                 15, CourseComponent.LABORATORY, Campus.CITY, null, "");
 
