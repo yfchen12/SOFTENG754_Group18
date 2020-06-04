@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.w3c.dom.html.HTMLInputElement;
 
 import java.util.List;
 
@@ -34,13 +35,15 @@ public class CartPage {
     @FindBy(id = "btnDelete")
     public WebElement btnDelete;
 
-    @FindBy(id="courseLink")
+    @FindBy(id = "courseLink")
     public List<WebElement> courseNum;
 
-    @FindBy(id="SOFTENG705btnEnrol")
+    @FindBy(id = "SOFTENG705btnEnrol")
     public WebElement se705DropBtn;
 
     @FindBy(id = "btnConfirmEnrol")
     public WebElement btnConfirmEnrol;
 
+    @FindBy(id = "SOFTENG753btnEnrol")
+    public WebElement se753DropBtn;
 }

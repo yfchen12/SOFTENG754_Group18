@@ -55,9 +55,9 @@ public class CourseService {
                 20, Subject.ACADENG, CStatus.AVAILABLE, CourseCareer.CONTINUING_EDUCATION, "Class3",
                 15, CourseComponent.LABORATORY, Campus.CITY, null, "");
         Course course7 = new Course("SOFTENG753", "Special Topic",
-                "Course Outline",  courseValues , prerequisite, tels,
+                "Course Outline",  courseValues , null, tels,
                 20, Subject.ACADENG, CStatus.NOT_AVAILABLE, CourseCareer.CONTINUING_EDUCATION, "Class3",
-                15, CourseComponent.LABORATORY, Campus.CITY, null, "");
+                15, CourseComponent.LABORATORY, Campus.CITY,  new ArrayList(Arrays.asList(new Student(), new Student(), new Student(), new Student())), "");
 
         return Arrays.asList(course, course2, course3, course4, course5, course6, course7);
     }
