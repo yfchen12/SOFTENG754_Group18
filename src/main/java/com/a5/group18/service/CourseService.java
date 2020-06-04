@@ -22,8 +22,8 @@ import static com.a5.group18.enumerated.CourseValueType.PotentialCareer;
 public class CourseService {
 
     public List<Course> findAll() {
-        Teacher teacher1 = new Teacher("Andy Jane","ady.jane@uoa.com","Come from England");
-        Teacher teacher2 = new Teacher("John Walker","john.walker@uoa.com","Come from American");
+        Teacher teacher1 = new Teacher("Andy Jane","ady.jane@uoa.com","Come from England", "AndyJane");
+        Teacher teacher2 = new Teacher("John Walker","john.walker@uoa.com","Come from American", "JohnWalker");
         CourseValue value1 = new CourseValue(PotentialCareer,"20190506",Arrays.asList("Xero","Microsoft","Google"));
         List<CourseValue> courseValues = new ArrayList<>();
         courseValues.add(value1);
@@ -69,8 +69,8 @@ public class CourseService {
         courseValues.add(value1);
 
         List<String> prerequisite = Arrays.asList("SOFTENG101");
-        Teacher teacher1 = new Teacher("Andy Jane","ady.jane@uoa.com","Come from England");
-        Teacher teacher2 = new Teacher("John Walker","john.walker@uoa.com","Come from American");
+        Teacher teacher1 = new Teacher("Andy Jane","ady.jane@uoa.com","Come from England", "AndyJane");
+        Teacher teacher2 = new Teacher("John Walker","john.walker@uoa.com","Come from American", "JohnWalker");
         List<Teacher> tels = Arrays.asList(teacher1, teacher2);
         Course course = new Course("SOFTENG701", "Advanced Software Development",
                 "Course Outline", courseValues, prerequisite, tels,

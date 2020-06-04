@@ -7,8 +7,8 @@ import java.util.Arrays;
 import java.util.List;
 @Component
 public class TeacherService {
-    Teacher teacher1 = new Teacher("Andy Jane","ady.jane@uoa.com","Come from England");
-    Teacher teacher2 = new Teacher("John Walker","john.walker@uoa.com","Come from American");
+    Teacher teacher1 = new Teacher("Andy Jane","ady.jane@uoa.com","Come from England", "AndyJane");
+    Teacher teacher2 = new Teacher("John Walker","john.walker@uoa.com","Come from American", "JohnWalker");
 
     public List<Teacher> findAll() {
        List<Teacher> tels = Arrays.asList(teacher1, teacher2);

@@ -33,7 +33,7 @@ Feature: Student check course information
     Examples:
       | courseNumber |
       | SOFTENG701   |
-
+@debug
   Scenario: redirect to teacher profile from course information
     And  I am in course information page
     When I click Andy Jane in the page

@@ -3,6 +3,10 @@ package com.a5.group18.steps;
 import com.a5.group18.pages.*;
 import cucumber.api.java8.En;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -97,12 +101,9 @@ public class StudentCheckCourseInformationStepdefs implements En {
         });
 
         When("^I click (.*) in the page$", (String teacher) -> {
-            Thread.sleep(1000);
-            for (int i=0; i<courseInformationPage.ttList.size(); i++) {
-                if (teacher.contains(courseInformationPage.ttList.get(i).getText())) {
-                    courseInformationPage.ttList.get(i).click();
-                }
-            }
+            Thread.sleep(500);
+            WebElement teacherLink = state.driver.findElement(By.id(teacher.replace(" ", "")));
+            ((JavascriptExecutor) state.driver).executeScript("arguments[0].click();", teacherLink);
         });
 
     }
