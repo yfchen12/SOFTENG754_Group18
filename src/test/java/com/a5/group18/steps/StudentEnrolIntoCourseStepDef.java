@@ -2,6 +2,7 @@ package com.a5.group18.steps;
 
 import com.a5.group18.pages.CartPage;
 import cucumber.api.java8.En;
+import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,10 @@ public class StudentEnrolIntoCourseStepDef implements En {
                     break;
                 case "SOFTENG753":
                     cartPage.se753DropBtn.click();
+                    break;
+                case "SOFTENG752":
+                    cartPage.se752DropBtn.click();
+                    break;
             }
         });
         And("^I click the confirm button in the modal$", () -> {
@@ -40,6 +45,10 @@ public class StudentEnrolIntoCourseStepDef implements En {
         Then("^I should be informed that I the people in the waiting list is (\\d+);$", (Integer size) -> {
             String message = state.driver.switchTo().alert().getText();
             Assertions.assertTrue(message.contains("waiting list") && message.contains(size.toString()));
+        });
+        Then("^I should be redirected to the concession information page$", () -> {
+            String url = state.driver.getCurrentUrl();
+            Assert.assertTrue(url.contains("/concessioninfo"));
         });
 
     }

@@ -68,8 +68,7 @@ public class EnrollmentService {
 
     public List<Grade> findGrade(){
         Grade grade351 = new Grade("sjohn799", "SOFTENG351", Grades.A_PLUS);
-        Grade grade101 = new Grade("sjohn799", "SOFTENG101", Grades.A_PLUS);
-        return Arrays.asList(grade351,grade101);
+        return Arrays.asList(grade351);
     }
 }
 
