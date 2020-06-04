@@ -41,6 +41,8 @@ public class StudentEnrolIntoCourseStepDef implements En {
             String message = state.driver.switchTo().alert().getText();
             Assertions.assertTrue(message.contains("waiting list") && message.contains(size.toString()));
         });
+        Then("^I should be redirected to the concession information page$", () -> {
+        });
 
     }
 }
