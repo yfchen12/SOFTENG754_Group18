@@ -9,4 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ConcessionOpenDate {
     private String openDate;
+    private String semester;
+
+    public ConcessionOpenDate(String targetDate) {
+    }
 }
