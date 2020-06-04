@@ -37,4 +37,10 @@ public class CartPage {
     @FindBy(id="courseLink")
     public List<WebElement> courseNum;
 
+    @FindBy(id="SOFTENG705btnEnrol")
+    public WebElement se705DropBtn;
+
+    @FindBy(id = "btnConfirmEnrol")
+    public WebElement btnConfirmEnrol;
+
 }
