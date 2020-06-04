@@ -13,7 +13,10 @@
 <body>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-end">
     <a class="navbar-brand" href="studentDashboard">Dashboard</a>
-    <button class="btn btn-primary ml-auto mr-1" type="submit" data-toggle="modal" data-target="#notificationModal"
+    <button class="btn btn-primary ml-auto mr-1" type="submit" data-toggle="modal" data-target="#enrollmentDatesModal"
+            id="btnCheckEnrollmentDates">Enrollment Dates
+    </button>
+    <button class="btn btn-primary mr-1" type="submit" data-toggle="modal" data-target="#notificationModal"
             id="btnUpdateNotification">Notification Settings
     </button>
     <button class="btn btn-success mr-1" type="submit" onclick="location.href = 'cart';"
@@ -70,6 +73,27 @@
                         <option>Both email and text</option>
                     </select>
                 </div>
+
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" value="" id="chkConcessionOpenDate">Concession Open Date
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" value="" id="chkcourseInfo">Course Information
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" value="" id="chkEnrollmentDeadline">Enrollment Deadline
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" value="" id="chkEnrollmentStatus">Enrollment Status
+                    </label>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -85,6 +109,35 @@
             <div class="alert alert-success alert-dismissible">
                 <a class="close" data-dismiss="modal" aria-label="close" id="btnCloseAlert">&times;</a>
                 <strong>Success!</strong> Notification preferences has been updated.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="enrollmentDatesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Enrollment Dates</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-light">
+                    <thead>
+                    <tr>
+                        <th>Below are the enrollment dates:</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:class="${enrollmentOpenDate.getOpenDate()}" th:each="enrollmentOpenDate : ${enrollmentOpenDates}">
+                        <td id="semester" th:text="${enrollmentOpenDate.getSemester()}"></td>
+                        <td id="openDate" th:text="${enrollmentOpenDate.getOpenDate()}"></td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
