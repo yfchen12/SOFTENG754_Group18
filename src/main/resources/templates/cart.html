@@ -104,7 +104,7 @@
             </div>
         </div>
     </div>
-
+</div>
 <!--Status alert box-->
 <div class="container">
     <div class="modal fade" id="myModal" role="dialog">
@@ -122,6 +122,7 @@
 <script th:inline = "javascript">
     let courseNumber;
     let result = [[${enrolResult}]];
+    let waitsize = [[${waitsize}]]
     $(document).ready(function(){
 
         $(".btnEnrol").click(function () {
@@ -135,6 +136,10 @@
             if (result == "SUCCESS") {
                alert("SUCCESS: You've successfully enrolled");
                window.location.href="myEnrollment";
+            }
+            else if(result=="WAITLISTED"){
+                alert(("You are on the waiting list! There are " + waitsize+ " people in the waiting list."));
+                window.location.href="myEnrollment";
             }
         });
     });
