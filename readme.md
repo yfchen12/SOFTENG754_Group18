@@ -25,4 +25,6 @@ Open terminal/cmd, navigate to the project folder, run `mvn spring-boot:run` to 
 Open another terminal/cmd, navigate to the project folder, run `mvn clean test` to start the test.
 
 When test complete, run `allure serve target/allure-results` to generate and host the report.
+
+Please ensure Google Chrome is installed and updated to version 83.
    
