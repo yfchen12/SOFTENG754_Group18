@@ -13,7 +13,7 @@
 * Cucumber: 4.2.3
 * Selenium: 3.13
 * Allure 2
-
+* Cucumber reporting plugin: 4.0.0 
 ## Allure 2 Installation 
 * Install Allure 2 on Windows, run `scoop install allure` in cmd.
 * Install Allure 2 on Mac, run `brew install allure` in terminal.
@@ -25,6 +25,8 @@ Open terminal/cmd, navigate to the project folder, run `mvn spring-boot:run` to 
 Open another terminal/cmd, navigate to the project folder, run `mvn clean test` to start the test.
 
 When test complete, run `allure serve target/allure-results` to generate and host the report.
+
+When test complete, to see the cucumber reporting, open .\target\cucumber\cucumber-html-reports\overview-features.html.
 
 Please ensure Google Chrome is installed and updated to version 83.
    
