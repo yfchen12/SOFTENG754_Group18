@@ -13,6 +13,7 @@ public class StudentCheckEnrollmentDates implements En {
 
     @Autowired
     private UIGlobalState state;
+
     public StudentCheckEnrollmentDates() {
         When("^I click check enrollment dates button$", () -> {
             state.wait.until(ExpectedConditions.titleIs("Student Dashboard"));

@@ -15,6 +15,7 @@ public class StudentUpdateNotificationStepDef implements En {
 
     @Autowired
     private UIGlobalState state;
+
     public StudentUpdateNotificationStepDef() {
         When("^I click update notification button$", () -> {
             state.wait.until(ExpectedConditions.titleIs("Student Dashboard"));

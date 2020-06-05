@@ -21,17 +21,18 @@ public class CourseManageController {
         model.addAttribute("courses", courseService.findAll());
         return "courseManage";
     }
+
     @RequestMapping("/courseEdit/{courseid}")
     public String courseEdit(@PathVariable("courseid") String courseid, Model model, RedirectAttributes ra) {
         model.addAttribute("course", courseService.findByCourseNum(courseid));
-        ra.addFlashAttribute("course",courseService.findByCourseNum(courseid));
+        ra.addFlashAttribute("course", courseService.findByCourseNum(courseid));
         return "courseEdit";
     }
 
     @RequestMapping(value = "/update/{courseid}", method = POST)
-    public String update(@PathVariable("courseid") String courseid,Model model,RedirectAttributes ra) {
+    public String update(@PathVariable("courseid") String courseid, Model model, RedirectAttributes ra) {
         model.addAttribute("course", courseService.findByCourseNum(courseid));
-        ra.addFlashAttribute("course",courseService.findByCourseNum(courseid));
+        ra.addFlashAttribute("course", courseService.findByCourseNum(courseid));
         return "courseInformation";
 
     }

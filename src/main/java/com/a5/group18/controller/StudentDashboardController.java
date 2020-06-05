@@ -1,17 +1,12 @@
 package com.a5.group18.controller;
 
 import com.a5.group18.pojo.ConcessionOpenDate;
-import com.a5.group18.pojo.CourseConcession;
-import com.a5.group18.service.ConcessionService;
 import com.a5.group18.service.DateService;
 import com.a5.group18.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.servlet.ModelAndView;
-
-import java.util.ArrayList;
 
 /**
  * @author Tim Shi

@@ -24,7 +24,7 @@ public class StudentTrackCourseStepDef implements En {
         Then("^I should be able to see \"([^\"]*)\" with status \"([^\"]*)\"$", (String courseNumber, String status) -> {
             state.wait.until(ExpectedConditions.titleIs("My Enrollment"));
             WebElement actualStatus;
-            switch (courseNumber){
+            switch (courseNumber) {
                 case "SOFTENG701":
                     actualStatus = myEnrollmentPage.se701Status;
                     break;

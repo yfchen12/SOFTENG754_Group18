@@ -16,7 +16,8 @@ import java.util.ArrayList;
 @Controller
 public class ManageConcessionController {
     @Autowired
-    DateService dateService;;
+    DateService dateService;
+    ;
 
     @Autowired
     ConcessionService concessionService;
