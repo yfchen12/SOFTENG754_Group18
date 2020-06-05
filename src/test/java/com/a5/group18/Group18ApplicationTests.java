@@ -14,7 +14,8 @@ import org.junit.runner.RunWith;
                 "json:target/cucumber/cucumber.json",
                 "junit:target/cucumber/cucumber.xml",
                 "io.qameta.allure.cucumber4jvm.AllureCucumber4Jvm",
-                "rerun:target/rerun.txt"
+                "rerun:target/rerun.txt",
+                "de.monochromata.cucumber.report.PrettyReports:target/cucumber",
         },
         glue = {"com.a5.group18.steps", "com.a5.group18.hook"},
         junit = {"--step-notifications"},
