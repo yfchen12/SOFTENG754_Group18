@@ -1,6 +1,8 @@
 package com.a5.group18.steps;
 
-import com.a5.group18.pages.*;
+import com.a5.group18.pages.AdminDashboard;
+import com.a5.group18.pages.ManageConcessionPage;
+import com.a5.group18.pages.ProcessConcessionPage;
 import cucumber.api.java8.En;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -20,6 +22,7 @@ public class ManageConcessionStepDef implements En {
 
     @Autowired
     private UIGlobalState state;
+
     public ManageConcessionStepDef() {
         Given("^I click manage concession from (.*) page$", (String pageTitle) -> {
             state.wait.until(ExpectedConditions.titleIs(pageTitle));

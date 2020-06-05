@@ -1,9 +1,9 @@
 package com.a5.group18.steps;
 
 import com.a5.group18.hook.CukeHook;
-import com.a5.group18.pages.*;
+import com.a5.group18.pages.IndexPage;
+import com.a5.group18.pages.LoginSSOPage;
 import cucumber.api.java8.En;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @author Tim Shi
  * @version 1.0
  */
-public class UIGlobalStepDef  implements En {
+public class UIGlobalStepDef implements En {
 
     private IndexPage indexPage;
     private LoginSSOPage loginSSOPage;

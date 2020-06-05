@@ -37,9 +37,10 @@ public class StudentManageEnrollmentStepDef implements En {
             } else if (courseNumber.equals("SOFTENG702")) {
                 state.wait.until(ExpectedConditions.elementToBeClickable(myEnrollmentPage.dropbtn702));
                 myEnrollmentPage.dropbtn702.click();
-            }else{
+            } else {
                 state.wait.until(ExpectedConditions.elementToBeClickable(myEnrollmentPage.dropbtn704));
-                myEnrollmentPage.dropbtn704.click();}
+                myEnrollmentPage.dropbtn704.click();
+            }
         });
         And("^I click the confirm button in the modal window$", () -> {
             state.wait.until(ExpectedConditions.visibilityOf(myEnrollmentPage.confirmBtn));
@@ -48,7 +49,7 @@ public class StudentManageEnrollmentStepDef implements En {
         Then("^I should see on the alert box that the course is \"([^\"]*)\" to drop because \"([^\"]*)\"$", (String result, String reason) -> {
             state.wait.until(ExpectedConditions.alertIsPresent());
             String msg = state.driver.switchTo().alert().getText();
-            Assertions.assertTrue(msg.contains(result)&&msg.contains(reason));
+            Assertions.assertTrue(msg.contains(result) && msg.contains(reason));
         });
 
         And("^I click the ok button on the alert window$", () -> {

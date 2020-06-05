@@ -24,6 +24,7 @@ public class CourseInformationController {
     private CourseService courseService;
     @Autowired
     private TeacherService teacherService;
+
     @ModelAttribute("course")
     public Course defaultInstance() {
         return new Course();
@@ -34,31 +35,27 @@ public class CourseInformationController {
         modelAndView.addAttribute("course", course);
         return "courseInformation";
     }
+
     @GetMapping("/courseinformation/{courseid}")
     public String courseinformation(@PathVariable("courseid") String courseid, Model modelAndView) {
         modelAndView.addAttribute("course", courseService.findByCourseNum(courseid));
         return "courseInformation";
     }
 
-    @RequestMapping(value="/download/{courseid}", method= RequestMethod.POST)
+    @RequestMapping(value = "/download/{courseid}", method = RequestMethod.POST)
     @ResponseBody
-    public void downloadPDFResource( HttpServletRequest request,
-                                     HttpServletResponse response,
-                                     @PathVariable("courseid") String fileName)
-    {
+    public void downloadPDFResource(HttpServletResponse response,
+                                    @PathVariable("courseid") String fileName) {
         Course course = courseService.findByCourseNum(fileName);
         String dataDirectory = course.getFileUrl();
         Path file = Paths.get(dataDirectory);
-        if (Files.exists(file))
-        {
+        if (Files.exists(file)) {
             response.setContentType("application/pdf");
-            response.addHeader("Content-Disposition", "attachment; filename="+fileName+".pdf");
-            try
-            {
+            response.addHeader("Content-Disposition", "attachment; filename=" + fileName + ".pdf");
+            try {
                 Files.copy(file, response.getOutputStream());
                 response.getOutputStream().flush();
-            }
-            catch (IOException ex) {
+            } catch (IOException ex) {
                 ex.printStackTrace();
             }
         }
@@ -67,17 +64,17 @@ public class CourseInformationController {
     @GetMapping("/teacher/{name}")
     public String teacher(@PathVariable("name") String name, Model model, RedirectAttributes ra) {
         Teacher teacher = teacherService.findByName(name);
-        ra.addFlashAttribute("teacher",teacher);
-        model.addAttribute("email",teacher.getEmail());
-        model.addAttribute("Instructions",teacher.getInstructions());
+        ra.addFlashAttribute("teacher", teacher);
+        model.addAttribute("email", teacher.getEmail());
+        model.addAttribute("Instructions", teacher.getInstructions());
         return "teacherProfile";
     }
 
     @GetMapping("/pre/{name}")
-    public String pre(@PathVariable("name") String name,Model modelAndView,RedirectAttributes ra) {
+    public String pre(@PathVariable("name") String name, Model modelAndView, RedirectAttributes ra) {
         Course prec = courseService.findByCourseNum(name);
-        ra.addFlashAttribute("course",prec);
-        modelAndView.addAttribute("course",prec);
+        ra.addFlashAttribute("course", prec);
+        modelAndView.addAttribute("course", prec);
         return "courseInformation";
     }
 }

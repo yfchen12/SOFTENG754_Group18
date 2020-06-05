@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class StudentConcessionController {
 
     @GetMapping("/concessioninfo")
-    public String getConcessionInfo(Model model){
+    public String getConcessionInfo() {
         return "concessionInfo";
     }
 }

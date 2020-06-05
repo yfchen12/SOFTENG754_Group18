@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -15,12 +16,12 @@ public class ConcessionService {
     private ArrayList<CourseConcession> courseConcessionList;
     private ArrayList<Concession> johnConcession;
 
-    public ConcessionService(){
+    public ConcessionService() {
         courseConcessionList = addCourseConcessions();
         johnConcession = findConcession();
     }
 
-    private ArrayList<CourseConcession> addCourseConcessions(){
+    private ArrayList<CourseConcession> addCourseConcessions() {
         CourseConcession courseOne = new CourseConcession();
         courseOne.setCourseName("SOFTENG701");
         courseOne.setConcessionCriteria("2 years Java experience");
@@ -29,10 +30,10 @@ public class ConcessionService {
         courseTwo.setCourseName("SOFTENG702");
         courseTwo.setConcessionCriteria("10 years Java experience");
 
-        return new ArrayList<CourseConcession>(Arrays.asList(courseOne, courseTwo));
+        return new ArrayList<>(Arrays.asList(courseOne, courseTwo));
     }
 
-    public ArrayList<CourseConcession> getCourseConcessions(){
+    public ArrayList<CourseConcession> getCourseConcessions() {
         return courseConcessionList;
     }
 
@@ -45,34 +46,34 @@ public class ConcessionService {
 
         String concessionJustification = "Insert justification.";
 
-        Concession concessionOne = new Concession(studentOne, "SOFTENG701", concessionJustification,null,null);
-        Concession concessionTwo = new Concession(studentTwo, "SOFTENG702", concessionJustification,null,null);
+        Concession concessionOne = new Concession(studentOne, "SOFTENG701", concessionJustification, null, null);
+        Concession concessionTwo = new Concession(studentTwo, "SOFTENG702", concessionJustification, null, null);
 
         return Arrays.asList(concessionOne, concessionTwo);
     }
 
-    public Concession findOne(){
+    public Concession findOne() {
         Student student = new Student();
         student.setUserName("John Smith");
         String concessionJustification = "Insert justification.";
-        Concession concession = new Concession(student, "SOFTENG701", concessionJustification,null,null);
 
-        return concession;
+        return new Concession(student, "SOFTENG701", concessionJustification, null, null);
     }
 
-    public void submitConcession(Concession newConcession){
+    public void submitConcession(Concession newConcession) {
 
-            johnConcession.add(newConcession);
+        johnConcession.add(newConcession);
     }
-    public List<Concession> listConcession(){
+
+    public List<Concession> listConcession() {
         return johnConcession;
     }
 
-    public ArrayList<Concession> findConcession(){
+    public ArrayList<Concession> findConcession() {
         johnConcession = new ArrayList<>();
         Student john = new Student();
         john.setUpi("sjohn799");
-        Concession concession = new Concession(john, "SOFTENG702",null, ConcessionReason.ENROLLED_IN_EQUIVALENT_COURSE,null);
-        return new ArrayList(Arrays.asList(concession));
+        Concession concession = new Concession(john, "SOFTENG702", null, ConcessionReason.ENROLLED_IN_EQUIVALENT_COURSE, null);
+        return new ArrayList(Collections.singletonList(concession));
     }
 }

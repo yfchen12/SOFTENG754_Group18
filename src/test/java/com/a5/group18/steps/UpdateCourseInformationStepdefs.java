@@ -1,19 +1,14 @@
 package com.a5.group18.steps;
 
-import com.a5.group18.pages.AddNewCoursePage;
 import com.a5.group18.pages.AdminDashboard;
 import com.a5.group18.pages.CourseManagePage;
 import com.a5.group18.pages.CourseUpdatePage;
-import com.a5.group18.pojo.Course;
 import cucumber.api.java8.En;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class UpdateCourseInformationStepdefs implements En {
     private AdminDashboard adminDashPage;

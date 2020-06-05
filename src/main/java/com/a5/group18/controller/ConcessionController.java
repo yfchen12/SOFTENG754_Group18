@@ -21,27 +21,28 @@ public class ConcessionController {
     ConcessionService concessionService;
 
     private String courseNum;
+
     @GetMapping("/concessionSubmit/{courseNumber}")
-    public String getConcessionPage(Model model, @PathVariable("courseNumber") String courseNumber){
-        List<ConcessionReason> reasons =Arrays.asList(ConcessionReason.ENROLLED_IN_EQUIVALENT_COURSE,ConcessionReason.HAVE_SIMILAR_EXPERIENCE);
+    public String getConcessionPage(Model model, @PathVariable("courseNumber") String courseNumber) {
+        List<ConcessionReason> reasons = Arrays.asList(ConcessionReason.ENROLLED_IN_EQUIVALENT_COURSE, ConcessionReason.HAVE_SIMILAR_EXPERIENCE);
         model.addAttribute("reasons", reasons);
-        model.addAttribute("courseName",courseNumber);
-        courseNum= courseNumber;
+        model.addAttribute("courseName", courseNumber);
+        courseNum = courseNumber;
         model.addAttribute("concession", new Concession());
         return "concessionSubmit";
     }
 
     @PostMapping("/concessionSubmit")
-    public String concessionSubmit(Model model, Concession concession){
+    public String concessionSubmit(Concession concession) {
         concession.setCourseName(courseNum);
         concessionService.submitConcession(concession);
         return "redirect:myConcession";
     }
 
     @GetMapping("/myConcession")
-    public String myConcession(Model model){
+    public String myConcession(Model model) {
 
-        model.addAttribute( "concessionList", concessionService.listConcession());
+        model.addAttribute("concessionList", concessionService.listConcession());
         return "myConcession";
     }
 }

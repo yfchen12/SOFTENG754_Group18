@@ -1,15 +1,16 @@
 package com.a5.group18.service;
 
+import com.a5.group18.enumerated.EnrollmentStatus;
 import com.a5.group18.enumerated.Grades;
 import com.a5.group18.pojo.Course;
-import com.a5.group18.pojo.Grade;
-import org.springframework.stereotype.Service;
-import com.a5.group18.enumerated.EnrollmentStatus;
 import com.a5.group18.pojo.Enrollment;
+import com.a5.group18.pojo.Grade;
 import com.a5.group18.pojo.Student;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -47,7 +48,7 @@ public class EnrollmentService {
         return enrollments = new ArrayList<>(Arrays.asList(enrollment701, enrollment702, enrollment703, enrollment704));
     }
 
-    public void addEnrollment(Enrollment enrollment){
+    public void addEnrollment(Enrollment enrollment) {
         enrollments.add(enrollment);
     }
 
@@ -62,13 +63,13 @@ public class EnrollmentService {
     }
 
     public List<Course> findSoftengCoreCourse() {
-        return Arrays.asList(course.get(0));
+        return Collections.singletonList(course.get(0));
 
     }
 
-    public List<Grade> findGrade(){
+    public List<Grade> findGrade() {
         Grade grade351 = new Grade("sjohn799", "SOFTENG351", Grades.A_PLUS);
-        return Arrays.asList(grade351);
+        return Collections.singletonList(grade351);
     }
 }
 

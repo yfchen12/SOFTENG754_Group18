@@ -1,6 +1,5 @@
 package com.a5.group18.steps;
 
-import com.a5.group18.pages.LoginSSOPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Value;
